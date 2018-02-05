@@ -1,0 +1,278 @@
+# Copyright (c) 2017 by Michael Zahniser
+#
+# Endless Sky is free software: you can redistribute it and/or modify it under the
+# terms of the GNU General Public License as published by the Free Software
+# Foundation, either version 3 of the License, or (at your option) any later version.
+#
+# Endless Sky is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+
+mission "First Contact: Remnant"
+	landing
+	invisible
+	source
+		government "Remnant"
+	on offer
+		conversation
+			`Although they are unusually tall and dark-skinned, the people here appear to be human. You wouldn't know it from the architecture, however: the buildings with their curved, twisted surfaces and ramifying arches look more alien than any human dwelling you have seen before.`
+			`	Stranger still, no one is speaking: the usual background murmur of voices that you would associate with a spaceport is absent here. Instead, the locals are communicating in a rapid and graceful sign language, their hands tracing arcs through the air almost faster than your eyes can follow.`
+			`	A few of them approach your ship and one of them greets you out loud, but instead of speaking he sings the words in a high, monotone chant: "Do you comprehend the ancestral tongue?"`
+			choice
+				`	(Say, "Yes, I do.")`
+				`	(Try to chant, "Yes, I do.")`
+					goto chant
+
+			`	Their expressions are inscrutable; you aren't sure if they even understood you or not. They turn away from you for a second and converse in sign language.`
+				goto blood
+			label chant
+			`	You sing, "Yes, I do," trying to match the leader's pitch. As you do so, several of them hum notes that harmonize with you.`
+			label blood
+			`	Two of them walk up to you. One is carrying a small device that looks like a handheld scanner. The other unwraps a small foil package, pulls out a lancet, and jabs his finger with it. A dark, red drop of blood wells up. He presses his finger onto a port on the scanner, then hands you another one of the packets. "We kindly request that you identify yourself," he chants. Several of the others hum along with him.`
+			choice
+				`	(Give them a blood sample.)`
+					goto yes
+				`	(Refuse to give them a sample.)`
+					goto no
+				`	(Run back to my ship and escape from here.)`
+
+			`	You run into your airlock, slam the door shut, and blast off from the planet. Already, several of their ships are moving to intercept you. It seems that you are no longer welcome in this region of space...`
+				launch
+
+			label no
+			`	You try to pull away, but the man's hand snakes out and grabs you by the wrist. Before you are even able to react he jabs your finger and shoves it onto the scanner. "You are in our space," he sings. "You will abide by our rules." No longer a monotone, his song is a jarring and atonal melody.`
+			label yes
+			`	Several of them gather around the one with the scanner as if waiting to see what the results will be. As you watch them you notice that all of them, even the women, have their hair cropped short. Also, their clothing looks like nothing that has ever been in fashion at any point in human history that you know of.`
+			`	Finally the scanner beeps, and a yellow light flashes. You can almost feel the tension leaving the air as the crowd relaxes. "So you are pure. You are human," chants one of the women. "You are one of us."`
+			choice
+				`	"Of course I'm human. But what are human beings doing out here?"`
+				`	"Who are you?"`
+
+			`	Several of them burst into song, singing together in harmony, "We are the hidden ones. We are the Remnant. In time of great chaos to this place we came, lest all true-born humans be killed or enslaved, by those who evolved not, but unwisely were made."`
+			`	As they continue to sing, you begin to piece together their story. They are the descendants of people who fled to this region of space through an unstable wormhole at the peak of the first Alpha War, which means they have been here for more than half a millennium. That doesn't explain why their culture is so radically different, though.`
+			`	Eventually they invite you to a dinner. Their food has strange and complex flavors, not all of them pleasant, but you do your best to be polite and pretend to enjoy it all. After the meal, they entertain you by singing songs, some of which you recognize as classical Earth music. It appears that people in this culture use sign language for day to day communication, and use their voices only for making music.`
+			`	When you return to your ship, you do a search on videos of historical dialects of human sign language. None of them bear even a passing resemblance to the language of these people who call themselves the Remnant.`
+				decline
+	on accept
+		"reputation: Remnant" <?= -10
+	on decline
+		event "ember waste label"
+	
+	npc kill
+		government "Remnant"
+		personality heroic coward disables plunders
+		fleet "Large Remnant"
+		fleet "Large Remnant"
+
+event "ember waste label"
+	galaxy "label waste"
+		sprite label/waste
+
+
+
+mission "Remnant: Defense 1"
+	source "Caelian"
+	name "Defend <planet>"
+	description "Assist in defending <planet> from a Korath raid, then return to the planet."
+	to offer
+		has "First Contact: Remnant: offered"
+		not "Remnant defense delay"
+	on offer
+		conversation
+			`In the relative quiet of this Remnant spaceport, it unusually jarring when an alarm siren begins howling. All around you, people are rushing to get their ships into the air. Even though no one stops to explain to you what is happening, it's pretty clear that this is a planetary defense operation.`
+			choice
+				`	(Assist the defenders.)`
+					launch
+				`	(Stay here, and don't help them.)`
+			`	You remain behind on the planet. You probably just missed out on a great opportunity to earn the gratitude of the Remnant.`
+				defer
+	on defer
+		set "Remnant defense delay"
+		event "remnant defense timer" 20
+	npc
+		personality staying uninterested disables plunders
+		government "Remnant"
+		fleet "Large Remnant"
+	npc evade
+		personality heroic target
+		government "Korath"
+		fleet "Korath Raid"
+		fleet "Korath Raid"
+		fleet "Korath Raid"
+		fleet "Korath Raid"
+		fleet "Korath Raid"
+		fleet "Korath Raid"
+	on visit
+		dialog "There are still Korath raiders circling overhead. You should take off and help the Remnant ships to fight them."
+	on complete
+		payment 200000
+
+event "remnant defense timer"
+	clear "Remnant defense delay"
+
+
+
+mission "Remnant: Defense 2"
+	landing
+	source "Caelian"
+	name "Remnant bounty"
+	description "A Korath ship is flying around Remnant territory. Hunt it down and destroy it, then return to <planet> for payment."
+	to offer
+		has "Remnant: Defense 1: done"
+	on offer
+		conversation
+			`The people here are grateful for your help in fighting off the Korath raid, and they offer you a payment of 200,000 credits. They explain to you (in song, of course; the explanation takes the form of an epic ballad) that these raids have been taking place for nearly a century.`
+			choice
+				`	"Have you done anything to try to stop the Korath from raiding you?"`
+				`	"What do you think the Korath are hoping to accomplish?"`
+					goto motives
+	
+			`	"Of course not," chants one of them. "Why would we give up a good opportunity to plunder new technology?" His voice is such a perfect monotone that you can't tell whether the comment was meant facetiously or not.`
+				goto next
+	
+			label motives
+			`	"Perhaps they seek new territory, or perhaps they are just innately aggressive," chants one person.`
+			`	"Of course," says another, "the fact that our ships dump their cargo when the raiders attack probably makes us a tempting target."`
+			`	A third person explains, "We do that intentionally, to keep luring them back. The technology we gain when we manage to plunder one of their ships more than outweighs the cargo we lose."`
+	
+			label next
+			`	While you're conversing with the group, a uniformed woman walks up and tells them something in sign language. They sign back and point to you. She says to you, "Thank you for your help. A Korath ship that came with the raiders and fled the battle is still lurking around our territory. Would you be willing to hunt it down?"`
+			choice
+				`	"Sure."`
+				`	"Sorry, I don't have time to help you out."`
+					decline
+
+			`	"Thank you," she sings. "It keeps jumping between systems in our territory. Maybe its jump drive was damaged or something, and it can't escape. I'll spread news that you've taken on the bounty for hunting it, so others won't risk their lives fighting it."`
+				accept
+	npc kill
+		personality coward target uninterested skybound
+		government Bounty
+		system
+			distance 1 2
+		fleet
+			names "korath"
+			cargo 3
+			variant
+				"Korath World-Ship B"
+		dialog "You have destroyed the Korath ship that was left over from the raid on <planet>. You can now return there to collect your payment."
+	on complete
+		payment 250000
+		dialog `The same woman meets you when you land on <planet>. "Again, thank you," she says. "I will suggest to others that they might offer you similar bounty hunting jobs in the future." She pays you <payment>.`
+
+
+
+mission "Remnant: Bounty"
+	job
+	repeat
+	name "Remnant bounty"
+	description "Hunt down a Korath ship that is lurking in Remnant territory, then return to <planet> to receive your payment of <payment>."
+	source
+		government "Remnant"
+	to offer
+		has "Remnant: Defense 2: done"
+		random < 60
+	npc kill
+		personality coward target uninterested skybound
+		government Bounty
+		system
+			distance 1 2
+		fleet
+			names "korath"
+			cargo 3
+			variant
+				"Korath Raider (Hyperdrive)"
+		dialog "You have destroyed the Korath ship. You can now return to <planet> to collect your payment."
+	on complete
+		payment 200000
+		dialog "A Remnant military leader thanks you for hunting down the Korath ship <npc>, and gives you the agreed-upon payment of <payment>."
+
+
+
+mission "Remnant: Defense 3"
+	landing
+	name "Remnant surveillance"
+	description "Travel to the Parca system, destroy any Korath ships you find there, then deploy a Remnant surveillance satellite to give them advance warning of Korath raids in the future. Return to <planet> when you are done."
+	to offer
+		"Remnant: Bounty: done" >= 3
+	cargo "surveillance equipment" 13
+	waypoint Parca
+	on offer
+		conversation
+			`A man approaches your ship soon after you collect your latest bounty, and sings, "You have been most helpful in fighting the Korath. Would you be willing to assist us in another way?"`
+			choice
+				`	"Sure, tell me more."`
+				`	"Sorry, I'm not interested in helping you out anymore."`
+					decline
+
+			`	He explains that they hope to gain advance notice of future raids by setting up remote surveillance equipment in the system in the Ember Waste that is closest to Korath space. The equipment will communicate with the Remnant via something called an "entangled particle pair" that does not require a hyperspace relay network. Ironically, this is technology that the Remnant acquired by raiding the Korath decades ago.`
+			`	"I will mark the target system on your map," he says, "and give you the equipment necessary to deploy the surveillance satellite. Please do not deploy it while any Korath ships are watching."`
+				accept
+	on accept
+		event "remnant: surveillance begin"
+	npc kill
+		personality heroic nemesis staying
+		government Korath
+		system Parca
+		fleet "Korath Raid"
+		fleet "Korath Raid"
+		dialog "Now that you are alone, you are able to deploy the Remnant surveillance satellite unobserved. Time to report back to <planet>."
+	on complete
+		event "remnant: surveillance end"
+		payment 400000
+		conversation
+			`When you return to <planet>, the same Remnant man meets you and says that they have begun receiving data from the surveillance satellite that you deployed. "Thank you for your assistance," he sings. He pays you <payment>.`
+			choice
+				`	"You're welcome."`
+					decline
+				`	"You know, a great way to say 'thank you' would be to offer me a license to buy your technology."`
+
+			`	He grins, very slightly. "That is not my decision alone to make," he says, "but I will put in a word for you and see what I can do."`
+
+event "remnant: surveillance begin"
+	system Parca
+		remove fleet "Korath Raid"
+
+event "remnant: surveillance end"
+	system Parca
+		add fleet "Korath Raid" 10000
+
+
+
+mission "Remnant: Key Stones"
+	name "Keystones"
+	description "The manager of the outfitter on <planet>, a Remnant world, has offered to pay you six million credits in exchange for a shipment of fifty Quantum Keystones (which you will have to purchase from the Hai)."
+	source Viminal
+	to offer
+		has "First Contact: Remnant: offered"
+	on offer
+		require "Quantum Keystone"
+		conversation
+			`As you are walking through the spaceport, a man comes up to you and introduces himself as the manager of the local outfitter. He says, "I could not help but notice that you have a Key Stone that looks different from the ones from our mines. Have you found another world where these stones can be mined?"`
+			choice
+				`	"Yes, in the territory of some aliens far to the north of here."`
+					goto hai
+				`	"Yes, but I would prefer not to tell you where."`
+
+			`	"That is understandable," he says. "I am a businessman and I understand how valuable certain trade secrets can be. But perhaps I can interest you in a mutually profitable endeavor?"`
+				goto more
+
+			label hai
+			`	"Intriguing," he sings. "Are they aware of how valuable these stones are?" You tell him about the Hai: that they once had a vast empire that included part of human space, but that was almost a hundred thousand years ago. And, you tell him that to them the Key Stones are just good luck charms. "Perhaps they have forgotten the true use of the Stones," says the man. "This may give us an opportunity for a mutually profitable endeavor."`
+
+			label more
+			`	"Tell me more," you say.`
+			`	He says, "If you could fetch me a large supply of these stones, say fifty of them, I would purchase them from you for a high enough price that you would earn a tidy profit. What do you say?"`
+			choice
+				`	"Sure, I would be glad to accept that deal."`
+				`	"Sorry, I'm really not interested in doing business with you Remnant folks."`
+					decline
+
+			`	After a bit of haggling, he agrees to pay you six million credits in exchange for a cargo of fifty Hai "Keystones." Given how cheap they are to purchase in Hai space, you will be earning a very tidy profit on the deal.`
+				accept
+	
+	on complete
+		outfit "Quantum Keystone" -50
+		payment 6000000
+		conversation
+			`You visit the local outfitter and tell the manager that you have brought a shipment of "Quantum Keystones" to sell to him. He is overjoyed, and gladly pays you six million credits for them. You can't help noticing that based on how much the Key Stones sell for here, he will be earning even more profit than you did, even though you did nearly all the work.`
+			`	"You have made a valuable contribution to our people by doing this," he says. "These stones will allow more of our ships to explore the Ember Waste and discover the secrets that it holds."`
