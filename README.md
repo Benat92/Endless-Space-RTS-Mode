@@ -1,7 +1,7 @@
 # Endless-Sky-RTS-Mode:
 	
-	A local muliplayer, real-time strategy game set in the Endless Space Universe. 
-	Conquor the galaxy one system at a time. 
+A local muliplayer, real-time strategy game set in the Endless Space Universe. 
+Conquor the galaxy one system at a time. 
 	
 To begin:
 	Depart Station
