@@ -1,12 +1,4 @@
 LOG FILE: OPENED Succesfully!
 No, Joysticks connected! 
 
-Player selected system: Kugel
-
-Player selected system: Fah Soom
-
-Player selected system: Imo Dep
-
-Player selected system: Alniyat
-
-Player selected system: Talita
+Player selected system: Rajak

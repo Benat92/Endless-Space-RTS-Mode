@@ -3,6 +3,7 @@
 /.sconsign.dblite
 .DS_Store
 *.db
+LogFile.txt
 /EndlessSky.xcodeproj/project.xcworkspace/
 /EndlessSky.xcodeproj/xcuserdata/
 /obj/Debug/
