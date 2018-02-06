@@ -1,9 +1,20 @@
-# endless-sky
+# Endless-Sky-RTS-Mode
+	
+	A local muliplayer, real-time strategy game set in the Endless Space Universe. Conquor the galaxy one system at a time. 
+	
+To begin:
+	Depart Station
+	Press 'm' key to bring up galaxy map.
+	
+Concepts:
+	Each system a player controls gives them 1 fighter evey 6 seconds.
+	New ships are spawned at mothership.
+	Only the mothership or command ships can send fighters to other systems.
+	To send ships use the shoulder buttons to select the command or mothership you wish to send ships from.
+	Game ends when a player destroyes the other player's mothrship.
 
-Explore other star systems. Earn money by trading, carrying passengers, or completing missions. Use your earnings to buy a better ship or to upgrade the weapons and engines on your current one. Blow up pirates. Take sides in a civil war. Or leave human space behind and hope to find some friendly aliens whose culture is more civilized than your own...
 
-Endless Sky is a sandbox-style space exploration game similar to Elite, Escape Velocity, or Star Control. You start out as the captain of a tiny space ship and can choose what to do from there. The game includes a major plot line and many minor missions, but you can choose whether you want to play through the plot or strike out on your own as a merchant or bounty hunter or explorer.
-
-See the [player's manual](https://github.com/endless-sky/endless-sky/wiki/PlayersManual) for more information, or the [home page](https://endless-sky.github.io/) for screenshots.
+Endless-Sky-RTS-Mode is a fork of the space trading game, Endless Sky.
+Endless Sky [home page](https://endless-sky.github.io/) for screenshots.
 
 Endless Sky is a free, open source game. The [source code](https://github.com/endless-sky/endless-sky/) is available under the GPL 3 license, and all the artwork is either public domain or released under a variety of Creative Commons licenses. (To determine the copyright status of any of the artwork, consult the [copyright file](https://github.com/endless-sky/endless-sky/blob/master/copyright).)
