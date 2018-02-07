@@ -15,6 +15,7 @@ Concepts:
 	Game ends when a player destroyes the other player's mothrship.
 
 
+
 Endless-Sky-RTS-Mode is a fork of the space trading game, Endless Sky.
 Endless Sky [home page](https://endless-sky.github.io/) for screenshots.
 

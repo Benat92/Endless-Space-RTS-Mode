@@ -728,12 +728,18 @@ void MapPanel::DrawTravelPlan()
 		// Color the path green if all ships can make it. Color it yellow if
 		// the flagship can make it, and red if the flagship cannot.
 		Color drawColor = outOfFlagshipFuelRangeColor;
-		if(isWormhole)
+
+		//RTS Mode choose draw color of ship rout based off Government color.
+		drawColor = selectedShip->GetGovernment()->GetColor();
+
+		//RTS mode Remove color of path based off fule and distance.
+		/*if(isWormhole)
 			drawColor = wormholeColor;
 		else if(!stranded)
 			drawColor = withinFleetFuelRangeColor;
 		else if(fuel[flagship] >= 0.)
-			drawColor = defaultColor;
+			drawColor = defaultColor;*/
+
 
 		Point from = Zoom() * (next->Position() + center);
 		Point to = Zoom() * (previous->Position() + center);
