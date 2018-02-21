@@ -45,23 +45,38 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 #include "Trade.h"
 #include "UI.h"
 
-//RTS Log
-#include <fstream>
-#include "LogFile.h"
+
 
 //#include <SDL_thread.h>
-
+#include <thread>
 
 #include <algorithm>
 #include <cctype>
 #include <cmath>
 #include <limits>
 
+//RTS Log
+#include <fstream>
+//#include "LogFile.h"
+extern std::ofstream LogFile;
+//RTS Mode Player info
+//#include "RTSPlayer.h"
+//#include "GameControllerInput.cpp"
+
+
+
 using namespace std;
+
+
+//RTS Mode
+SDL_GameController *GameController[4];
+const int JOYSTICK_DEAD_ZONE = 8000; //RTS controller
+
+void RTSPLayerMenu (int playNum);
+int firstRun =0;
 
 const double MapPanel::OUTER = 6.;
 const double MapPanel::INNER = 3.5;
-SDL_GameController *GameController1, *GameController2;
 
 
 
@@ -76,14 +91,20 @@ MapPanel::MapPanel(PlayerInfo &player, int commodity, const System *special)
 	SetInterruptible(false);
 	bool success;
 
+	//RTS mode initailize RTSPlayers
+//	RTSPlayers RTSPlayers[9];
+    int n =0;
+
+
 	// Recalculate the fog each time the map is opened, just in case the player
 	// bought a map since the last time they viewed the map.
 	if (0 == 0)
 	FogShader::Redraw();
 
-	 LogFile.open ("LogFile.txt", std::ofstream::out | std::ofstream::trunc);
+
+	/* LogFile.open ("LogFile.txt", std::ofstream::out | std::ofstream::trunc);
 	 if(LogFile.good())
-        LogFile << "LOG FILE: OPENED Succesfully!\n";
+        LogFile << "LOG FILE: OPENED Succesfully!\n";*/
 
 	if(selectedSystem)
 		center = Point(0., 0.) - selectedSystem->Position();
@@ -96,60 +117,155 @@ MapPanel::MapPanel(PlayerInfo &player, int commodity, const System *special)
         }
         else
         {
-            //Load joystick
-            GameController1 = SDL_GameControllerOpen( 0 );
+            //Load joysticks
+LogFile << "\nNumber of Joysticks!" << SDL_NumJoysticks() << "\n";
+           for( n = 0; n < SDL_NumJoysticks(); n++)
+            {
 
-            if( GameController1 == NULL )
+                GameController[n+1] = SDL_GameControllerOpen( n );
+                    if(GameController[n+1] == NULL)
+                    {
+                        LogFile << "Unable to open game controller " << n+ 1 << "! SDL Error: %s\n", SDL_GetError() ;
+                    }
+                    else
+                        LogFile << "Game controller #" << n+1 << " connected! \n";
+            }
+      }
+      LogFile << "MapPanel initialized!\n";
+
+           /* GameController[1] = SDL_GameControllerOpen( 0 );
+
+            if( GameController[1] == NULL )
             {
                 printf( "Warning: Unable to open game controller1! SDL Error: %s\n", SDL_GetError() );
-                LogFile << "Unable to open game controller 1! SDL Error: %s\n", SDL_GetError() ;
+
             }
-            GameController2 = SDL_GameControllerOpen( 1 );
+            else
+            {
+                 LogFile << "Game controller 1! Connected.\n";
+
+//  std::thread t(RTSPLayerMenu, 1);
+
+            }
+
+       /*     GameController2 = SDL_GameControllerOpen( 1 );
 
                if( GameController2 == NULL )
             {
                 printf( "Warning: Unable to open game controller 2! SDL Error: %s\n", SDL_GetError() );
                 LogFile << "Unable to open game controller 2! SDL Error: %s\n", SDL_GetError() ;
             }
-        }
+            else
+            {
+                 LogFile << "Game controller 2! Connected.\n";
+            }
+
+            GameController3 = SDL_GameControllerOpen( 2 );
+
+               if( GameController3 == NULL )
+            {
+                printf( "Warning: Unable to open game controller 3! SDL Error: %s\n", SDL_GetError() );
+                LogFile << "Unable to open game controller 3! SDL Error: %s\n", SDL_GetError() ;
+            }
+                else
+
+                {
+                 LogFile << "Game controller 3! Connected.\n";
+                }
+
+
+            GameController4 = SDL_GameControllerOpen( 3 );
+
+               if( GameController4 == NULL )
+            {
+                printf( "Warning: Unable to open game controller 4! SDL Error: %s\n", SDL_GetError() );
+                LogFile << "Unable to open game controller 4! SDL Error: %s\n", SDL_GetError() ;
+            }
+        else
+            {
+                 LogFile << "Game controller 4! Connected.\n";
+            }
+*/
 
 
 
 }
 
-int MapPanel::GameControllerRefresh(void *data)
-{
-    SDL_Event e;
-    SDL_GameControllerButton button;
+
+
 
 /*    SDL_GameControllerGetButton(GameController1, SDL_GameControllerButton button);
     if(button == SDL_Controller_Button_A)
         Logfile << "Button A pressed!";*/
-    return 1;
+    //return 1;
    /* bool a_button_pressed = (e.cbutton.button == SDL_CONTROLLER_BUTTON_A))
     If(a_button_pressed)
     {
         LogFile << "Hello World!";
     }*/
 
+void MapPanel::RTSPLayerMenu (SDL_GameControllerButton button, int playNum)
+{
+
+        if (SDL_GameControllerGetButton(GameController[playNum], SDL_CONTROLLER_BUTTON_A))
+        {
+            while(1)
+            {
+            do{
+            //Nothing till player stops pressing button A.
+            } while (SDL_GameControllerGetButton(GameController[playNum], SDL_CONTROLLER_BUTTON_A));
+            LogFile << "Button A pressed and released by " << playNum << "!\n";
+
+            leftXAxis = SDL_GameControllerGetAxis(GameController[playNum], SDL_CONTROLLER_AXIS_LEFTX);
+           leftYAxis = SDL_GameControllerGetAxis(GameController[playNum], SDL_CONTROLLER_AXIS_LEFTY);
+
+            if((leftXAxis > JOYSTICK_DEAD_ZONE) || leftYAxis > JOYSTICK_DEAD_ZONE)
+           {
+
+            //Extend flight path from the system that the SelectedShip is located. If player moves joystick out of deadzone.
+            LogFile << "Joystick out of DeadZone. For player #" << playNum << "\n";
+            LogFile << "X axis: " << leftXAxis << "\nY Axis: " << leftYAxis << "\n";
+           }
+            //Send ships from SelectedShip
+
+            if(SDL_GameControllerGetButton(GameController[playNum], SDL_CONTROLLER_BUTTON_X))
+                break; //X means cancel
+            }
+
+        }
+
+    }
+
 }
 void MapPanel::Draw()
 {
-   int rtsEnabled = 1;
-   static bool Controller1RefreshComplete = 1;
+   int rtsEnabled = 1, n =0;
+   static int Controller1RefreshComplete = 0;
+
 	glClear(GL_COLOR_BUFFER_BIT);
 
-	/*if(Controller1RefreshComplete)
+
+	if(firstRun == 0)
     {
-    Controller1RefreshComplete = 0;
+        firstRun++;
+      //  std::thread t(MapPanel::RTSPLayerMenu, 1);
 
-	SDL_Thread* GameController1Input = SDL_CreateThread(GameControllerRefresh, "LazyThread", (void*)data );
-	Controller1RefreshComplete = 1;
-	std::terminate(GameController1Input);
-    }*/
-	//ControllerInputRefresh(GaemController2);
+       /*SDL_Thread* threadPlay1 = SDL_CreateThread(RTSPLayerMenu(1), "ControlsPlayer 1", (void*) 1);
+        SDL_Thread* threadPlay2 = SDL_CreateThread(RTSPLayerMenu(2), "ControlsPlayer 2", (void*)n );
+        SDL_Thread* threadPlay3= SDL_CreateThread(RTSPLayerMenu(3), "ControlsPlayer 3", (void*)n );
+      SDL_Thread* threadPlay4=  SDL_CreateThread(RTSPLayerMenu(4), "ControlsPlayer 4", (void*)n );*/
+        firstRun++;
 
 
+   /* Controller1RefreshComplete = 0;
+
+	 SDL_Thread* threadID  = SDL_CreateThread(GameControllerRefresh, "LazyThread", (void*)n );
+    if (n= 1)
+    Controller1RefreshComplete = 1;*/
+
+    }
+    if(firstRun > 1000000)
+        firstRun = 1;
 
 
 	for(const auto &it : GameData::Galaxies())

@@ -1,1 +1,3 @@
+
 std::ofstream LogFile;
+

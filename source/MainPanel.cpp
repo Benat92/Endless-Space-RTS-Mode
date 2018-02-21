@@ -53,9 +53,9 @@ MainPanel::MainPanel(PlayerInfo &player)
 void MainPanel::Step()
 {
 	engine.Wait();
-	
+
 	bool isActive = GetUI()->IsTop(this);
-	
+
 	if(show.Has(Command::MAP))
 	{
 		GetUI()->Push(new MapDetailPanel(player));
@@ -68,9 +68,9 @@ void MainPanel::Step()
 	}
 	else if(show.Has(Command::HAIL))
 		isActive = !ShowHailPanel();
-	
+
 	show = Command::NONE;
-	
+
 	// If the player just landed, pop up the planet panel. When it closes, it
 	// will call this object's OnCallback() function;
 	if(isActive && player.GetPlanet() && !player.GetPlanet()->IsWormhole())
@@ -93,13 +93,13 @@ void MainPanel::Step()
 		if(isActive && !flagship->IsHyperspacing() && !flagship->JumpsRemaining() && !canRefuel)
 			isActive = !DoHelp("stranded");
 	}
-	
+
 	engine.Step(isActive);
-	
+
 	for(const ShipEvent &event : engine.Events())
 	{
 		const Government *actor = event.ActorGovernment();
-		
+
 		player.HandleEvent(event, GetUI());
 		if((event.Type() & (ShipEvent::BOARD | ShipEvent::ASSIST)) && isActive && actor->IsPlayer()
 				&& event.Actor().get() == player.Flagship())
@@ -129,7 +129,7 @@ void MainPanel::Step()
 			}
 		}
 	}
-	
+
 	if(isActive)
 		engine.Go();
 	else
@@ -143,9 +143,9 @@ void MainPanel::Draw()
 {
 	FrameTimer loadTimer;
 	glClear(GL_COLOR_BUFFER_BIT);
-	
+
 	engine.Draw();
-	
+
 	if(isDragging)
 	{
 		Color color(.2, 1., 0., 0.);
@@ -154,13 +154,13 @@ void MainPanel::Draw()
 		LineShader::Draw(dragPoint, Point(dragPoint.X(), dragSource.Y()), .8, color);
 		LineShader::Draw(Point(dragPoint.X(), dragSource.Y()), dragSource, .8, color);
 	}
-	
+
 	if(Preferences::Has("Show CPU / GPU load"))
 	{
 		string loadString = to_string(static_cast<int>(load * 100. + .5)) + "% GPU";
 		Color color = *GameData::Colors().Get("medium");
 		FontSet::Get(14).Draw(loadString, Point(10., Screen::Height() * -.5 + 5.), color);
-	
+
 		loadSum += loadTimer.Time();
 		if(++loadCount == 60)
 		{
@@ -206,7 +206,7 @@ bool MainPanel::KeyDown(SDL_Keycode key, Uint16 mod, const Command &command)
 		engine.SelectGroup(key - '0', mod & KMOD_SHIFT, mod & (KMOD_CTRL | KMOD_GUI));
 	else
 		return false;
-	
+
 	return true;
 }
 
@@ -219,15 +219,15 @@ bool MainPanel::Click(int x, int y, int clicks)
 		return true;
 	// Only allow drags that start when clicking was possible.
 	canDrag = true;
-	
+
 	dragSource = Point(x, y);
 	dragPoint = dragSource;
-	
+
 	SDL_Keymod mod = SDL_GetModState();
 	hasShift = (mod & KMOD_SHIFT);
-	
+
 	engine.Click(dragSource, dragSource, hasShift);
-	
+
 	return true;
 }
 
@@ -236,7 +236,7 @@ bool MainPanel::Click(int x, int y, int clicks)
 bool MainPanel::RClick(int x, int y)
 {
 	engine.RClick(Point(x, y));
-	
+
 	return true;
 }
 
@@ -246,7 +246,7 @@ bool MainPanel::Drag(double dx, double dy)
 {
 	if(!canDrag)
 		return true;
-	
+
 	dragPoint += Point(dx, dy);
 	isDragging = true;
 	return true;
@@ -261,10 +261,10 @@ bool MainPanel::Release(int x, int y)
 		dragPoint = Point(x, y);
 		if(dragPoint.Distance(dragSource) > 5.)
 			engine.Click(dragSource, dragPoint, hasShift);
-	
+
 		isDragging = false;
 	}
-	
+
 	return true;
 }
 
@@ -278,7 +278,7 @@ bool MainPanel::Scroll(double dx, double dy)
 		Preferences::ZoomViewIn();
 	else
 		return false;
-	
+
 	return true;
 }
 
@@ -287,7 +287,7 @@ bool MainPanel::Scroll(double dx, double dy)
 void MainPanel::ShowScanDialog(const ShipEvent &event)
 {
 	shared_ptr<Ship> target = event.Target();
-	
+
 	ostringstream out;
 	if(event.Type() & ShipEvent::SCAN_CARGO)
 	{
@@ -298,7 +298,7 @@ void MainPanel::ShowScanDialog(const ShipEvent &event)
 				if(first)
 					out << "This " + target->Noun() + " is carrying:\n";
 				first = false;
-		
+
 				out << "\t" << it.second
 					<< (it.second == 1 ? " ton of " : " tons of ")
 					<< it.first << "\n";
@@ -309,7 +309,7 @@ void MainPanel::ShowScanDialog(const ShipEvent &event)
 				if(first)
 					out << "This " + target->Noun() + " is carrying:\n";
 				first = false;
-		
+
 				out << "\t" << it.second << " "
 					<< (it.second == 1 ? it.first->Name(): it.first->PluralName()) << "\n";
 			}
@@ -325,7 +325,7 @@ void MainPanel::ShowScanDialog(const ShipEvent &event)
 			if(it.first && it.second)
 				out << "\t" << it.second << " "
 					<< (it.second == 1 ? it.first->Name() : it.first->PluralName()) << "\n";
-		
+
 		map<string, int> count;
 		for(const Ship::Bay &bay : target->Bays())
 			if(bay.ship)
@@ -366,11 +366,11 @@ bool MainPanel::ShowHailPanel()
 	const Ship *flagship = player.Flagship();
 	if(!flagship || flagship->IsDestroyed())
 		return false;
-	
+
 	shared_ptr<Ship> target = flagship->GetTargetShip();
 	if((SDL_GetModState() & KMOD_SHIFT) && flagship->GetTargetStellar())
 		target.reset();
-	
+
 	if(flagship->IsEnteringHyperspace())
 		Messages::Add("Unable to send hail: your flagship is entering hyperspace.");
 	else if(flagship->Cloaking() == 1.)
@@ -420,6 +420,6 @@ bool MainPanel::ShowHailPanel()
 	}
 	else
 		Messages::Add("Unable to send hail: no target selected.");
-	
+
 	return false;
 }

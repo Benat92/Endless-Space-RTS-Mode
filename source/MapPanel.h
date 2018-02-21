@@ -54,7 +54,7 @@ public:
 
 	virtual void Draw() override;
 
-    int GameControllerRefresh(void* data); //RTS code
+    //int GameControllerRefresh(void* data); //RTS code
 
 	void DrawButtons(const std::string &condition);
 	static void DrawMiniMap(const PlayerInfo &player, double alpha, const System *const jump[2], int step);
@@ -105,6 +105,8 @@ protected:
 	const System *specialSystem;
 	const Planet *selectedPlanet = nullptr;
 
+	void RTSPLayerMenu (SDL_GameControllerButton button, int playNum);
+
 	Ship *selectedShip; //RTS mode selected ship
 
 	Point center;
@@ -114,6 +116,9 @@ protected:
 
 	std::map<const Government *, double> closeGovernments;
 
+	//RTS mode - the height where a
+    unsigned short selectedMenuButtonHeight[5]; //
+    unsigned short selectedMenuButtonWidth[5];
 
 private:
 
@@ -125,6 +130,8 @@ private:
 	void DrawMissions();
 	void DrawPointer(const System *system, Angle &angle, const Color &color, bool bigger = false);
 	static void DrawPointer(Point position, Angle &angle, const Color &color, bool drawBack = true, bool bigger = false);
+
+
 };
 
 

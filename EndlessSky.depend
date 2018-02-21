@@ -3250,7 +3250,7 @@
 	"Point.h"
 	<map>
 
-1517864688 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.h
+1519200377 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.h
 	"Panel.h"
 	"Color.h"
 	"DistanceMap.h"
@@ -3856,7 +3856,7 @@
 	<string>
 	<vector>
 
-1511947056 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\main.cpp
+1519196382 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\main.cpp
 	"Audio.h"
 	"Command.h"
 	"Conversation.h"
@@ -3882,6 +3882,8 @@
 	<cstring>
 	<iostream>
 	<map>
+	<fstream>
+	"LogFile.h"
 	<sstream>
 	<stdexcept>
 	<string>
@@ -3892,7 +3894,7 @@
 	<string>
 	<vector>
 
-1499116258 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mainpanel.cpp
+1518385845 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mainpanel.cpp
 	"MainPanel.h"
 	"BoardingPanel.h"
 	"Command.h"
@@ -3997,7 +3999,7 @@
 	<limits>
 	<set>
 
-1517864689 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
+1518388833 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
 	"MapPanel.h"
 	"Angle.h"
 	"Dialog.h"
@@ -4029,19 +4031,19 @@
 	"System.h"
 	"Trade.h"
 	"UI.h"
-	<fstream>
-	"LogFile.h"
+	<thread>
 	<algorithm>
 	<cctype>
 	<cmath>
 	<limits>
+	<fstream>
 
 1499116258 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\missionpanel.h
 	"MapPanel.h"
 	"WrappedText.h"
 	<list>
 
-1511936162 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\logfile.h
+1518386157 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\logfile.h
 
 1511943056 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mapsalespanel.cpp
 	"MapSalesPanel.h"
@@ -4805,4 +4807,26 @@
 	"Font.h"
 	"Point.h"
 	<cstring>
+
+1518212028 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\rtsplayer.h
+	"Planet.h"
+	<list>
+	<map>
+	<memory>
+	<set>
+	<string>
+	<utility>
+	<vector>
+
+1518211973 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\rtsplayer.cpp
+	"RTSPlayer.h"
+	"Ship.h"
+	"ShipEvent.h"
+	"StartConditions.h"
+	"StellarObject.h"
+	"System.h"
+	"UI.h"
+	<algorithm>
+	<ctime>
+	<sstream>
 

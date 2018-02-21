@@ -39,6 +39,10 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 #include <cstring>
 #include <iostream>
 #include <map>
+
+#include <fstream>
+#include "LogFile.h"
+
 #include <sstream>
 #include <stdexcept>
 #include <string>
@@ -59,10 +63,20 @@ Conversation LoadConversation();
 
 
 
+
 int main(int argc, char *argv[])
 {
 	Conversation conversation;
 	bool debugMode = false;
+
+
+
+ LogFile.open ("LogFile.txt", std::ofstream::out | std::ofstream::trunc);
+	 if(LogFile.good())
+        LogFile << "LOG FILE: OPENED Succesfully!\n";
+
+
+
 	for(const char *const *it = argv + 1; *it; ++it)
 	{
 		string arg = *it;
@@ -275,9 +289,25 @@ int main(int argc, char *argv[])
 						SDL_SetWindowFullscreen(window, 0);
 						SDL_SetWindowSize(window, windowWidth, windowHeight);
 					}
+
 					else
 						SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
 				}
+
+				//RTS handle event
+				else if(event.type ==  SDL_CONTROLLERBUTTONDOWN)
+				{
+				    LogFile << "(Main SDL Event handler)";
+				   LogFile << "Controller button: " << event.cbutton.button << " from controller " << event.cbutton.which+1 << "\n";
+
+				   if(event.cbutton.button == SDL_CONTROLLER_BUTTON_A)
+                    LogFile << "A Button. Detected! \n";
+
+                    //Send which button was pressed + which player's joystick sent the command. which+1 because joystick numbrs start at 0.
+                   MapPanel::RTSPLayerMenu(event.cbutton.button, event.cbutton.which+1);
+				}
+
+
 				else if(activeUI.Handle(event))
 				{
 					// No need to do anything more!
