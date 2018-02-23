@@ -207,14 +207,58 @@ LogFile << "\nNumber of Joysticks!" << SDL_NumJoysticks() << "\n";
 void MapPanel::RTSPLayerMenu (SDL_GameControllerButton button, int playNum)
 {
 
-        if (SDL_GameControllerGetButton(GameController[playNum], SDL_CONTROLLER_BUTTON_A))
-        {
-            while(1)
+       switch(button)
+       {
+
+
+            case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
             {
-            do{
-            //Nothing till player stops pressing button A.
-            } while (SDL_GameControllerGetButton(GameController[playNum], SDL_CONTROLLER_BUTTON_A));
-            LogFile << "Button A pressed and released by " << playNum << "!\n";
+                LogFile << "Controller " << playNum << " sent event from D-pad Left.\n";
+                if(selectedMenuButtonWidth[playNum] < 1) //If player is currently at 0 position in menu, do nothing.
+                    break;
+                else
+                    {selectedMenuButtonWidth[playNum]--;
+                    break;}
+            }
+            case SDL_CONTROLLER_BUTTON_DPAD_RIGHT
+            {
+                LogFile << "Controller " << playNum << " sent event from D-pad right.\n";
+                if(selectedMenuButtonWidth[playNum] > 3) //If player is currently at futherest width position in menu, do nothing.
+                    break;
+                else
+                    {selectedMenuButtonWidth[playNum]++;
+                    break;
+                    }
+            }
+
+            case SDL_CONTROLLER_BUTTON_DPAD_UP:
+            {
+                LogFile << "Controller " << playNum << " sent event from D-pad up.\n";
+                if(selectedMenuButtonWidth[playNum] < 1) //If player is currently at 0 position in menu, do nothing.
+                    break;
+                else
+                   {
+                    selectedMenuButtonWidth[playNum]--;
+                    break
+                    }
+            }
+            case SDL_CONTROLLER_BUTTON_DPAD_DOWN
+            {
+                LogFile << "Controller " << playNum << " sent event from D-pad down.\n";
+                if(selectedMenuButtonWidth[playNum] > 3) //If player is currently at futherest width position in menu, do nothing.
+                    break;
+                else
+                    {selectedMenuButtonWidth[playNum]++;
+                    break;}
+            }
+
+
+            case default:
+                {
+                LogFile << "Controller " << playNum << " sent event that was not handled.\n";
+                break;
+                }
+    }
 
             leftXAxis = SDL_GameControllerGetAxis(GameController[playNum], SDL_CONTROLLER_AXIS_LEFTX);
            leftYAxis = SDL_GameControllerGetAxis(GameController[playNum], SDL_CONTROLLER_AXIS_LEFTY);
@@ -228,8 +272,7 @@ void MapPanel::RTSPLayerMenu (SDL_GameControllerButton button, int playNum)
            }
             //Send ships from SelectedShip
 
-            if(SDL_GameControllerGetButton(GameController[playNum], SDL_CONTROLLER_BUTTON_X))
-                break; //X means cancel
+
             }
 
         }
