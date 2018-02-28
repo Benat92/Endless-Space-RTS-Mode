@@ -69,8 +69,8 @@ using namespace std;
 
 
 //RTS Mode
-SDL_GameController *GameController[4];
-const int JOYSTICK_DEAD_ZONE = 8000; //RTS controller
+extern SDL_GameController *GameController[];
+extern const int JOYSTICK_DEAD_ZONE; //RTS controller
 
 void RTSPLayerMenu (int playNum);
 int firstRun =0;
@@ -204,82 +204,7 @@ LogFile << "\nNumber of Joysticks!" << SDL_NumJoysticks() << "\n";
         LogFile << "Hello World!";
     }*/
 
-void MapPanel::RTSPLayerMenu (SDL_GameControllerButton button, int playNum)
-{
 
-       switch(button)
-       {
-
-
-            case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
-            {
-                LogFile << "Controller " << playNum << " sent event from D-pad Left.\n";
-                if(selectedMenuButtonWidth[playNum] < 1) //If player is currently at 0 position in menu, do nothing.
-                    break;
-                else
-                    {selectedMenuButtonWidth[playNum]--;
-                    break;}
-            }
-            case SDL_CONTROLLER_BUTTON_DPAD_RIGHT
-            {
-                LogFile << "Controller " << playNum << " sent event from D-pad right.\n";
-                if(selectedMenuButtonWidth[playNum] > 3) //If player is currently at futherest width position in menu, do nothing.
-                    break;
-                else
-                    {selectedMenuButtonWidth[playNum]++;
-                    break;
-                    }
-            }
-
-            case SDL_CONTROLLER_BUTTON_DPAD_UP:
-            {
-                LogFile << "Controller " << playNum << " sent event from D-pad up.\n";
-                if(selectedMenuButtonWidth[playNum] < 1) //If player is currently at 0 position in menu, do nothing.
-                    break;
-                else
-                   {
-                    selectedMenuButtonWidth[playNum]--;
-                    break
-                    }
-            }
-            case SDL_CONTROLLER_BUTTON_DPAD_DOWN
-            {
-                LogFile << "Controller " << playNum << " sent event from D-pad down.\n";
-                if(selectedMenuButtonWidth[playNum] > 3) //If player is currently at futherest width position in menu, do nothing.
-                    break;
-                else
-                    {selectedMenuButtonWidth[playNum]++;
-                    break;}
-            }
-
-
-            case default:
-                {
-                LogFile << "Controller " << playNum << " sent event that was not handled.\n";
-                break;
-                }
-    }
-
-            leftXAxis = SDL_GameControllerGetAxis(GameController[playNum], SDL_CONTROLLER_AXIS_LEFTX);
-           leftYAxis = SDL_GameControllerGetAxis(GameController[playNum], SDL_CONTROLLER_AXIS_LEFTY);
-
-            if((leftXAxis > JOYSTICK_DEAD_ZONE) || leftYAxis > JOYSTICK_DEAD_ZONE)
-           {
-
-            //Extend flight path from the system that the SelectedShip is located. If player moves joystick out of deadzone.
-            LogFile << "Joystick out of DeadZone. For player #" << playNum << "\n";
-            LogFile << "X axis: " << leftXAxis << "\nY Axis: " << leftYAxis << "\n";
-           }
-            //Send ships from SelectedShip
-
-
-            }
-
-        }
-
-    }
-
-}
 void MapPanel::Draw()
 {
    int rtsEnabled = 1, n =0;
@@ -534,7 +459,130 @@ bool MapPanel::KeyDown(SDL_Keycode key, Uint16 mod, const Command &command)
 
 	return true;
 }
+bool MapPanel::ControllerJoystickMotion (SDL_ControllerAxisEvent joystickMotion, int playNum)
+{
+    LogFile << "Controller " << playNum << "sent joystick event from the " << joystickMotion.axis << " axis.\n"
+    switch(joystickMotion.axis)
 
+    case x:
+        {
+        controllerXAxis[playNum] = joystickMotion.value;
+        LogFile << "X-axis changed to " << joystickMotion.value;
+        return true;
+        }
+
+    case y:
+        {
+        controllerYAxis[playNum] = joystickMotion.value;
+        LogFile << "Y-axis changed to " << joystickMotion.value;
+
+        return true;
+        }
+
+
+
+}
+
+
+bool MapPanel::ControllerButtonDown (Uint8 button, int playNum)
+{
+
+       switch(button)
+       {
+
+
+            case SDL_CONTROLLER_BUTTON_DPAD_LEFT:
+            {
+                LogFile << "Controller " << playNum << " sent event from D-pad Left.\n";
+                if(selectedMenuButtonWidth[playNum] < 1) //If player is currently at 0 position in menu, do nothing.
+
+                        return true;
+                else
+                    {selectedMenuButtonWidth[playNum]--;
+                    return true;}
+            }
+            case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
+            {
+                LogFile << "Controller " << playNum << " sent event from D-pad right.\n";
+                if(selectedMenuButtonWidth[playNum] > 3) //If player is currently at futherest width position in menu, do nothing.
+                    return true;
+                else
+                    {selectedMenuButtonWidth[playNum]++;
+                    return true;
+                    }
+            }
+
+            case SDL_CONTROLLER_BUTTON_DPAD_UP:
+            {
+                LogFile << "Controller " << playNum << " sent event from D-pad up.\n";
+                if(selectedMenuButtonWidth[playNum] < 1) //If player is currently at 0 position in menu, do nothing.
+                    return true;
+                else
+                   {
+                    selectedMenuButtonWidth[playNum]--;
+                    return true;
+                    }
+            }
+            case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
+            {
+                LogFile << "Controller " << playNum << " sent event from D-pad down.\n";
+                if(selectedMenuButtonWidth[playNum] > 3) //If player is currently at futherest width position in menu, do nothing.
+                    return true;
+                else
+                    {selectedMenuButtonWidth[playNum]++;
+                    return true;}
+            }
+
+
+            case SDL_CONTROLLER_BUTTON_A:
+            {
+                LogFile << "Controller " << playNum << " sent event from button A.\n";
+               //Accept
+
+                        return true;
+
+            }
+            case SDL_CONTROLLER_BUTTON_X:
+            {
+                LogFile << "Controller " << playNum << " sent event from X button.\n";
+              //Cancel last player action!
+            }
+
+            case SDL_CONTROLLER_BUTTON_RIGHTSHOULDER:
+            {
+               //SelectedComShip increment.
+    LogFile << "Controller " << playNum << " sent event from right-shoulder button.\n";
+
+            }
+            case SDL_CONTROLLER_BUTTON_LEFTSHOULDER:
+            {
+                LogFile << "Controller " << playNum << " sent event from left-shoulder button.\n";
+
+                    return true;}
+            }
+
+            default:
+                {
+                LogFile << "Controller " << playNum << " sent event that was not handled.\n";
+                return false;
+                }
+    }
+
+          /*  leftXAxis = SDL_GameControllerGetAxis(GameController[playNum], SDL_CONTROLLER_AXIS_LEFTX);
+           leftYAxis = SDL_GameControllerGetAxis(GameController[playNum], SDL_CONTROLLER_AXIS_LEFTY);
+
+            if((leftXAxis > JOYSTICK_DEAD_ZONE) || leftYAxis > JOYSTICK_DEAD_ZONE)
+           {
+
+            //Extend flight path from the system that the SelectedShip is located. If player moves joystick out of deadzone.
+            LogFile << "Joystick out of DeadZone. For player #" << playNum << "\n";
+            LogFile << "X axis: " << leftXAxis << "\nY Axis: " << leftYAxis << "\n";
+           }
+            //Send ships from SelectedShip
+*/
+
+
+}
 
 
 bool MapPanel::Click(int x, int y, int clicks)

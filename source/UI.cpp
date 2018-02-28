@@ -37,6 +37,8 @@ UI::UI()
 bool UI::Handle(const SDL_Event &event)
 {
 	bool handled = false;
+	//RTS Mode
+    SDL_GameControllerButton button;
 
 	vector<shared_ptr<Panel>>::iterator it = stack.end();
 	while(it != stack.begin() && !handled)
@@ -84,9 +86,20 @@ bool UI::Handle(const SDL_Event &event)
 			handled = (*it)->Scroll(event.wheel.x, event.wheel.y);
 		else if(event.type == SDL_KEYDOWN)
 		{
+
 			Command command(event.key.keysym.sym);
 			handled = (*it)->KeyDown(event.key.keysym.sym, event.key.keysym.mod, command);
 		}
+
+		//RTS MODE
+		else if(event.type == SDL_CONTROLLERBUTTONDOWN)
+        {
+
+
+
+            handled = (*it)->ControllerButtonDown(event.cbutton.button, event.cbutton.which+1);
+
+        }
 
 		// If this panel does not want anything below it to receive events, do
 		// not let this event trickle further down the stack.

@@ -33,6 +33,13 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 #include "SpriteShader.h"
 #include "UI.h"
 
+
+
+
+
+
+
+
 #include "gl_header.h"
 #include <SDL2/SDL.h>
 
@@ -46,6 +53,14 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 #include <sstream>
 #include <stdexcept>
 #include <string>
+
+//RTS Mode
+ SDL_GameController *GameController[4];
+const int JOYSTICK_DEAD_ZONE = 8000; //RTS controller
+
+//#include "GameControllerInput.h"
+
+
 
 #ifdef _WIN32
 #include <windows.h>
@@ -295,7 +310,7 @@ int main(int argc, char *argv[])
 				}
 
 				//RTS handle event
-				else if(event.type ==  SDL_CONTROLLERBUTTONDOWN)
+				/*else if(event.type ==  SDL_CONTROLLERBUTTONDOWN)
 				{
 				    LogFile << "(Main SDL Event handler)";
 				   LogFile << "Controller button: " << event.cbutton.button << " from controller " << event.cbutton.which+1 << "\n";
@@ -304,8 +319,8 @@ int main(int argc, char *argv[])
                     LogFile << "A Button. Detected! \n";
 
                     //Send which button was pressed + which player's joystick sent the command. which+1 because joystick numbrs start at 0.
-                   MapPanel::RTSPLayerMenu(event.cbutton.button, event.cbutton.which+1);
-				}
+                   RTSPLayerMenu(event.cbutton.button, event.cbutton.which+1);
+				}*/
 
 
 				else if(activeUI.Handle(event))

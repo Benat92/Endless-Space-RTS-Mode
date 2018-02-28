@@ -63,6 +63,8 @@ public:
 protected:
 	// Only override the ones you need; the default action is to return false.
 	virtual bool KeyDown(SDL_Keycode key, Uint16 mod, const Command &command) override;
+    virtual bool ControllerButtonDown ( Uint8 button, int playNum) override;
+    virtual bool ControllerJoystickMotion (SDL_ControllerAxisEvent joystickMotion, int playNum) override;
 
 
 
@@ -105,7 +107,11 @@ protected:
 	const System *specialSystem;
 	const Planet *selectedPlanet = nullptr;
 
-	void RTSPLayerMenu (SDL_GameControllerButton button, int playNum);
+	//void RTSPLayerMenu (SDL_ControllerButtonEvent.button button, int playNum);
+    //RTS mode - the height where a
+    unsigned short selectedMenuButtonHeight[5]; //
+    unsigned short selectedMenuButtonWidth[5];
+
 
 	Ship *selectedShip; //RTS mode selected ship
 
@@ -116,9 +122,9 @@ protected:
 
 	std::map<const Government *, double> closeGovernments;
 
-	//RTS mode - the height where a
-    unsigned short selectedMenuButtonHeight[5]; //
-    unsigned short selectedMenuButtonWidth[5];
+
+	Sint16 controllerXAxis[5];
+	Sint16 controllerYAxis[5];
 
 private:
 
