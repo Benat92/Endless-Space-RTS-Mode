@@ -40,6 +40,10 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 #include "Screen.h"
 #include "Ship.h"
 #include "SpriteShader.h"
+
+//RTS Mode Sprites for menu SpriteShader
+#include "SpriteSet.h"
+
 #include "StellarObject.h"
 #include "System.h"
 #include "Trade.h"
@@ -69,8 +73,12 @@ using namespace std;
 
 
 //RTS Mode
+bool rtsEnabled = 1;
 extern SDL_GameController *GameController[];
 extern const int JOYSTICK_DEAD_ZONE; //RTS controller
+
+
+
 
 void RTSPLayerMenu (int playNum);
 int firstRun =0;
@@ -133,105 +141,17 @@ LogFile << "\nNumber of Joysticks!" << SDL_NumJoysticks() << "\n";
       }
       LogFile << "MapPanel initialized!\n";
 
-           /* GameController[1] = SDL_GameControllerOpen( 0 );
-
-            if( GameController[1] == NULL )
-            {
-                printf( "Warning: Unable to open game controller1! SDL Error: %s\n", SDL_GetError() );
-
-            }
-            else
-            {
-                 LogFile << "Game controller 1! Connected.\n";
-
-//  std::thread t(RTSPLayerMenu, 1);
-
-            }
-
-       /*     GameController2 = SDL_GameControllerOpen( 1 );
-
-               if( GameController2 == NULL )
-            {
-                printf( "Warning: Unable to open game controller 2! SDL Error: %s\n", SDL_GetError() );
-                LogFile << "Unable to open game controller 2! SDL Error: %s\n", SDL_GetError() ;
-            }
-            else
-            {
-                 LogFile << "Game controller 2! Connected.\n";
-            }
-
-            GameController3 = SDL_GameControllerOpen( 2 );
-
-               if( GameController3 == NULL )
-            {
-                printf( "Warning: Unable to open game controller 3! SDL Error: %s\n", SDL_GetError() );
-                LogFile << "Unable to open game controller 3! SDL Error: %s\n", SDL_GetError() ;
-            }
-                else
-
-                {
-                 LogFile << "Game controller 3! Connected.\n";
-                }
-
-
-            GameController4 = SDL_GameControllerOpen( 3 );
-
-               if( GameController4 == NULL )
-            {
-                printf( "Warning: Unable to open game controller 4! SDL Error: %s\n", SDL_GetError() );
-                LogFile << "Unable to open game controller 4! SDL Error: %s\n", SDL_GetError() ;
-            }
-        else
-            {
-                 LogFile << "Game controller 4! Connected.\n";
-            }
-*/
-
-
-
 }
-
-
-
-
-/*    SDL_GameControllerGetButton(GameController1, SDL_GameControllerButton button);
-    if(button == SDL_Controller_Button_A)
-        Logfile << "Button A pressed!";*/
-    //return 1;
-   /* bool a_button_pressed = (e.cbutton.button == SDL_CONTROLLER_BUTTON_A))
-    If(a_button_pressed)
-    {
-        LogFile << "Hello World!";
-    }*/
-
 
 void MapPanel::Draw()
 {
-   int rtsEnabled = 1, n =0;
-   static int Controller1RefreshComplete = 0;
+   int n =0;
+
 
 	glClear(GL_COLOR_BUFFER_BIT);
 
 
-	if(firstRun == 0)
-    {
-        firstRun++;
-      //  std::thread t(MapPanel::RTSPLayerMenu, 1);
 
-       /*SDL_Thread* threadPlay1 = SDL_CreateThread(RTSPLayerMenu(1), "ControlsPlayer 1", (void*) 1);
-        SDL_Thread* threadPlay2 = SDL_CreateThread(RTSPLayerMenu(2), "ControlsPlayer 2", (void*)n );
-        SDL_Thread* threadPlay3= SDL_CreateThread(RTSPLayerMenu(3), "ControlsPlayer 3", (void*)n );
-      SDL_Thread* threadPlay4=  SDL_CreateThread(RTSPLayerMenu(4), "ControlsPlayer 4", (void*)n );*/
-        firstRun++;
-
-
-   /* Controller1RefreshComplete = 0;
-
-	 SDL_Thread* threadID  = SDL_CreateThread(GameControllerRefresh, "LazyThread", (void*)n );
-    if (n= 1)
-    Controller1RefreshComplete = 1;*/
-
-    }
     if(firstRun > 1000000)
         firstRun = 1;
 
@@ -289,8 +209,60 @@ void MapPanel::Draw()
 
 void MapPanel::DrawButtons(const string &condition)
 {
+
+   Point uiPoint(Screen::Left()+80, Screen::Top()+80);
+   int menuSpace = 20;
 	// Remember which buttons we're showing.
 	buttonCondition = condition;
+
+	if(rtsEnabled)
+    {
+
+        if(selectedMenuButtonWidth[1] == 0 && selectedMenuButtonHeight[1] ==1) //If player selected 0 width and 1 height show berserker as selected.
+        {const Sprite *berSerkerSpriteBlue = SpriteSet::Get("ui/berserker-selected-blue");
+        SpriteShader::Draw(berSerkerSpriteBlue, uiPoint, .50);
+        }
+    else
+        {
+        const Sprite *berSerkerSprite = SpriteSet::Get("ship/berserker");
+        SpriteShader::Draw(berSerkerSprite, uiPoint, .50);
+        }
+
+    uiPoint.X()+=54;
+
+
+    if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1]==1) //If player selected 1 width and 1 height show com ship as selected.
+        {const Sprite *autumnLeafBlue = SpriteSet::Get("ui/autumn leaf blue");
+        SpriteShader::Draw(autumnLeafBlue, uiPoint, .40);
+
+        }
+    else
+        {
+
+        const Sprite *autumnLeaf = SpriteSet::Get("ship/autumn leaf");
+        SpriteShader::Draw(autumnLeaf, uiPoint, .40);
+        }
+
+
+
+    uiPoint.X()+=54;
+
+
+    if(selectedMenuButtonWidth[1] == 2 && selectedMenuButtonHeight[1]==1) //If player selected 1 width and 1 height show com ship as selected.
+        {const Sprite *motherShipBlue = SpriteSet::Get("ui/autumn leaf blue");
+        SpriteShader::Draw(motherShipBlue, uiPoint, .40);
+
+        }
+    else
+        {
+
+        const Sprite *motherShipImage = SpriteSet::Get("ship/autumn leaf");
+        SpriteShader::Draw(motherShipImage, uiPoint, .40);
+        }
+
+
+
+    }
 
 	// Draw the buttons to switch to other map modes.
 	Information info;
@@ -461,23 +433,26 @@ bool MapPanel::KeyDown(SDL_Keycode key, Uint16 mod, const Command &command)
 }
 bool MapPanel::ControllerJoystickMotion (SDL_ControllerAxisEvent joystickMotion, int playNum)
 {
-    LogFile << "Controller " << playNum << "sent joystick event from the " << joystickMotion.axis << " axis.\n"
+    LogFile << "Controller " << playNum << "sent joystick event from the " << joystickMotion.axis << " axis.\n";
     switch(joystickMotion.axis)
+    {
 
-    case x:
+
+    case 'x':
         {
         controllerXAxis[playNum] = joystickMotion.value;
         LogFile << "X-axis changed to " << joystickMotion.value;
         return true;
         }
 
-    case y:
+    case 'y':
         {
         controllerYAxis[playNum] = joystickMotion.value;
         LogFile << "Y-axis changed to " << joystickMotion.value;
 
         return true;
         }
+    }
 
 
 
@@ -558,7 +533,7 @@ bool MapPanel::ControllerButtonDown (Uint8 button, int playNum)
             {
                 LogFile << "Controller " << playNum << " sent event from left-shoulder button.\n";
 
-                    return true;}
+                    return true;
             }
 
             default:
@@ -567,19 +542,6 @@ bool MapPanel::ControllerButtonDown (Uint8 button, int playNum)
                 return false;
                 }
     }
-
-          /*  leftXAxis = SDL_GameControllerGetAxis(GameController[playNum], SDL_CONTROLLER_AXIS_LEFTX);
-           leftYAxis = SDL_GameControllerGetAxis(GameController[playNum], SDL_CONTROLLER_AXIS_LEFTY);
-
-            if((leftXAxis > JOYSTICK_DEAD_ZONE) || leftYAxis > JOYSTICK_DEAD_ZONE)
-           {
-
-            //Extend flight path from the system that the SelectedShip is located. If player moves joystick out of deadzone.
-            LogFile << "Joystick out of DeadZone. For player #" << playNum << "\n";
-            LogFile << "X axis: " << leftXAxis << "\nY Axis: " << leftYAxis << "\n";
-           }
-            //Send ships from SelectedShip
-*/
 
 
 }

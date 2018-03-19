@@ -101,6 +101,12 @@ bool UI::Handle(const SDL_Event &event)
 
         }
 
+        //RTS mode
+        else if (event.type == SDL_CONTROLLERAXISMOTION)
+        {
+    handled = (*it)->ControllerJoystickMotion(event.caxis, event.cbutton.which+1);
+        }
+
 		// If this panel does not want anything below it to receive events, do
 		// not let this event trickle further down the stack.
 		if((*it)->TrapAllEvents())

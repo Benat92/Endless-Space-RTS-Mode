@@ -64,7 +64,7 @@ protected:
 	// Only override the ones you need; the default action is to return false.
 	virtual bool KeyDown(SDL_Keycode key, Uint16 mod, const Command &command);
 	virtual bool ControllerButtonDown(Uint8 button, int) {return false;};
-virtual bool ControllerJoystickMotion (SDL_ControllerAxisEvent joystickMotion, int playNum) {retun falsel};
+virtual bool ControllerJoystickMotion(SDL_ControllerAxisEvent joystickMotion, int playNum) {return false;};
 
 
 	virtual bool Click(int x, int y, int clicks);

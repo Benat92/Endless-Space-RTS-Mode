@@ -88,7 +88,7 @@ int main(int argc, char *argv[])
 
  LogFile.open ("LogFile.txt", std::ofstream::out | std::ofstream::trunc);
 	 if(LogFile.good())
-        LogFile << "LOG FILE: OPENED Succesfully!\n";
+        LogFile << "LOG FILE: OPENED Successfully!\n";
 
 
 
