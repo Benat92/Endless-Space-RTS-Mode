@@ -82,6 +82,9 @@ public:
 		double zoom;
 	};
 
+private:
+      //Ship variables for RTS mode
+	int16_t rtsFigs;
 public:
 	/* Functions provided by the Body base class:
 	bool HasSprite() const;
@@ -98,6 +101,14 @@ public:
 	double Zoom() const;
 	const Government *GetGovernment() const;
 	*/
+
+	//Ship variables for RTS mode
+
+    void RTSAddFigs(int numAddFigs) {rtsFigs += numAddFigs;};
+    void RTSMinusFigs(int numMinusFigs) {rtsFigs -= numMinusFigs;
+    if (numMinusFigs < 0)
+        rtsFigs =0;}
+
 
 	// Load data for a type of ship:
 	void Load(const DataNode &node);

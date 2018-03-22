@@ -2736,7 +2736,7 @@
 	<map>
 	<string>
 
-1511768246 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfo.h
+1521747590 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfo.h
 	"Account.h"
 	"CargoHold.h"
 	"Date.h"
@@ -2836,7 +2836,7 @@
 1499119859 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\random.h
 	<cstdint>
 
-1511814466 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.h
+1521670165 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.h
 	"Body.h"
 	"Angle.h"
 	"Armament.h"
@@ -2867,7 +2867,7 @@
 1499119859 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shipevent.h
 	<memory>
 
-1499119859 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\system.h
+1521752289 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\system.h
 	"Point.h"
 	"Set.h"
 	"StellarObject.h"
@@ -3250,7 +3250,7 @@
 	"Point.h"
 	<map>
 
-1519854807 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.h
+1521747591 c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.h
 	"Panel.h"
 	"Color.h"
 	"DistanceMap.h"
@@ -3933,7 +3933,7 @@
 	<set>
 	<vector>
 
-1521149558 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mapdetailpanel.cpp
+1521743315 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mapdetailpanel.cpp
 	"MapDetailPanel.h"
 	"Color.h"
 	"Command.h"
@@ -3999,7 +3999,7 @@
 	<limits>
 	<set>
 
-1521238065 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
+1521749560 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
 	"MapPanel.h"
 	"Angle.h"
 	"Dialog.h"
@@ -4180,7 +4180,7 @@
 	"UI.h"
 	<vector>
 
-1511819463 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\missionpanel.cpp
+1521749697 source:c:\users\user\desktop\important files\github repositories\endless sky reference\endless-space-rts-mode\source\missionpanel.cpp
 	"MissionPanel.h"
 	"Command.h"
 	"Dialog.h"
