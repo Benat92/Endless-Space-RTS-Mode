@@ -396,7 +396,7 @@ void MapDetailPanel::DrawInfo()
 	Color closeColor(.6, .6);
 	Color farColor(.3, .3);
 
-	Point uiPoint(Screen::Left() + 70., Screen::Top()+130.);
+	Point uiPoint(Screen::Left() + 85., Screen::Top()+93.);
 
 	// System sprite goes from 0 to 90.
 	/*const Sprite *systemSprite = SpriteSet::Get("ui/map system");
@@ -477,11 +477,11 @@ void MapDetailPanel::DrawInfo()
 	}
 */
 	//uiPoint.Y() += 45.;
-	tradeY = uiPoint.Y() - 95.;
+	tradeY = uiPoint.Y() - 130.;
 
 	// Trade sprite goes from 310 to 540.
-	const Sprite *tradeSprite = SpriteSet::Get("ui/description panel"); //Top left Panel for player 1
-	SpriteShader::Draw(tradeSprite, uiPoint);
+	const Sprite *tradeSprite = SpriteSet::Get("ui/description panel1"); //Top left Panel for player 1
+	SpriteShader::Draw(tradeSprite, uiPoint, .85);
 
 	uiPoint.X() -= 90.;
 	uiPoint.Y() -= 97.;

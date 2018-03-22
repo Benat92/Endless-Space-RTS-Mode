@@ -113,7 +113,7 @@ protected:
     unsigned short selectedMenuButtonWidth[5];
 
 
-	Ship *selectedShip; //RTS mode selected ship
+
 
 	Point center;
 	int commodity;

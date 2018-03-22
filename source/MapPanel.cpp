@@ -76,7 +76,8 @@ using namespace std;
 bool rtsEnabled = 1;
 extern SDL_GameController *GameController[];
 extern const int JOYSTICK_DEAD_ZONE; //RTS controller
-
+PlayerInfo PlayerInfoRTS[9];
+Ship *selectedShip = PlayerInfoRTS[1].selectedShip;
 
 
 
@@ -92,12 +93,12 @@ MapPanel::MapPanel(PlayerInfo &player, int commodity, const System *special)
 	: player(player), distance(player),
 	playerSystem(player.GetSystem()),
 	selectedSystem(special ? special : player.GetSystem()),
-	specialSystem(special), selectedShip(nullptr),
+	specialSystem(special),
 	commodity(commodity)
 {
 	SetIsFullScreen(true);
 	SetInterruptible(false);
-	bool success;
+
 
 	//RTS mode initailize RTSPlayers
 //	RTSPlayers RTSPlayers[9];
@@ -210,7 +211,7 @@ void MapPanel::Draw()
 void MapPanel::DrawButtons(const string &condition)
 {
 
-   Point uiPoint(Screen::Left()+80, Screen::Top()+18);
+   Point uiPoint(Screen::Left()+40, Screen::Top()+18);
    int menuSpace = 20;
 	// Remember which buttons we're showing.
 	buttonCondition = condition;
@@ -229,9 +230,10 @@ void MapPanel::DrawButtons(const string &condition)
         }
 
 
-    uiPoint.X()+=54;
 
-        if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1] ==3) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
+    uiPoint.X() +=54;
+
+        if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1] ==3) //If player selected 1 width and 3 height show MAX for all com ships as selected.
         {const Sprite *maxBlue = SpriteSet::Get("ui/max-blue");
         SpriteShader::Draw(maxBlue, uiPoint, 1);
         }
@@ -240,25 +242,13 @@ void MapPanel::DrawButtons(const string &condition)
         const Sprite *maxSprite = SpriteSet::Get("ui/max");
         SpriteShader::Draw(maxSprite, uiPoint, 1);
         }
-
 
         uiPoint.X()+=54;
-
-        if(selectedMenuButtonWidth[1] == 2 && selectedMenuButtonHeight[1] ==3) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
-        {const Sprite *maxBlue = SpriteSet::Get("ui/max-blue");
-        SpriteShader::Draw(maxBlue, uiPoint, 1);
-        }
-    else
-        {
-        const Sprite *maxSprite = SpriteSet::Get("ui/max");
-        SpriteShader::Draw(maxSprite, uiPoint, 1);
-        }
-
 
         //Second Row
     uiPoint.Y() += 25;
     uiPoint.X() -=108;
-        if(selectedMenuButtonWidth[1] == 0 && selectedMenuButtonHeight[1] ==3) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
+        if(selectedMenuButtonWidth[1] == 0 && selectedMenuButtonHeight[1] ==2) //If player selected 0 width and 2 height show +5 for figthers/berserker as selected.
         {const Sprite *plusFiveBlue = SpriteSet::Get("ui/5-blue");
         SpriteShader::Draw(plusFiveBlue, uiPoint, 1);
         }
@@ -271,7 +261,7 @@ void MapPanel::DrawButtons(const string &condition)
 
     uiPoint.X()+=54;
 
-        if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1] ==3) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
+        if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1] ==2) //If player selected 1 width and 2 height show +5 for figthers/berserker as selected.
         {const Sprite *plusFiveBlue = SpriteSet::Get("ui/5-blue");
         SpriteShader::Draw(plusFiveBlue, uiPoint, 1);
         }
@@ -284,19 +274,9 @@ void MapPanel::DrawButtons(const string &condition)
 
         uiPoint.X()+=54;
 
-        if(selectedMenuButtonWidth[1] == 2 && selectedMenuButtonHeight[1] ==3) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
-        {const Sprite *plusFiveBlue = SpriteSet::Get("ui/5-blue");
-        SpriteShader::Draw(plusFiveBlue, uiPoint, 1);
-        }
-    else
-        {
-        const Sprite *plueFive = SpriteSet::Get("ui/5");
-        SpriteShader::Draw(plueFive, uiPoint, 1);
-        }
-
         //Third Row
 
-    uiPoint.Y() += 40;
+    uiPoint.Y() += 60;
     uiPoint.X() -=108;
 
 
@@ -330,18 +310,80 @@ void MapPanel::DrawButtons(const string &condition)
     uiPoint.X()+=54;
 
 
-    if(selectedMenuButtonWidth[1] == 2 && selectedMenuButtonHeight[1]==1) //If player selected 1 width and 1 height show com ship as selected.
-        {const Sprite *motherShipBlue = SpriteSet::Get("ui/autumn leaf blue");
-        SpriteShader::Draw(motherShipBlue, uiPoint, .40);
+    if(selectedMenuButtonWidth[1] == 2 ) //If player selected 2 width and any height show mothership as selected.
+        {const Sprite *motherShipBlue = SpriteSet::Get("ship/blue-behemoth");
+        SpriteShader::Draw(motherShipBlue, uiPoint, .25);
 
         }
     else
         {
 
-        const Sprite *motherShipImage = SpriteSet::Get("ship/autumn leaf");
-        SpriteShader::Draw(motherShipImage, uiPoint, .40);
+        const Sprite *motherShipImage = SpriteSet::Get("ship/behemoth");
+        SpriteShader::Draw(motherShipImage, uiPoint, .25);
         }
 
+
+    uiPoint.X()+=80;
+
+    if(selectedMenuButtonWidth[1] == 3 ) //If player selected any button on the last section of menu then show blue selected continue button.
+        {const Sprite *continueButtonBlue = SpriteSet::Get("ui/continue-blue");
+        SpriteShader::Draw(continueButtonBlue, uiPoint, 1);
+
+        }
+    else
+        {
+
+        const Sprite *continueButton = SpriteSet::Get("ui/continue");
+        SpriteShader::Draw(continueButton, uiPoint, .75);
+        }
+
+
+    //Fourth Row - '-5'
+    uiPoint.Y() += 55;
+    uiPoint.X() -=188;
+
+      if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1] ==0) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
+        {const Sprite *negativeFiveBlue = SpriteSet::Get("ui/5-neg-blue");
+
+        SpriteShader::Draw(negativeFiveBlue, uiPoint, 1);
+        }
+    else
+        {
+        const Sprite *negativeFive = SpriteSet::Get("ui/5-neg");
+        SpriteShader::Draw(negativeFive, uiPoint, 1);
+        }
+
+
+        uiPoint.X()+=54;
+
+        if(selectedMenuButtonWidth[1] == 2 && selectedMenuButtonHeight[1] ==0) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
+        {const Sprite *negativeFiveBlue = SpriteSet::Get("ui/5-neg-blue");
+        SpriteShader::Draw(negativeFiveBlue, uiPoint, 1);
+        }
+    else
+        {
+        const Sprite *negativeFive = SpriteSet::Get("ui/5-neg");
+        SpriteShader::Draw(negativeFive, uiPoint, 1);
+        }
+    LogFile << selectedShip->GetSystem();
+
+     uiPoint.X()-=60;
+     uiPoint.Y() += 20;
+     	Color bright = *GameData::Colors().Get("bright");
+
+	const Font &font = FontSet::Get(14);
+
+     font.Draw(to_string(selectedShip->GetSystem()->GetNumFigs()), uiPoint, bright);
+      uiPoint.X() +=54;
+   font.Draw(to_string(selectedShip->GetSystem()->GetNumComShips()), uiPoint, bright);
+      uiPoint.X() +=54;
+    if(selectedShip->GetSystem()->MotherShipPresent())
+    font.Draw("1", uiPoint, bright);
+    else
+        font.Draw("0", uiPoint, bright);
+
+    uiPoint.X() +=24;
+   font.Draw("In System", uiPoint, bright);
 
 
     }
