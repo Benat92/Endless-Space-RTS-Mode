@@ -39,6 +39,7 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 #include <sstream>
 
+extern Ship* selectedShip;
 using namespace std;
 
 namespace {

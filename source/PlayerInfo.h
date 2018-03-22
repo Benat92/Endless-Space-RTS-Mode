@@ -51,6 +51,9 @@ class UI;
 // and what their current travel plan is, if any.
 class PlayerInfo {
 public:
+    Ship *selectedShip = nullptr; //RTS mode selected ship
+
+
 	PlayerInfo() = default;
 
 	// Reset the player to an "empty" state, i.e. no player is loaded.
@@ -253,6 +256,7 @@ private:
 
 
 private:
+
 	std::string firstName;
 	std::string lastName;
 	std::string filePath;
