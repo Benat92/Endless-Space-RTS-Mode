@@ -216,6 +216,14 @@ void MapPanel::DrawButtons(const string &condition)
 	// Remember which buttons we're showing.
 	buttonCondition = condition;
 
+	const Font &font = FontSet::Get(18);
+	const Font &bigFont = FontSet::Get(20);
+
+    Color bright = *GameData::Colors().Get("bright");
+    Color dim = *GameData::Colors().Get("dim");
+    bool dimImage = false;
+
+
 	if(rtsEnabled)
     {
 
@@ -248,6 +256,9 @@ void MapPanel::DrawButtons(const string &condition)
         //Second Row
     uiPoint.Y() += 25;
     uiPoint.X() -=108;
+
+
+
         if(selectedMenuButtonWidth[1] == 0 && selectedMenuButtonHeight[1] ==2) //If player selected 0 width and 2 height show +5 for figthers/berserker as selected.
         {const Sprite *plusFiveBlue = SpriteSet::Get("ui/5-blue");
         SpriteShader::Draw(plusFiveBlue, uiPoint, 1);
@@ -279,51 +290,87 @@ void MapPanel::DrawButtons(const string &condition)
     uiPoint.Y() += 60;
     uiPoint.X() -=108;
 
+    if(PlayerInfoRTS[1].GetNumSendFigs() > 0)
+        dimImage = true;
+    else
+        dimImage = false;
 
         if(selectedMenuButtonWidth[1] == 0 && selectedMenuButtonHeight[1] ==1) //If player selected 0 width and 1 height show berserker as selected.
         {const Sprite *berSerkerSpriteBlue = SpriteSet::Get("ui/berserker-selected-blue");
-        SpriteShader::Draw(berSerkerSpriteBlue, uiPoint, .50);
+        SpriteShader::Draw(berSerkerSpriteBlue, uiPoint, .50, dimImage);
         }
     else
         {
         const Sprite *berSerkerSprite = SpriteSet::Get("ship/berserker");
-        SpriteShader::Draw(berSerkerSprite, uiPoint, .50);
+        SpriteShader::Draw(berSerkerSprite, uiPoint, .50, dimImage);
         }
+    uiPoint.X() -= 5;
+    uiPoint.Y() -= 4;
 
-    uiPoint.X()+=54;
+        if(PlayerInfoRTS[1].GetNumSendFigs() > 0)
+            font.Draw(to_string(PlayerInfoRTS[1].GetNumSendFigs()), uiPoint, bright);
 
+
+    uiPoint.Y() += 4;
+    uiPoint.X()+=59;
+
+    if(PlayerInfoRTS[1].GetNumSendComs() > 0)
+        dimImage = true;
+    else
+        dimImage = false;
 
     if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1]==1) //If player selected 1 width and 1 height show com ship as selected.
         {const Sprite *autumnLeafBlue = SpriteSet::Get("ui/autumn leaf blue");
-        SpriteShader::Draw(autumnLeafBlue, uiPoint, .40);
+
+        SpriteShader::Draw(autumnLeafBlue, uiPoint, .40, dimImage);
 
         }
     else
         {
 
         const Sprite *autumnLeaf = SpriteSet::Get("ship/autumn leaf");
-        SpriteShader::Draw(autumnLeaf, uiPoint, .40);
+        SpriteShader::Draw(autumnLeaf, uiPoint, .40, dimImage);
         }
 
+   uiPoint.X() -= 5;
+    uiPoint.Y() -= 4;
+
+        if(PlayerInfoRTS[1].GetNumSendFigs() > 0)
+            font.Draw(to_string(PlayerInfoRTS[1].GetNumSendComs()), uiPoint, bright);
 
 
-    uiPoint.X()+=54;
+ uiPoint.Y() += 4;
 
+    uiPoint.X()+=59;
+
+    if(PlayerInfoRTS[1].IsMotherShipSend() > 0)
+        dimImage = true;
+    else
+        dimImage = false;
 
     if(selectedMenuButtonWidth[1] == 2 ) //If player selected 2 width and any height show mothership as selected.
         {const Sprite *motherShipBlue = SpriteSet::Get("ship/blue-behemoth");
-        SpriteShader::Draw(motherShipBlue, uiPoint, .25);
+        SpriteShader::Draw(motherShipBlue, uiPoint, .25, dimImage);
 
         }
     else
         {
 
         const Sprite *motherShipImage = SpriteSet::Get("ship/behemoth");
-        SpriteShader::Draw(motherShipImage, uiPoint, .25);
+        SpriteShader::Draw(motherShipImage, uiPoint, .25, dimImage);
         }
 
+         uiPoint.X() -= 5;
+    uiPoint.Y() -= 4;
 
-    uiPoint.X()+=80;
+        if(PlayerInfoRTS[1].IsMotherShipSend())
+            font.Draw(to_string(PlayerInfoRTS[1].IsMotherShipSend()), uiPoint, bright);
+
+
+ uiPoint.Y() += 4;
+
+
+    uiPoint.X()+=85;
 
     if(selectedMenuButtonWidth[1] == 3 ) //If player selected any button on the last section of menu then show blue selected continue button.
         {const Sprite *continueButtonBlue = SpriteSet::Get("ui/continue-blue");
@@ -369,9 +416,9 @@ void MapPanel::DrawButtons(const string &condition)
 
      uiPoint.X()-=60;
      uiPoint.Y() += 20;
-     	Color bright = *GameData::Colors().Get("bright");
 
-	const Font &font = FontSet::Get(14);
+
+
 
      font.Draw(to_string(selectedShip->GetSystem()->GetNumFigs()), uiPoint, bright);
       uiPoint.X() +=54;
@@ -380,10 +427,10 @@ void MapPanel::DrawButtons(const string &condition)
     if(selectedShip->GetSystem()->MotherShipPresent())
     font.Draw("1", uiPoint, bright);
     else
-        font.Draw("0", uiPoint, bright);
+        font.Draw("0", uiPoint, dim);
 
-    uiPoint.X() +=24;
-   font.Draw("In System", uiPoint, bright);
+    uiPoint.X() +=54;
+   font.Draw("In System", uiPoint, dim);
 
 
     }

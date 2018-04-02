@@ -53,6 +53,16 @@ class PlayerInfo {
 public:
     Ship *selectedShip = nullptr; //RTS mode selected ship
 
+    uint16_t GetNumSendFigs(){return numSendFigs;};
+    void SetNumSendFigs(uint16_t &numSendFigs){return;};
+    uint16_t GetNumSendComs(){return numSendComShips;};
+    void SetNumSendComs(uint16_t &numSendComShips) {return;};
+
+    bool IsMotherShipSend(){return motherShipSend;};
+    void SetMotherShipSend(bool &motherShipSend){return;};
+
+
+
 
 	PlayerInfo() = default;
 
@@ -256,6 +266,11 @@ private:
 
 
 private:
+
+    //RTS Variables
+    uint16_t numSendFigs = 0;
+    uint16_t numSendComShips = 0;
+    bool motherShipSend = 0;
 
 	std::string firstName;
 	std::string lastName;
