@@ -221,7 +221,7 @@ void MapPanel::DrawButtons(const string &condition)
 
     Color bright = *GameData::Colors().Get("bright");
     Color dim = *GameData::Colors().Get("dim");
-    bool dimImage = false;
+    uint16_t dimImage = 0;
 
 
 	if(rtsEnabled)
@@ -291,9 +291,9 @@ void MapPanel::DrawButtons(const string &condition)
     uiPoint.X() -=108;
 
     if(PlayerInfoRTS[1].GetNumSendFigs() > 0)
-        dimImage = true;
+        dimImage = 1;
     else
-        dimImage = false;
+        dimImage = 0;
 
         if(selectedMenuButtonWidth[1] == 0 && selectedMenuButtonHeight[1] ==1) //If player selected 0 width and 1 height show berserker as selected.
         {const Sprite *berSerkerSpriteBlue = SpriteSet::Get("ui/berserker-selected-blue");
@@ -315,9 +315,9 @@ void MapPanel::DrawButtons(const string &condition)
     uiPoint.X()+=59;
 
     if(PlayerInfoRTS[1].GetNumSendComs() > 0)
-        dimImage = true;
+        dimImage = 1;
     else
-        dimImage = false;
+        dimImage = 0;
 
     if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1]==1) //If player selected 1 width and 1 height show com ship as selected.
         {const Sprite *autumnLeafBlue = SpriteSet::Get("ui/autumn leaf blue");
@@ -344,9 +344,9 @@ void MapPanel::DrawButtons(const string &condition)
     uiPoint.X()+=59;
 
     if(PlayerInfoRTS[1].IsMotherShipSend() > 0)
-        dimImage = true;
+        dimImage = 1;
     else
-        dimImage = false;
+        dimImage = 0;
 
     if(selectedMenuButtonWidth[1] == 2 ) //If player selected 2 width and any height show mothership as selected.
         {const Sprite *motherShipBlue = SpriteSet::Get("ship/blue-behemoth");
@@ -412,7 +412,7 @@ void MapPanel::DrawButtons(const string &condition)
         const Sprite *negativeFive = SpriteSet::Get("ui/5-neg");
         SpriteShader::Draw(negativeFive, uiPoint, 1);
         }
-    LogFile << selectedShip->GetSystem();
+
 
      uiPoint.X()-=60;
      uiPoint.Y() += 20;

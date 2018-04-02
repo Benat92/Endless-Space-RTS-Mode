@@ -270,7 +270,7 @@ private:
     //RTS Variables
     uint16_t numSendFigs = 0;
     uint16_t numSendComShips = 0;
-    bool motherShipSend = 0;
+    bool motherShipSend = false;
 
 	std::string firstName;
 	std::string lastName;
