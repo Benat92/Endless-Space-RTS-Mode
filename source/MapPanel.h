@@ -109,8 +109,8 @@ protected:
 
 	//void RTSPLayerMenu (SDL_ControllerButtonEvent.button button, int playNum);
     //RTS mode - the height where a
-    unsigned short selectedMenuButtonHeight[5]; //
-    unsigned short selectedMenuButtonWidth[5];
+    short selectedMenuButtonHeight[5]; //
+    short selectedMenuButtonWidth[5];
 
 
 

@@ -140,6 +140,11 @@ LogFile << "\nNumber of Joysticks!" << SDL_NumJoysticks() << "\n";
                         LogFile << "Game controller #" << n+1 << " connected! \n";
             }
       }
+      for(int n =0; n <4;n++)
+      {
+          selectedMenuButtonHeight[n] =1;
+          selectedMenuButtonWidth[n] = 0;
+      }
       LogFile << "MapPanel initialized!\n";
 
 }
@@ -219,6 +224,9 @@ void MapPanel::DrawButtons(const string &condition)
 	const Font &font = FontSet::Get(18);
 	const Font &bigFont = FontSet::Get(20);
 
+	const Sprite *motherShipBlue = SpriteSet::Get("ui/blue-behemoth");
+	const Sprite *maxBlue = SpriteSet::Get("ui/max-blue");
+
     Color bright = *GameData::Colors().Get("bright");
     Color dim = *GameData::Colors().Get("dim");
     uint16_t dimImage = 0;
@@ -228,7 +236,7 @@ void MapPanel::DrawButtons(const string &condition)
     {
 
     if(selectedMenuButtonWidth[1] == 0 && selectedMenuButtonHeight[1] ==3) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
-        {const Sprite *maxBlue = SpriteSet::Get("ui/max-blue");
+        {
         SpriteShader::Draw(maxBlue, uiPoint, 1);
         }
     else
@@ -242,7 +250,7 @@ void MapPanel::DrawButtons(const string &condition)
     uiPoint.X() +=54;
 
         if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1] ==3) //If player selected 1 width and 3 height show MAX for all com ships as selected.
-        {const Sprite *maxBlue = SpriteSet::Get("ui/max-blue");
+        {//const Sprite *maxBlue = SpriteSet::Get("ui/max-blue");
         SpriteShader::Draw(maxBlue, uiPoint, 1);
         }
     else
@@ -349,7 +357,7 @@ void MapPanel::DrawButtons(const string &condition)
         dimImage = 0;
 
     if(selectedMenuButtonWidth[1] == 2 ) //If player selected 2 width and any height show mothership as selected.
-        {const Sprite *motherShipBlue = SpriteSet::Get("ship/blue-behemoth");
+        {
         SpriteShader::Draw(motherShipBlue, uiPoint, .25, dimImage);
 
         }
@@ -375,7 +383,10 @@ void MapPanel::DrawButtons(const string &condition)
     if(selectedMenuButtonWidth[1] == 3 ) //If player selected any button on the last section of menu then show blue selected continue button.
         {const Sprite *continueButtonBlue = SpriteSet::Get("ui/continue-blue");
         SpriteShader::Draw(continueButtonBlue, uiPoint, 1);
-
+        if(selectedMenuButtonHeight[1] > 3)
+            selectedMenuButtonHeight[1] = 3;
+        else if (selectedMenuButtonHeight[1] < 0)
+            selectedMenuButtonHeight[1] = 0;
         }
     else
         {
@@ -389,7 +400,7 @@ void MapPanel::DrawButtons(const string &condition)
     uiPoint.Y() += 55;
     uiPoint.X() -=188;
 
-      if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1] ==0) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
+      if(selectedMenuButtonWidth[1] == 0 && selectedMenuButtonHeight[1] ==0) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
         {const Sprite *negativeFiveBlue = SpriteSet::Get("ui/5-neg-blue");
 
         SpriteShader::Draw(negativeFiveBlue, uiPoint, 1);
@@ -403,7 +414,7 @@ void MapPanel::DrawButtons(const string &condition)
 
         uiPoint.X()+=54;
 
-        if(selectedMenuButtonWidth[1] == 2 && selectedMenuButtonHeight[1] ==0) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
+        if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1] ==0) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
         {const Sprite *negativeFiveBlue = SpriteSet::Get("ui/5-neg-blue");
         SpriteShader::Draw(negativeFiveBlue, uiPoint, 1);
         }
@@ -641,19 +652,28 @@ bool MapPanel::ControllerButtonDown (Uint8 button, int playNum)
             {
                 LogFile << "Controller " << playNum << " sent event from D-pad Left.\n";
                 if(selectedMenuButtonWidth[playNum] < 1) //If player is currently at 0 position in menu, do nothing.
-
-                        return true;
+                    {
+                    selectedMenuButtonWidth[playNum] = 0;
+                    LogFile << "Controller " << playNum << " requested menu selection width be sent to the left. However width is already at the end!\n" << playNum << "height : " << selectedMenuButtonHeight[playNum] << " width : " << selectedMenuButtonWidth[playNum] << "\n";
+                    return true;
+                    }
                 else
                     {selectedMenuButtonWidth[playNum]--;
+                     LogFile << "Controller " << playNum << " requested and received menu selection width be sent to the left. \n" << playNum << ":\nheight : " << selectedMenuButtonHeight[playNum] << " \nwidth : " << selectedMenuButtonWidth[playNum] << "\n\n";
                     return true;}
             }
             case SDL_CONTROLLER_BUTTON_DPAD_RIGHT:
             {
                 LogFile << "Controller " << playNum << " sent event from D-pad right.\n";
-                if(selectedMenuButtonWidth[playNum] > 3) //If player is currently at futherest width position in menu, do nothing.
-                    return true;
+                if(selectedMenuButtonWidth[playNum] > 2) //If player is currently at futherest width position in menu, do nothing.
+                  {
+                      selectedMenuButtonWidth[playNum] = 3;
+                       LogFile << "Controller " << playNum << " requested menu selection width be sent to the right. However width is already at the end!\n" << playNum << "height : " << selectedMenuButtonHeight[playNum] << " width : " << selectedMenuButtonWidth[playNum] << "\n";
+                        return true;
+                    }
                 else
                     {selectedMenuButtonWidth[playNum]++;
+                     LogFile << "Controller " << playNum << " requested and received menu selection width be sent to the right. \n" << playNum << ":\nheight : " << selectedMenuButtonHeight[playNum] << " \nwidth : " << selectedMenuButtonWidth[playNum] << "\n\n";
                     return true;
                     }
             }
@@ -661,21 +681,31 @@ bool MapPanel::ControllerButtonDown (Uint8 button, int playNum)
             case SDL_CONTROLLER_BUTTON_DPAD_UP:
             {
                 LogFile << "Controller " << playNum << " sent event from D-pad up.\n";
-                if(selectedMenuButtonWidth[playNum] < 1) //If player is currently at 0 position in menu, do nothing.
-                    return true;
+                if(selectedMenuButtonHeight[playNum] > 2) //If player is currently at 0 position in menu, do nothing.
+                      {
+                          selectedMenuButtonHeight[playNum] = 3;
+                       LogFile << "Controller " << playNum << " requested menu selection height be highered. However height is already on top!\n" << playNum << "height : " << selectedMenuButtonHeight[playNum] << " width : " << selectedMenuButtonWidth[playNum] << "\n";
+                        return true;
+                    }
                 else
                    {
-                    selectedMenuButtonWidth[playNum]--;
+                    selectedMenuButtonHeight[playNum]++;
+                     LogFile << "Controller " << playNum << " requested and received menu selection height highered. \n" << playNum << ":\nheight : " << selectedMenuButtonHeight[playNum] << " \nwidth : " << selectedMenuButtonWidth[playNum] << "\n\n";
                     return true;
                     }
             }
             case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
             {
                 LogFile << "Controller " << playNum << " sent event from D-pad down.\n";
-                if(selectedMenuButtonWidth[playNum] > 3) //If player is currently at futherest width position in menu, do nothing.
-                    return true;
+                if(selectedMenuButtonHeight[playNum] >= 1) //If player is currently at lowest hieght position in menu, do nothing.
+                    {
+                        selectedMenuButtonHeight[playNum] = 0;
+                       LogFile << "Controller " << playNum << " requested menu selection height be lowered. However height is already on bottom!\n" << playNum << "height : " << selectedMenuButtonHeight[playNum] << " width : " << selectedMenuButtonWidth[playNum] << "\n";
+                        return true;
+                    }
                 else
-                    {selectedMenuButtonWidth[playNum]++;
+                    {selectedMenuButtonHeight[playNum]--;
+                    LogFile << "Controller " << playNum << " requested and received menu selection height lowered. \n" << playNum << ":\nheight : " << selectedMenuButtonHeight[playNum] << " \nwidth : " << selectedMenuButtonWidth[playNum] << "\n\n";
                     return true;}
             }
 
