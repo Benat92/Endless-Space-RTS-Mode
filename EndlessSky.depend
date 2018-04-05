@@ -7010,7 +7010,7 @@
 	<utility>
 	<vector>
 
-1522694514 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
+1522913567 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
 	"MapPanel.h"
 	"Angle.h"
 	"Dialog.h"
@@ -7050,7 +7050,7 @@
 	<limits>
 	<fstream>
 
-1522705499 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\spriteshader.cpp
+1522912585 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\spriteshader.cpp
 	"SpriteShader.h"
 	"Point.h"
 	"Screen.h"

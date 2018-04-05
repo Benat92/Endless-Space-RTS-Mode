@@ -224,8 +224,16 @@ void MapPanel::DrawButtons(const string &condition)
 	const Font &font = FontSet::Get(18);
 	const Font &bigFont = FontSet::Get(20);
 
-	const Sprite *motherShipBlue = SpriteSet::Get("ui/blue-behemoth");
+	const Sprite *motherShipBlue = SpriteSet::Get("ship/behemoth-blue");
 	const Sprite *maxBlue = SpriteSet::Get("ui/max-blue");
+	const Sprite *autumnLeafBlue = SpriteSet::Get("ui/autumn leaf blue");
+	const Sprite *plusFiveBlue = SpriteSet::Get("ui/5-blue");
+	const Sprite *plueFive = SpriteSet::Get("ui/5");
+
+	const Sprite *negativeFiveBlue = SpriteSet::Get("ui/5-neg-blue");
+	const Sprite *negativeFive = SpriteSet::Get("ui/5-neg");
+	const Sprite *maxSprite = SpriteSet::Get("ui/max");
+
 
     Color bright = *GameData::Colors().Get("bright");
     Color dim = *GameData::Colors().Get("dim");
@@ -237,11 +245,11 @@ void MapPanel::DrawButtons(const string &condition)
 
     if(selectedMenuButtonWidth[1] == 0 && selectedMenuButtonHeight[1] ==3) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
         {
-        SpriteShader::Draw(maxBlue, uiPoint, 1);
+        SpriteShader::Draw(maxBlue, uiPoint, 1.2);
         }
     else
         {
-        const Sprite *maxSprite = SpriteSet::Get("ui/max");
+
         SpriteShader::Draw(maxSprite, uiPoint, 1);
         }
 
@@ -250,12 +258,12 @@ void MapPanel::DrawButtons(const string &condition)
     uiPoint.X() +=54;
 
         if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1] ==3) //If player selected 1 width and 3 height show MAX for all com ships as selected.
-        {//const Sprite *maxBlue = SpriteSet::Get("ui/max-blue");
-        SpriteShader::Draw(maxBlue, uiPoint, 1);
+        {
+        SpriteShader::Draw(maxBlue, uiPoint, 1.2);
         }
     else
         {
-        const Sprite *maxSprite = SpriteSet::Get("ui/max");
+
         SpriteShader::Draw(maxSprite, uiPoint, 1);
         }
 
@@ -268,12 +276,12 @@ void MapPanel::DrawButtons(const string &condition)
 
 
         if(selectedMenuButtonWidth[1] == 0 && selectedMenuButtonHeight[1] ==2) //If player selected 0 width and 2 height show +5 for figthers/berserker as selected.
-        {const Sprite *plusFiveBlue = SpriteSet::Get("ui/5-blue");
-        SpriteShader::Draw(plusFiveBlue, uiPoint, 1);
+        {
+        SpriteShader::Draw(plusFiveBlue, uiPoint, 1.2);
         }
     else
         {
-        const Sprite *plueFive = SpriteSet::Get("ui/5");
+
         SpriteShader::Draw(plueFive, uiPoint, 1);
         }
 
@@ -281,12 +289,12 @@ void MapPanel::DrawButtons(const string &condition)
     uiPoint.X()+=54;
 
         if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1] ==2) //If player selected 1 width and 2 height show +5 for figthers/berserker as selected.
-        {const Sprite *plusFiveBlue = SpriteSet::Get("ui/5-blue");
-        SpriteShader::Draw(plusFiveBlue, uiPoint, 1);
+        {
+        SpriteShader::Draw(plusFiveBlue, uiPoint, 1.2);
         }
     else
         {
-        const Sprite *plueFive = SpriteSet::Get("ui/5");
+
         SpriteShader::Draw(plueFive, uiPoint, 1);
         }
 
@@ -310,7 +318,7 @@ void MapPanel::DrawButtons(const string &condition)
     else
         {
         const Sprite *berSerkerSprite = SpriteSet::Get("ship/berserker");
-        SpriteShader::Draw(berSerkerSprite, uiPoint, .50, dimImage);
+        SpriteShader::Draw(berSerkerSprite, uiPoint, .40, dimImage);
         }
     uiPoint.X() -= 5;
     uiPoint.Y() -= 4;
@@ -328,7 +336,7 @@ void MapPanel::DrawButtons(const string &condition)
         dimImage = 0;
 
     if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1]==1) //If player selected 1 width and 1 height show com ship as selected.
-        {const Sprite *autumnLeafBlue = SpriteSet::Get("ui/autumn leaf blue");
+        {
 
         SpriteShader::Draw(autumnLeafBlue, uiPoint, .40, dimImage);
 
@@ -337,7 +345,7 @@ void MapPanel::DrawButtons(const string &condition)
         {
 
         const Sprite *autumnLeaf = SpriteSet::Get("ship/autumn leaf");
-        SpriteShader::Draw(autumnLeaf, uiPoint, .40, dimImage);
+        SpriteShader::Draw(autumnLeaf, uiPoint, .35, dimImage);
         }
 
    uiPoint.X() -= 5;
@@ -365,7 +373,7 @@ void MapPanel::DrawButtons(const string &condition)
         {
 
         const Sprite *motherShipImage = SpriteSet::Get("ship/behemoth");
-        SpriteShader::Draw(motherShipImage, uiPoint, .25, dimImage);
+        SpriteShader::Draw(motherShipImage, uiPoint, .22, dimImage);
         }
 
          uiPoint.X() -= 5;
@@ -382,7 +390,7 @@ void MapPanel::DrawButtons(const string &condition)
 
     if(selectedMenuButtonWidth[1] == 3 ) //If player selected any button on the last section of menu then show blue selected continue button.
         {const Sprite *continueButtonBlue = SpriteSet::Get("ui/continue-blue");
-        SpriteShader::Draw(continueButtonBlue, uiPoint, 1);
+        SpriteShader::Draw(continueButtonBlue, uiPoint, .90);
         if(selectedMenuButtonHeight[1] > 3)
             selectedMenuButtonHeight[1] = 3;
         else if (selectedMenuButtonHeight[1] < 0)
@@ -401,13 +409,13 @@ void MapPanel::DrawButtons(const string &condition)
     uiPoint.X() -=188;
 
       if(selectedMenuButtonWidth[1] == 0 && selectedMenuButtonHeight[1] ==0) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
-        {const Sprite *negativeFiveBlue = SpriteSet::Get("ui/5-neg-blue");
+        {//const Sprite *negativeFiveBlue = SpriteSet::Get("ui/5-neg-blue");
 
-        SpriteShader::Draw(negativeFiveBlue, uiPoint, 1);
+        SpriteShader::Draw(negativeFiveBlue, uiPoint, 1.2);
         }
     else
         {
-        const Sprite *negativeFive = SpriteSet::Get("ui/5-neg");
+        //const Sprite *negativeFive = SpriteSet::Get("ui/5-neg");
         SpriteShader::Draw(negativeFive, uiPoint, 1);
         }
 
@@ -415,12 +423,12 @@ void MapPanel::DrawButtons(const string &condition)
         uiPoint.X()+=54;
 
         if(selectedMenuButtonWidth[1] == 1 && selectedMenuButtonHeight[1] ==0) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
-        {const Sprite *negativeFiveBlue = SpriteSet::Get("ui/5-neg-blue");
-        SpriteShader::Draw(negativeFiveBlue, uiPoint, 1);
+        {//const Sprite *negativeFiveBlue = SpriteSet::Get("ui/5-neg-blue");
+        SpriteShader::Draw(negativeFiveBlue, uiPoint, 1.2);
         }
     else
         {
-        const Sprite *negativeFive = SpriteSet::Get("ui/5-neg");
+      //  const Sprite *negativeFive = SpriteSet::Get("ui/5-neg");
         SpriteShader::Draw(negativeFive, uiPoint, 1);
         }
 
