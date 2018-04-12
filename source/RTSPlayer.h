@@ -10,20 +10,23 @@
 
 
 
+class Ship;
+
+
 
 class RTSPlayers
 {
+    public:
+    Ship *selectedShip = nullptr; //RTS mode selected ship
 
+    uint16_t GetNumSendFigs(){return numSendFigs;};
+    void SetNumSendFigs(uint16_t &numSendFigs){return;};
+    uint16_t GetNumSendComs(){return numSendComShips;};
+    void SetNumSendComs(uint16_t &numSendComShips) {return;};
 
-// Access the player's travel plan.
-	bool HasTravelPlan() const;
-	const std::vector<const System *> &TravelPlan() const;
-	std::vector<const System *> &TravelPlan();
-	// Remove the first or last system from the travel plan.
-	void PopTravel();
-	// Get or set the planet to land on at the end of the travel path.
-	const Planet *TravelDestination() const;
-	void SetTravelDestination(const Planet *planet);
+    bool IsMotherShipSend(){return motherShipSend;};
+    void SetMotherShipSend(bool &motherShipSend){return;};
+
 
 
 	// Access the flagship (the first ship in the list). This returns null if
@@ -36,8 +39,48 @@ class RTSPlayers
 	// Add a captured ship to your fleet.
 	void AddShip(const std::shared_ptr<Ship> &ship);
 
+	// Check if the player has a hyperspace route set.
+bool HasTravelPlan() const
+{
+	return !travelPlan.empty();
+};
+
+
+
+// Access the player's travel plan.
+const std::vector<const System *> &TravelPlan() const
+{
+	return travelPlan;
+};
+
+
+
+std::vector<const System *> &TravelPlan()
+{
+	return travelPlan;
+};
+
+
+
+// This is called when the player enters the system that is their current
+// hyperspace target.
+void PopTravel()
+{
+	if(!travelPlan.empty())
+	{
+		travelPlan.pop_back();
+	}
+};
 
 private:
+
+//RTS Variables
+    uint16_t numSendFigs = 0;
+    uint16_t numSendComShips = 0;
+    bool motherShipSend = false;
+
+	//RTS mode code
+	  std::vector<const System *> travelPlan;
 
     uint8_t playerNum;
     bool isDead = false;

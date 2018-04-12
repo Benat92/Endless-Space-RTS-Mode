@@ -64,7 +64,7 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 //#include "LogFile.h"
 extern std::ofstream LogFile;
 //RTS Mode Player info
-//#include "RTSPlayer.h"
+#include "RTSPlayer.h"
 //#include "GameControllerInput.cpp"
 
 
@@ -76,9 +76,9 @@ using namespace std;
 bool rtsEnabled = 1;
 extern SDL_GameController *GameController[];
 extern const int JOYSTICK_DEAD_ZONE; //RTS controller
-PlayerInfo PlayerInfoRTS[9];
-Ship *selectedShip = PlayerInfoRTS[1].selectedShip;
 
+RTSPlayers PlayerInfoRTS[9];
+Ship *selectedShip = nullptr;
 
 
 void RTSPLayerMenu (int playNum);
@@ -103,7 +103,7 @@ MapPanel::MapPanel(PlayerInfo &player, int commodity, const System *special)
 	//RTS mode initailize RTSPlayers
 //	RTSPlayers RTSPlayers[9];
     int n =0;
-
+  selectedShip = player.selectedShip;
 
 	// Recalculate the fog each time the map is opened, just in case the player
 	// bought a map since the last time they viewed the map.
@@ -364,7 +364,7 @@ void MapPanel::DrawButtons(const string &condition)
     else
         dimImage = 0;
 
-    if(selectedMenuButtonWidth[1] == 2 ) //If player selected 2 width and any height show mothership as selected.
+    if(selectedMenuButtonWidth[1] == 2 && selectedMenuButtonHeight[1] >= 1) //If player selected 2 width and any height show mothership as selected.
         {
         SpriteShader::Draw(motherShipBlue, uiPoint, .25, dimImage);
 
@@ -433,7 +433,19 @@ void MapPanel::DrawButtons(const string &condition)
         }
 
 
-     uiPoint.X()-=60;
+          uiPoint.X()+=54;
+
+        if(selectedMenuButtonWidth[1] == 2 && selectedMenuButtonHeight[1] ==0) //If player selected 0 width and 3 height show MAX for figthers/berserker as selected.
+        {const Sprite *negativeOneBlue = SpriteSet::Get("ui/1-neg-blue");
+        SpriteShader::Draw(negativeOneBlue, uiPoint, 1.2);
+        }
+    else
+        {
+        const Sprite *negativeOne = SpriteSet::Get("ui/1-neg");
+        SpriteShader::Draw(negativeOne, uiPoint, 1);
+        }
+
+     uiPoint.X()-=114;
      uiPoint.Y() += 20;
 
 
@@ -581,7 +593,7 @@ void MapPanel::DrawMiniMap(const PlayerInfo &player, double alpha, const System 
 
 bool MapPanel::KeyDown(SDL_Keycode key, Uint16 mod, const Command &command)
 {
-    LogFile << key << " Entered!\n";
+
 	if(command.Has(Command::MAP) || key == 'd' || key == SDLK_ESCAPE
 			|| (key == 'w' && (mod & (KMOD_CTRL | KMOD_GUI))))
 		GetUI()->Pop(this);
@@ -705,10 +717,17 @@ bool MapPanel::ControllerButtonDown (Uint8 button, int playNum)
             case SDL_CONTROLLER_BUTTON_DPAD_DOWN:
             {
                 LogFile << "Controller " << playNum << " sent event from D-pad down.\n";
-                if(selectedMenuButtonHeight[playNum] >= 1) //If player is currently at lowest hieght position in menu, do nothing.
+                if(selectedMenuButtonHeight[playNum] <= 0)
+                {
+                    selectedMenuButtonHeight[playNum] = 0;
+                    LogFile << "Controller " << playNum << " requested menu selection height be lowered. Height already on the bottom!\n" << playNum << "height : " << selectedMenuButtonHeight[playNum] << " width : " << selectedMenuButtonWidth[playNum] << "\n";
+                    return true;
+
+                }
+                else if(selectedMenuButtonHeight[playNum] >= 1) //If player is currently at lowest hieght position in menu, do nothing.
                     {
                         selectedMenuButtonHeight[playNum] = 0;
-                       LogFile << "Controller " << playNum << " requested menu selection height be lowered. However height is already on bottom!\n" << playNum << "height : " << selectedMenuButtonHeight[playNum] << " width : " << selectedMenuButtonWidth[playNum] << "\n";
+                       LogFile << "Controller " << playNum << " requested menu selection height be lowered. Height sent to the bottom.\n" << playNum << "height : " << selectedMenuButtonHeight[playNum] << " width : " << selectedMenuButtonWidth[playNum] << "\n";
                         return true;
                     }
                 else
@@ -722,8 +741,10 @@ bool MapPanel::ControllerButtonDown (Uint8 button, int playNum)
             {
                 LogFile << "Controller " << playNum << " sent event from button A.\n";
                //Accept
+                RTSSelect(player.GetSystem(), player.Flagship());
 
-                        return true;
+                return true;
+
 
             }
             case SDL_CONTROLLER_BUTTON_X:
@@ -882,31 +903,26 @@ double MapPanel::SystemValue(const System *system) const
 }
 
 
-
-void MapPanel::Select(const System *system)
+void MapPanel::RTSSelect(const System *system, Ship *selectedShip)
 {
 		if(!system)
 		return;
 
 		LogFile << "\nPlayer selected system: " << system->Name() << "\n";
 
-	selectedSystem = system;
 
-	/*vector<const System *> &plan = player.TravelPlan();
-	if(!player.Flagship() || (!plan.empty() && system == plan.front()))
-		return;*/ //None Rts code
 
-    //New rts code
-    selectedShip = player.Flagship();
+    //selectedShip = player.Flagship();
+     //New rts code
     vector<const System *> &plan = selectedShip->TravelPlan();
     if(!selectedShip || (!plan.empty() && system == plan.front()))
     return;
 
-    /*
-	bool isJumping = player.Flagship()->IsEnteringHyperspace();
-	const System *source = isJumping ? player.Flagship()->GetTargetSystem() : player.GetSystem();
-*/
+	/*bool isJumping = player.Flagship()->IsEnteringHyperspace();
+	const System *source = isJumping ? player.Flagship()->GetTargetSystem() : player.GetSystem();*/
 
+ LogFile << "SelectedShip's name is " << selectedShip->Name() << "\n";
+    LogFile << "SelectedShip's government is " << selectedShip->GetGovernment()->GetName() << "\n";
 	//NEW RTS CODE
 	bool isJumping = selectedShip->IsEnteringHyperspace();
 	const System *source = isJumping ? selectedShip->GetTargetSystem() : selectedShip->GetSystem();
@@ -931,11 +947,69 @@ void MapPanel::Select(const System *system)
 		auto it = plan.begin();
 		while(system != *it)
 		{
-		    LogFile << "it = " << " system = " << system->Name() << endl; //RTS mode code
+		    LogFile << system->Name() << ": Entered to travel plan!" << endl; //RTS mode code
 			it = ++plan.insert(it, system);
 			system = localDistance.Route(system);
 		}
 	}
+}
+
+
+void MapPanel::Select(const System *system)
+{
+		if(!system)
+		return;
+
+		LogFile << "\nPlayer selected system: " << system->Name() << "\n";
+
+	selectedSystem = system;
+
+	/*vector<const System *> &plan = player.TravelPlan();
+	if(!player.Flagship() || (!plan.empty() && system == plan.front()))
+		return;*/ //None Rts code
+
+    //New rts code
+    selectedShip = player.Flagship();
+    vector<const System *> &plan = selectedShip->TravelPlan();
+    if(!selectedShip || (!plan.empty() && system == plan.front()))
+    return;
+
+    /*
+	bool isJumping = player.Flagship()->IsEnteringHyperspace();
+	const System *source = isJumping ? player.Flagship()->GetTargetSystem() : player.GetSystem();
+*/
+  LogFile << "SelectedShip's name is " << selectedShip->Name() << "\n";
+    LogFile << "SelectedShip's government is " << selectedShip->GetGovernment()->GetName() << "\n";
+	//NEW RTS CODE
+	bool isJumping = selectedShip->IsEnteringHyperspace();
+	const System *source = isJumping ? selectedShip->GetTargetSystem() : selectedShip->GetSystem();
+
+	bool shift = (SDL_GetModState() & KMOD_SHIFT) && !plan.empty();
+	if(system == source && !shift)
+	{
+		plan.clear();
+		if(!isJumping)
+			{//Old Code//player.Flagship()->SetTargetSystem(nullptr);
+			    selectedShip->SetTargetSystem(nullptr);
+			}
+		else
+			plan.push_back(source);
+	}
+	else if(shift)
+	{
+		DistanceMap localDistance(player, plan.front());
+		if(localDistance.Days(system) <= 0)
+			return;
+
+		auto it = plan.begin();
+		while(system != *it)
+		{
+		    LogFile << system->Name() << ": Entered to travel plan!" << endl; //RTS mode code
+			it = ++plan.insert(it, system);
+			system = localDistance.Route(system);
+		}
+	}
+
 	else if(distance.Days(system) > 0)
 	{
 		plan.clear();

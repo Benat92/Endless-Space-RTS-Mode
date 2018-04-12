@@ -145,7 +145,9 @@ public:
 	void SetIsYours(bool yours = true);
 	bool IsYours() const;
 	// A parked ship stays on a planet and requires no daily salary payments.
-	void SetIsParked(bool parked = true);
+	void SetIsParked(bool parked);
+
+	void SetIsNotParked(bool parked) {isParked = parked;}; //RTS addition
 	bool IsParked() const;
 
 	// Access the ship's personality, which affects how the AI behaves.

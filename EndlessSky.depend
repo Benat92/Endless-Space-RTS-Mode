@@ -5085,7 +5085,7 @@
 1499119859 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\random.h
 	<cstdint>
 
-1521670165 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.h
+1523484193 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.h
 	"Body.h"
 	"Angle.h"
 	"Armament.h"
@@ -5499,7 +5499,7 @@
 	"Point.h"
 	<map>
 
-1523048551 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.h
+1523569107 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.h
 	"Panel.h"
 	"Color.h"
 	"DistanceMap.h"
@@ -6123,7 +6123,7 @@
 	<set>
 	<vector>
 
-1521743315 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mapdetailpanel.cpp
+1523048551 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mapdetailpanel.cpp
 	"MapDetailPanel.h"
 	"Color.h"
 	"Command.h"
@@ -6323,7 +6323,7 @@
 	"UI.h"
 	<vector>
 
-1521749697 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\missionpanel.cpp
+1523048551 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\missionpanel.cpp
 	"MissionPanel.h"
 	"Command.h"
 	"Dialog.h"
@@ -7010,7 +7010,7 @@
 	<utility>
 	<vector>
 
-1522913567 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
+1523570877 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
 	"MapPanel.h"
 	"Angle.h"
 	"Dialog.h"
@@ -7049,6 +7049,7 @@
 	<cmath>
 	<limits>
 	<fstream>
+	"RTSPlayer.h"
 
 1522912585 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\spriteshader.cpp
 	"SpriteShader.h"
@@ -7056,5 +7057,15 @@
 	"Screen.h"
 	"Shader.h"
 	"Sprite.h"
+	<vector>
+
+1523142062 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\rtsplayer.h
+	"Planet.h"
+	<list>
+	<map>
+	<memory>
+	<set>
+	<string>
+	<utility>
 	<vector>
 

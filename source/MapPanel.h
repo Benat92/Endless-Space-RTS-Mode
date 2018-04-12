@@ -81,6 +81,8 @@ protected:
 
 	virtual double SystemValue(const System *system) const;
 
+	void RTSSelect(const System *system, Ship *selectedShip);
+
 	void Select(const System *system);
 	void Find(const std::string &name);
 
