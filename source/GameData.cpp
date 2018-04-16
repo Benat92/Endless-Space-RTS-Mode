@@ -79,39 +79,48 @@ namespace {
 	Set<Planet> planets;
 	Set<Ship> ships;
 	Set<System> systems;
-	
+
 	Set<Sale<Ship>> shipSales;
 	Set<Sale<Outfit>> outfitSales;
-	
+
 	Set<Fleet> defaultFleets;
 	Set<Government> defaultGovernments;
 	Set<Planet> defaultPlanets;
 	Set<System> defaultSystems;
 	Set<Sale<Ship>> defaultShipSales;
 	Set<Sale<Outfit>> defaultOutfitSales;
-	
+
 	Politics politics;
 	StartConditions startConditions;
-	
+
 	Trade trade;
 	map<const System *, map<string, int>> purchases;
-	
+
 	map<const Sprite *, string> landingMessages;
 	vector<string> ratingLevels;
-	
+
 	StarField background;
-	
+
 	map<string, string> tooltips;
 	map<string, string> helpMessages;
 	map<string, string> plugins;
-	
+
 	SpriteQueue spriteQueue;
-	
+
 	vector<string> sources;
 	map<const Sprite *, vector<string>> deferred;
 	map<const Sprite *, int> preloaded;
-	
-	const Government *playerGovernment = nullptr;
+
+	const Government *playerGovernment = governments.Get("Player1");
+	 Government const *playerOneGovernment = governments.Get("Player1");
+	 Government const *playerTwoGovernment = governments.Get("Player2");
+    Government const *playerThreeGovernment = governments.Get("Player3");
+	 Government const *playerFourGovernment = governments.Get("Player4");
+    Government const *playerFiveGovernment = governments.Get("Player5");
+	 Government const *playerSixGovernment = governments.Get("Player6");
+    Government const *playerSevenGovernment = governments.Get("Player7");
+	 Government const *playerEightGovernment = governments.Get("Player8");
+
 }
 
 
@@ -136,16 +145,16 @@ void GameData::BeginLoad(const char * const *argv)
 		}
 	}
 	Files::Init(argv);
-	
+
 	// Initialize the list of "source" folders based on any active plugins.
 	LoadSources();
-	
+
 	// Now, read all the images in all the path directories. For each unique
 	// name, only remember one instance, letting things on the higher priority
 	// paths override the default images.
 	map<string, string> images;
 	LoadImages(images);
-	
+
 	// From the name, strip out any frame number, plus the extension.
 	for(const auto &it : images)
 	{
@@ -156,10 +165,10 @@ void GameData::BeginLoad(const char * const *argv)
 		else
 			spriteQueue.Add(name, it.second);
 	}
-	
+
 	// Generate a catalog of music files.
 	Music::Init(sources);
-	
+
 	for(const string &source : sources)
 	{
 		// Iterate through the paths starting with the last directory given. That
@@ -169,7 +178,7 @@ void GameData::BeginLoad(const char * const *argv)
 		for(const string &path : dataFiles)
 			LoadFile(path, debugMode);
 	}
-	
+
 	// Now that all the stars are loaded, update the neighbor lists.
 	UpdateNeighbors();
 	// And, update the ships with the outfits we've now finished loading.
@@ -177,7 +186,7 @@ void GameData::BeginLoad(const char * const *argv)
 		it.second.FinishLoading();
 	for(const auto &it : persons)
 		it.second.GetShip()->FinishLoading();
-	
+
 	// Store the current state, to revert back to later.
 	defaultFleets = fleets;
 	defaultGovernments = governments;
@@ -186,9 +195,11 @@ void GameData::BeginLoad(const char * const *argv)
 	defaultShipSales = shipSales;
 	defaultOutfitSales = outfitSales;
 	playerGovernment = governments.Get("Escort");
-	
+    playerOneGovernment = governments.Get("Player1"); //RTS addition
+
+
 	politics.Reset();
-	
+
 	if(printShips)
 		PrintShipTable();
 	if(printWeapons)
@@ -223,11 +234,11 @@ void GameData::LoadShaders()
 {
 	FontSet::Add(Files::Images() + "font/ubuntu14r.png", 14);
 	FontSet::Add(Files::Images() + "font/ubuntu18r.png", 18);
-	
+
 	// Load the key settings.
 	Command::LoadSettings(Files::Resources() + "keys.txt");
 	Command::LoadSettings(Files::Config() + "keys.txt");
-	
+
 	FillShader::Init();
 	FogShader::Init();
 	LineShader::Init();
@@ -235,7 +246,7 @@ void GameData::LoadShaders()
 	PointerShader::Init();
 	RingShader::Init();
 	SpriteShader::Init();
-	
+
 	background.Init(16384, 4096);
 }
 
@@ -256,7 +267,7 @@ void GameData::Preload(const Sprite *sprite)
 	auto dit = deferred.find(sprite);
 	if(!sprite || dit == deferred.end())
 		return;
-	
+
 	// If this sprite is one of the currently loaded ones, there is no need to
 	// load it again. But, make note of the fact that it is the most recently
 	// asked-for sprite.
@@ -266,11 +277,11 @@ void GameData::Preload(const Sprite *sprite)
 		for(pair<const Sprite * const, int> &it : preloaded)
 			if(it.second < pit->second)
 				++it.second;
-		
+
 		pit->second = 0;
 		return;
 	}
-	
+
 	// This sprite is not currently preloaded. Check to see whether we already
 	// have the maximum number of sprites loaded, in which case the oldest one
 	// must be unloaded to make room for this one.
@@ -287,7 +298,7 @@ void GameData::Preload(const Sprite *sprite)
 		else
 			++pit;
 	}
-	
+
 	// Now, load all the files for this sprite.
 	preloaded[sprite] = 0;
 	for(const string &path : dit->second)
@@ -322,7 +333,7 @@ void GameData::Revert()
 	outfitSales.Revert(defaultOutfitSales);
 	for(auto &it : persons)
 		it.second.GetShip()->Restore();
-	
+
 	politics.Reset();
 	purchases.clear();
 }
@@ -342,7 +353,7 @@ void GameData::ReadEconomy(const DataNode &node)
 {
 	if(!node.Size() || node.Token(0) != "economy")
 		return;
-	
+
 	vector<string> headings;
 	for(const DataNode &child : node)
 	{
@@ -361,7 +372,7 @@ void GameData::ReadEconomy(const DataNode &node)
 		else
 		{
 			System &system = *systems.Get(child.Token(0));
-			
+
 			int index = 0;
 			for(const string &commodity : headings)
 				system.SetSupply(commodity, child.Value(++index));
@@ -389,13 +400,13 @@ void GameData::WriteEconomy(DataWriter &out)
 		for(const auto &cit : GameData::Commodities())
 			out.WriteToken(cit.name);
 		out.Write();
-		
+
 		for(const auto &sit : GameData::Systems())
 		{
 			// Skip systems that have no name.
 			if(sit.first.empty() || sit.second.Name().empty())
 				continue;
-			
+
 			out.WriteToken(sit.second.Name());
 			for(const auto &cit : GameData::Commodities())
 				out.WriteToken(static_cast<int>(sit.second.Supply(cit.name)));
@@ -418,11 +429,11 @@ void GameData::StepEconomy()
 			system.SetSupply(cit.first, system.Supply(cit.first) - cit.second);
 	}
 	purchases.clear();
-	
+
 	// Then, have each system generate new goods for local use and trade.
 	for(auto &it : systems)
 		it.second.StepEconomy();
-	
+
 	// Finally, send out the trade goods. This has to be done in a separate step
 	// because otherwise whichever systems trade last would already have gotten
 	// supplied by the other systems.
@@ -534,7 +545,7 @@ const Set<Galaxy> &GameData::Galaxies()
 
 
 
-const Set<Government> &GameData::Governments()
+ Set<Government> &GameData::Governments() //RTS no longer const
 {
 	return governments;
 }
@@ -597,20 +608,21 @@ const Set<Ship> &GameData::Ships()
 }
 
 
-
-const Set<System> &GameData::Systems()
+ Set<System> &GameData::Systems() //Changed from const
 {
 	return systems;
 }
 
 
-
-const Government *GameData::PlayerGovernment()
+const Government *GameData::PlayerGovernment() //Chnagd fron const
 {
 	return playerGovernment;
 }
 
-
+Government const *GameData::PlayerOneGovernment() //Chnagd fron const
+{
+	return playerOneGovernment;
+}
 
 Politics &GameData::GetPolitics()
 {
@@ -722,36 +734,36 @@ void GameData::LoadSources()
 {
 	sources.clear();
 	sources.push_back(Files::Resources());
-	
+
 	vector<string> globalPlugins = Files::ListDirectories(Files::Resources() + "plugins/");
 	for(const string &path : globalPlugins)
 	{
 		if(Files::Exists(path + "data") || Files::Exists(path + "images") || Files::Exists(path + "sounds"))
 			sources.push_back(path);
 	}
-	
+
 	vector<string> localPlugins = Files::ListDirectories(Files::Config() + "plugins/");
 	for(const string &path : localPlugins)
 	{
 		if(Files::Exists(path + "data") || Files::Exists(path + "images") || Files::Exists(path + "sounds"))
 			sources.push_back(path);
 	}
-	
+
 	// Load the plugin data, if any.
 	for(auto it = sources.begin() + 1; it != sources.end(); ++it)
 	{
 		// Get the name of the folder containing the plugin.
 		size_t pos = it->rfind('/', it->length() - 2) + 1;
 		string name = it->substr(pos, it->length() - 1 - pos);
-		
+
 		// Load the about text and the icon, if any.
 		plugins[name] = Files::Read(*it + "about.txt");
-		
+
 		if(Files::Exists(*it + "icon.png"))
 			spriteQueue.Add(name, *it + "icon.png");
 		else if(Files::Exists(*it + "icon.jpg"))
 			spriteQueue.Add(name, *it + "icon.jpg");
-		
+
 		if(Files::Exists(*it + "icon@2x.png"))
 			spriteQueue.Add(name, *it + "icon@2x.png");
 		else if(Files::Exists(*it + "icon@2x.jpg"))
@@ -766,11 +778,11 @@ void GameData::LoadFile(const string &path, bool debugMode)
 	// This is an ordinary file. Check to see if it is an image.
 	if(path.length() < 4 || path.compare(path.length() - 4, 4, ".txt"))
 		return;
-	
+
 	DataFile data(path);
 	if(debugMode)
 		Files::LogError("Parsing: " + path);
-	
+
 	for(const DataNode &node : data)
 	{
 		const string &key = node.Token(0);
@@ -869,7 +881,7 @@ void GameData::LoadImage(const string &path, map<string, string> &images, size_t
 {
 	bool isJpg = !path.compare(path.length() - 4, 4, ".jpg");
 	bool isPng = !path.compare(path.length() - 4, 4, ".png");
-	
+
 	// This is an ordinary file. Check to see if it is an image.
 	if(isJpg || isPng)
 		images[path.substr(start)] = path;
@@ -881,24 +893,24 @@ string GameData::Name(const string &path)
 {
 	// The path always ends in a three-letter extension, ".png" or ".jpg".
 	int end = path.length() - 4;
-	
+
 	// Check if the name ends in "@2x". If so, that's not part of the name.
 	if(end > 3 && path[end - 3] == '@' && path[end - 2] == '2' && path[end - 1] == 'x')
 		end -= 3;
-	
+
 	// Skip any numbers at the end of the name.
 	int pos = end;
 	while(pos--)
 		if(path[pos] < '0' || path[pos] > '9')
 			break;
-	
+
 	// This should never happen, but just in case someone creates a file named
 	// "images/123.jpg" or something:
 	if(pos < 0)
 		pos = end;
 	else if(path[pos] != '-' && path[pos] != '~' && path[pos] != '+' && path[pos] != '=')
 		pos = end;
-	
+
 	return path.substr(0, pos);
 }
 
@@ -916,11 +928,11 @@ void GameData::PrintShipTable()
 		// Skip variants.
 		if(it.second.ModelName() != it.first)
 			continue;
-		
+
 		const Ship &ship = it.second;
 		cout << it.first << '\t';
 		cout << ship.Cost() << '\t';
-		
+
 		const Outfit &attributes = ship.Attributes();
 		cout << attributes.Get("shields") << '\t';
 		cout << attributes.Get("hull") << '\t';
@@ -929,14 +941,14 @@ void GameData::PrintShipTable()
 		cout << attributes.Get("cargo space") << '\t';
 		cout << attributes.Get("bunks") << '\t';
 		cout << attributes.Get("fuel capacity") << '\t';
-		
+
 		cout << ship.BaseAttributes().Get("outfit space") << '\t';
 		cout << ship.BaseAttributes().Get("weapon capacity") << '\t';
 		cout << ship.BaseAttributes().Get("engine capacity") << '\t';
 		cout << 60. * attributes.Get("thrust") / attributes.Get("drag") << '\t';
 		cout << 3600. * attributes.Get("thrust") / attributes.Get("mass") << '\t';
 		cout << 60. * attributes.Get("turn") / attributes.Get("mass") << '\t';
-		
+
 		double energy = attributes.Get("thrusting energy")
 			+ attributes.Get("turning energy");
 		double heat = attributes.Get("heat generation") - attributes.Get("cooling")
@@ -970,24 +982,24 @@ void GameData::PrintWeaponTable()
 		// Skip non-weapons and submunitions.
 		if(!it.second.IsWeapon() || !it.second.Reload())
 			continue;
-		
+
 		const Outfit &outfit = it.second;
 		cout << it.first << '\t';
 		cout << outfit.Cost() << '\t';
 		cout << -outfit.Get("weapon capacity") << '\t';
-		
+
 		cout << outfit.Range() << '\t';
-		
+
 		double energy = outfit.FiringEnergy() * 60. / outfit.Reload();
 		cout << energy << '\t';
 		double heat = outfit.FiringHeat() * 60. / outfit.Reload();
 		cout << heat << '\t';
-		
+
 		double shield = outfit.ShieldDamage() * 60. / outfit.Reload();
 		cout << shield << '\t';
 		double hull = outfit.HullDamage() * 60. / outfit.Reload();
 		cout << hull << '\t';
-		
+
 		cout << outfit.Homing() << '\t';
 		double strength = outfit.MissileStrength() + outfit.AntiMissile();
 		cout << strength << '\n';

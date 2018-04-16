@@ -392,6 +392,7 @@ void PlayerInfo::ApplyChanges()
 	}
 
 	// Government changes may have changed the player's ship swizzles.
+	//RTS chnaged code from GameData::
 	for(shared_ptr<Ship> &ship : ships)
 		ship->SetGovernment(GameData::PlayerGovernment());
 
@@ -622,7 +623,10 @@ void PlayerInfo::IncrementDate()
 		ship->GetArmament().FinishLoading();
 }
 
-
+void PlayerInfo::SetGovernment( Government const *gov)
+{
+    playerGovernment = gov;
+}
 
 // Set the player's current start system, and mark that system as visited.
 void PlayerInfo::SetSystem(const System *system)

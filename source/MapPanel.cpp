@@ -77,7 +77,8 @@ bool rtsEnabled = 1;
 extern SDL_GameController *GameController[];
 extern const int JOYSTICK_DEAD_ZONE; //RTS controller
 
-RTSPlayers PlayerInfoRTS[9];
+PlayerInfo PlayerInfoRTS[9];
+void RTSInitializePlayers();
 Ship *selectedShip = nullptr;
 
 
@@ -102,6 +103,9 @@ MapPanel::MapPanel(PlayerInfo &player, int commodity, const System *special)
 
 	//RTS mode initailize RTSPlayers
 //	RTSPlayers RTSPlayers[9];
+
+
+
     int n =0;
   selectedShip = player.selectedShip;
 
@@ -145,8 +149,25 @@ LogFile << "\nNumber of Joysticks!" << SDL_NumJoysticks() << "\n";
           selectedMenuButtonHeight[n] =1;
           selectedMenuButtonWidth[n] = 0;
       }
-      LogFile << "MapPanel initialized!\n";
+      LogFile << "MapPanel initialized!\n\n\n";
+    RTSInitializePlayers();
+}
 
+void RTSInitializePlayers()
+{
+    LogFile << "Government of Sirius is " << GameData::Systems().Get("Sirius")->GetGovernment()->GetName() << endl;
+
+    PlayerInfoRTS[1].SetGovernment(GameData::PlayerOneGovernment());
+    LogFile << "Player 1's government changed to " << PlayerInfoRTS[1].GetGovernment()->GetName() << endl;
+   GameData::Systems().Get("Sirius")->SetGovernment(GameData::PlayerOneGovernment());
+    LogFile << "Goverment of Sirius set to " << GameData::Systems().Get("Sirius")->GetGovernment()->GetName() << endl;
+
+
+
+
+
+LogFile << "RTS players initialized!\n\n\n";
+    return;
 }
 
 void MapPanel::Draw()
@@ -741,8 +762,9 @@ bool MapPanel::ControllerButtonDown (Uint8 button, int playNum)
             {
                 LogFile << "Controller " << playNum << " sent event from button A.\n";
                //Accept
-                RTSSelect(player.GetSystem(), player.Flagship());
-
+               LogFile << "Player.Flagship is @ " << player.Flagship() << endl;
+                RTSSelect(GameData::Systems().Get("Castor"), player.Flagship());
+                RTSDrawTravelPlan(player.Flagship());
                 return true;
 
 
@@ -907,9 +929,8 @@ void MapPanel::RTSSelect(const System *system, Ship *selectedShip)
 {
 		if(!system)
 		return;
-
-		LogFile << "\nPlayer selected system: " << system->Name() << "\n";
-
+    LogFile << "Received selectedShip address @ " << selectedShip << endl;
+		LogFile << "Player selected system: " << system->Name() << "\n";
 
 
     //selectedShip = player.Flagship();
@@ -917,9 +938,6 @@ void MapPanel::RTSSelect(const System *system, Ship *selectedShip)
     vector<const System *> &plan = selectedShip->TravelPlan();
     if(!selectedShip || (!plan.empty() && system == plan.front()))
     return;
-
-	/*bool isJumping = player.Flagship()->IsEnteringHyperspace();
-	const System *source = isJumping ? player.Flagship()->GetTargetSystem() : player.GetSystem();*/
 
  LogFile << "SelectedShip's name is " << selectedShip->Name() << "\n";
     LogFile << "SelectedShip's government is " << selectedShip->GetGovernment()->GetName() << "\n";
@@ -930,16 +948,23 @@ void MapPanel::RTSSelect(const System *system, Ship *selectedShip)
 	bool shift = (SDL_GetModState() & KMOD_SHIFT) && !plan.empty();
 	if(system == source && !shift)
 	{
+	    LogFile << "system == source && shift button not pressed!" << endl;
 		plan.clear();
 		if(!isJumping)
 			{//Old Code//player.Flagship()->SetTargetSystem(nullptr);
 			    selectedShip->SetTargetSystem(nullptr);
 			}
+
 		else
+        {
+
 			plan.push_back(source);
+        LogFile << source->Name() << " : Added to flight plan!" << endl;
+	}
 	}
 	else if(shift)
 	{
+	    LogFile << "Shift detected!\n";
 		DistanceMap localDistance(player, plan.front());
 		if(localDistance.Days(system) <= 0)
 			return;
@@ -952,6 +977,26 @@ void MapPanel::RTSSelect(const System *system, Ship *selectedShip)
 			system = localDistance.Route(system);
 		}
 	}
+	else if(distance.Days(system) > 0)
+	{
+		plan.clear();
+		if(!isJumping)
+			{//Old code //player.Flagship()->SetTargetSystem(nullptr);
+			    selectedShip->SetTargetSystem(nullptr);
+			}
+
+		while(system != source)
+		{
+			plan.push_back(system);
+			LogFile << system->Name() << ": Added" << endl;
+			system = distance.Route(system);
+		}
+		if(isJumping)
+			plan.push_back(source);
+	}
+
+	if(selectedShip->HasTravelPlan() == 0)
+        LogFile << "Selected Ship has no travel plan!\n\n";
 }
 
 
@@ -1103,7 +1148,93 @@ int MapPanel::Search(const string &str, const string &sub)
 	return (it == str.end() ? -1 : it - str.begin());
 }
 
+void MapPanel::RTSDrawTravelPlan(const Ship *selectedShip)
+{
+    LogFile << "RTSDrawTravelPlan";
+	/*if(!playerSystem)
+		return;*/
 
+	Color defaultColor(.5, .4, 0., 0.);
+	Color outOfFlagshipFuelRangeColor(.55, .1, .0, 0.);
+	Color withinFleetFuelRangeColor(.2, .5, .0, 0.);
+	Color wormholeColor(0.5, 0.2, 0.9, 1.);
+
+	// At each point in the path, we'll keep track of how many ships in the
+	// fleet are able to make it this far.
+
+	/*Ship *flagship = player.Flagship();
+
+	if(!flagship)
+		return;
+	bool stranded = false;
+	bool hasEscort = false;
+	map<const Ship *, double> fuel;
+	for(const shared_ptr<Ship> &it : player.Ships())
+		if(!it->IsParked() && !it->CanBeCarried() && it->GetSystem() == flagship->GetSystem())
+		{
+			if(it->IsDisabled())
+			{
+				stranded = true;
+				continue;
+			}
+
+			fuel[it.get()] = it->Fuel() * it->Attributes().Get("fuel capacity");
+			hasEscort |= (it.get() != flagship);
+		}
+	stranded |= !hasEscort;*/
+
+	const System *previous = selectedShip->GetSystem(); //RTS: Get system of selectedShip
+
+
+	//RTS code changed "Player.TravelPlan() to "selectedShip->TravelPlan". 2 times below.
+	for(int i = selectedShip->TravelPlan().size() - 1; i >= 0; --i)
+	{
+		const System *next = selectedShip->TravelPlan()[i];
+    LogFile << "Draw flight path to " << next->Name() << "\n";
+		/*bool isHyper = previous->Links().count(next);
+		bool isJump = !isHyper && previous->Neighbors().count(next);
+		bool isWormhole = false;
+		for(const StellarObject &object : previous->Objects())
+			isWormhole |= (object.GetPlanet() && player.HasVisited(object.GetPlanet())
+				&& player.HasVisited(previous) && player.HasVisited(next)
+				&& object.GetPlanet()->WormholeDestination(previous) == next);
+
+		if(!isHyper && !isJump && !isWormhole)
+			break;
+
+		// Wormholes cost nothing to grow through. If this is not a wormhole,
+		// check how much fuel every ship will expend to go through it.
+		if(!isWormhole)
+			for(auto &it : fuel)
+				if(it.second >= 0.)
+				{
+					double cost = isJump ? it.first->JumpDriveFuel() : it.first->HyperdriveFuel();
+					if(!cost || cost > it.second)
+					{
+						it.second = -1.;
+						stranded = true;
+					}
+					else
+						it.second -= cost;
+				}*/
+
+		// Color the path green if all ships can make it. Color it yellow if
+		// the flagship can make it, and red if the flagship cannot.
+		Color drawColor = outOfFlagshipFuelRangeColor;
+
+		//RTS Mode choose draw color of ship rout based off Government color.
+		drawColor = selectedShip->GetGovernment()->GetColor();
+
+
+		Point from = Zoom() * (next->Position() + center);
+		Point to = Zoom() * (previous->Position() + center);
+		Point unit = (from - to).Unit() * 7.;
+		LineShader::Draw(from - unit, to + unit, 3., drawColor);
+
+		previous = next;
+	}
+	LogFile << "\n";
+}
 
 void MapPanel::DrawTravelPlan()
 {

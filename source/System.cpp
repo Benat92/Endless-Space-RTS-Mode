@@ -380,6 +380,10 @@ const Point &System::Position() const
 }
 
 
+void System::SetGovernment( Government const *gov)
+{
+    government = gov;
+}
 
 // Get this system's government.
 const Government *System::GetGovernment() const

@@ -17,9 +17,12 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 #include "CargoHold.h"
 #include "Date.h"
 #include "Depreciation.h"
+#include "GameData.h" //RTS added
+#include "Government.h" //RTS added
 #include "GameEvent.h"
 #include "Mission.h"
 #include "Planet.h"
+
 
 #include <list>
 #include <map>
@@ -29,8 +32,9 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 #include <utility>
 #include <vector>
 
+
 class DataNode;
-class Government;
+//class Government;
 class Outfit;
 class Person;
 class Planet;
@@ -107,6 +111,9 @@ public:
 	// Set the system the player is in. This must be stored here so that even if
 	// the player sells all their ships, we still know where the player is.
 	// This also marks the given system as visited.
+	void SetGovernment(const Government *gov) ; //RTS
+     const Government *GetGovernment() {return playerGovernment;}; //RTS Non-const
+
 	void SetSystem(const System *system);
 	const System *GetSystem() const;
 	// Set what planet the player is on.
@@ -271,6 +278,8 @@ private:
     uint16_t numSendFigs = 0;
     uint16_t numSendComShips = 0;
     bool motherShipSend = false;
+    const Government *playerGovernment;//RTS non-const.
+
 
 	std::string firstName;
 	std::string lastName;

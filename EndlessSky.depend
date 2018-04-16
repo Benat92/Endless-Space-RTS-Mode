@@ -4981,15 +4981,16 @@
 	<set>
 	<vector>
 
-1499119859 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\set.h
+1523734445 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\set.h
 	<map>
 	<string>
 
-1522689426 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfo.h
+1523733955 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfo.h
 	"Account.h"
 	"CargoHold.h"
 	"Date.h"
 	"Depreciation.h"
+	"GameData.h"
 	"GameEvent.h"
 	"Mission.h"
 	"Planet.h"
@@ -5116,7 +5117,7 @@
 1499119859 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shipevent.h
 	<memory>
 
-1521752289 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\system.h
+1523657308 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\system.h
 	"Point.h"
 	"Set.h"
 	"StellarObject.h"
@@ -5499,7 +5500,7 @@
 	"Point.h"
 	<map>
 
-1523569107 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.h
+1523651017 d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.h
 	"Panel.h"
 	"Color.h"
 	"DistanceMap.h"
@@ -6963,7 +6964,7 @@
 	"Point.h"
 	<cstring>
 
-1522650532 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\gamedata.cpp
+1523733732 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\gamedata.cpp
 	"GameData.h"
 	"Audio.h"
 	"Color.h"
@@ -7010,7 +7011,7 @@
 	<utility>
 	<vector>
 
-1523570877 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
+1523655947 source:d:\downloads\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
 	"MapPanel.h"
 	"Angle.h"
 	"Dialog.h"
@@ -7068,4 +7069,2603 @@
 	<string>
 	<utility>
 	<vector>
+
+1500259341 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\account.cpp
+	"Account.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"Format.h"
+	<algorithm>
+	<sstream>
+
+1499119854 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\account.h
+	"Mortgage.h"
+	<cstdint>
+	<string>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mortgage.h
+	<string>
+
+1499119856 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\datanode.h
+	<list>
+	<string>
+	<vector>
+
+1499119856 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\datawriter.h
+	<string>
+	<sstream>
+
+1499119857 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\format.h
+	<map>
+	<string>
+	<vector>
+
+1511819343 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ai.cpp
+	"AI.h"
+	"Armament.h"
+	"Audio.h"
+	"Command.h"
+	"DistanceMap.h"
+	"Flotsam.h"
+	"Government.h"
+	"Mask.h"
+	"Messages.h"
+	"Minable.h"
+	"pi.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"Point.h"
+	"Preferences.h"
+	"Random.h"
+	"Ship.h"
+	"ShipEvent.h"
+	"System.h"
+	<SDL2/SDL.h>
+	<cmath>
+	<limits>
+	<set>
+
+1511767255 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ai.h
+	"Command.h"
+	"Point.h"
+	<cstdint>
+	<list>
+	<map>
+	<memory>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\command.h
+	<cstdint>
+	<string>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\point.h
+	<pmmintrin.h>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\armament.h
+	"Hardpoint.h"
+	<list>
+	<map>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\hardpoint.h
+	"Point.h"
+	"Angle.h"
+	<list>
+
+1499119854 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\angle.h
+	"Point.h"
+	<cstdint>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\audio.h
+	<string>
+	<vector>
+
+1511767620 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\distancemap.h
+	<map>
+	<queue>
+	<set>
+	<utility>
+
+1499119857 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\flotsam.h
+	"Angle.h"
+	"Body.h"
+	"Point.h"
+	<list>
+	<string>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\body.h
+	<cstdint>
+	<string>
+	"Angle.h"
+	"Point.h"
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\government.h
+	"Color.h"
+	<map>
+	<string>
+	<vector>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\color.h
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mask.h
+	"Angle.h"
+	"Point.h"
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\messages.h
+	<string>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\minable.h
+	"Body.h"
+	"Angle.h"
+	<list>
+	<map>
+	<memory>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\pi.h
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\planet.h
+	"Sale.h"
+	<list>
+	<memory>
+	<set>
+	<string>
+	<vector>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\sale.h
+	"DataNode.h"
+	"Set.h"
+	<algorithm>
+	<set>
+	<vector>
+
+1523829493 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\set.h
+	<map>
+	<string>
+
+1523837362 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfo.h
+	"Account.h"
+	"CargoHold.h"
+	"Date.h"
+	"Depreciation.h"
+	"GameData.h"
+	"Government.h"
+	"GameEvent.h"
+	"Mission.h"
+	"Planet.h"
+	<list>
+	<map>
+	<memory>
+	<set>
+	<string>
+	<utility>
+	<vector>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\cargohold.h
+	<cstdint>
+	<map>
+	<string>
+
+1499119856 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\date.h
+	<string>
+
+1499119856 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\depreciation.h
+	<cstdint>
+	<map>
+	<memory>
+	<string>
+	<vector>
+
+1523837187 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\gamedata.h
+	"Set.h"
+	"Trade.h"
+	<map>
+	<string>
+	<vector>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\trade.h
+	<vector>
+	<string>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\gameevent.h
+	"ConditionSet.h"
+	"Date.h"
+	<list>
+	<vector>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\conditionset.h
+	<map>
+	<string>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mission.h
+	"ConditionSet.h"
+	"Date.h"
+	"LocationFilter.h"
+	"MissionAction.h"
+	"NPC.h"
+	<list>
+	<map>
+	<string>
+	<set>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\locationfilter.h
+	<list>
+	<set>
+	<string>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\missionaction.h
+	"ConditionSet.h"
+	"Conversation.h"
+	<map>
+	<set>
+	<string>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\conversation.h
+	"ConditionSet.h"
+	<map>
+	<string>
+	<utility>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\npc.h
+	"Conversation.h"
+	"Fleet.h"
+	"LocationFilter.h"
+	"Personality.h"
+	<string>
+	<list>
+	<map>
+	<memory>
+
+1511815336 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\fleet.h
+	"Personality.h"
+	<list>
+	<memory>
+	<string>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\personality.h
+	"Angle.h"
+	"Point.h"
+	<string>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\preferences.h
+	<string>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\random.h
+	<cstdint>
+
+1523484193 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.h
+	"Body.h"
+	"Angle.h"
+	"Armament.h"
+	"CargoHold.h"
+	"Command.h"
+	"Flotsam.h"
+	"Outfit.h"
+	"Personality.h"
+	"Point.h"
+	<list>
+	<map>
+	<memory>
+	<string>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\outfit.h
+	"Body.h"
+	"Weapon.h"
+	<map>
+	<string>
+	<utility>
+	<vector>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\weapon.h
+	"Body.h"
+	<map>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shipevent.h
+	<memory>
+
+1523837809 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\system.h
+	"Point.h"
+	"Set.h"
+	"StellarObject.h"
+	<set>
+	<string>
+	<vector>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\stellarobject.h
+	"Body.h"
+	"Point.h"
+
+1499119854 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\angle.cpp
+	"Angle.h"
+	"pi.h"
+	"Random.h"
+	<algorithm>
+	<cmath>
+	<cstdlib>
+	<vector>
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\armament.cpp
+	"Armament.h"
+	"Command.h"
+	"Ship.h"
+	<cmath>
+	<limits>
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\asteroidfield.cpp
+	"AsteroidField.h"
+	"SpriteSet.h"
+	"DrawList.h"
+	"Mask.h"
+	"Projectile.h"
+	"Random.h"
+	"Screen.h"
+	<cmath>
+	<cstdlib>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\asteroidfield.h
+	"Angle.h"
+	"Body.h"
+	"Minable.h"
+	"Point.h"
+	<list>
+	<memory>
+	<string>
+	<vector>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\spriteset.h
+	<string>
+
+1499119856 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\drawlist.h
+	"Point.h"
+	<cstdint>
+	<vector>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\projectile.h
+	"Angle.h"
+	"Body.h"
+	"Point.h"
+	<list>
+	<memory>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\screen.h
+	"Point.h"
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\audio.cpp
+	"Audio.h"
+	"Files.h"
+	"Music.h"
+	"Point.h"
+	"Random.h"
+	"Sound.h"
+	<AL/al.h>
+	<AL/alc.h>
+	<OpenAL/al.h>
+	<OpenAL/alc.h>
+	<algorithm>
+	<cmath>
+	<map>
+	<mutex>
+	<set>
+	<stdexcept>
+	<thread>
+	<vector>
+
+1499119857 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\files.h
+	<cstdio>
+	<ctime>
+	<string>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\music.h
+	<condition_variable>
+	<cstdint>
+	<cstdio>
+	<mutex>
+	<string>
+	<thread>
+	<vector>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\sound.h
+	<string>
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\bankpanel.cpp
+	"BankPanel.h"
+	"Color.h"
+	"Dialog.h"
+	"Format.h"
+	"GameData.h"
+	"Information.h"
+	"Interface.h"
+	"PlayerInfo.h"
+	"Point.h"
+	"Table.h"
+	"UI.h"
+	<string>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\bankpanel.h
+	"Panel.h"
+	<string>
+
+1519856122 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\panel.h
+	"Rectangle.h"
+	<functional>
+	<list>
+	<SDL2/SDL.h>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\rectangle.h
+	"Point.h"
+
+1499119856 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\dialog.h
+	"Panel.h"
+	"Point.h"
+	"WrappedText.h"
+	<functional>
+	<string>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\wrappedtext.h
+	"Point.h"
+	<string>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\information.h
+	"Color.h"
+	"Point.h"
+	<map>
+	<set>
+	<string>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\interface.h
+	"Color.h"
+	"Point.h"
+	"Rectangle.h"
+	<map>
+	<string>
+	<vector>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\table.h
+	"Color.h"
+	"Point.h"
+	<string>
+	<vector>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ui.h
+	"Point.h"
+	<memory>
+	<vector>
+	<SDL2/SDL_events.h>
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\boardingpanel.cpp
+	"BoardingPanel.h"
+	"CargoHold.h"
+	"Depreciation.h"
+	"Dialog.h"
+	"FillShader.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"GameData.h"
+	"Government.h"
+	"Information.h"
+	"Interface.h"
+	"Messages.h"
+	"PlayerInfo.h"
+	"Preferences.h"
+	"Random.h"
+	"Ship.h"
+	"ShipEvent.h"
+	"ShipInfoPanel.h"
+	"System.h"
+	"UI.h"
+	<algorithm>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\boardingpanel.h
+	"Panel.h"
+	"CaptureOdds.h"
+	<memory>
+	<string>
+	<vector>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\captureodds.h
+	<vector>
+
+1499119857 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\fillshader.h
+
+1499119857 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\font.h
+	"Shader.h"
+	"gl_header.h"
+	<string>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shader.h
+	"gl_header.h"
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\gl_header.h
+	<OpenGL/GL3.h>
+	<GL/glew.h>
+
+1499119857 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\fontset.h
+	<string>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shipinfopanel.h
+	"Panel.h"
+	"ClickZone.h"
+	"ShipInfoDisplay.h"
+	<map>
+	<memory>
+	<set>
+	<string>
+	<vector>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\clickzone.h
+	"Point.h"
+	"Rectangle.h"
+	<cmath>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shipinfodisplay.h
+	"ItemInfoDisplay.h"
+	<vector>
+	<string>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\iteminfodisplay.h
+	"Point.h"
+	"WrappedText.h"
+	<vector>
+	<string>
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\body.cpp
+	"Body.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"Random.h"
+	"Screen.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	<algorithm>
+	<cmath>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\sprite.h
+	"Mask.h"
+	"Point.h"
+	<cstdint>
+	<string>
+	<vector>
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\captureodds.cpp
+	"CaptureOdds.h"
+	"Outfit.h"
+	"Ship.h"
+	<algorithm>
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\cargohold.cpp
+	"CargoHold.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"Depreciation.h"
+	"GameData.h"
+	"Mission.h"
+	"Outfit.h"
+	"System.h"
+	<algorithm>
+	<cmath>
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\collisionset.cpp
+	"CollisionSet.h"
+	"Body.h"
+	"Government.h"
+	"Mask.h"
+	"Point.h"
+	"Projectile.h"
+	"Ship.h"
+	<algorithm>
+	<numeric>
+	<set>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\collisionset.h
+	<vector>
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\color.cpp
+	"Color.h"
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\command.cpp
+	"Command.h"
+	"DataFile.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"Format.h"
+	<SDL2/SDL.h>
+	<algorithm>
+	<cmath>
+	<map>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\datafile.h
+	"DataNode.h"
+	<istream>
+	<list>
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\conditionset.cpp
+	"ConditionSet.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"Random.h"
+	<cmath>
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\conversation.cpp
+	"Conversation.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"Format.h"
+	"Sprite.h"
+	"SpriteSet.h"
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\conversationpanel.cpp
+	"ConversationPanel.h"
+	"BoardingPanel.h"
+	"Color.h"
+	"Command.h"
+	"Conversation.h"
+	"FillShader.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"GameData.h"
+	"Government.h"
+	"MapDetailPanel.h"
+	"PlayerInfo.h"
+	"Point.h"
+	"Preferences.h"
+	"Screen.h"
+	"shift.h"
+	"Ship.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"UI.h"
+	<iterator>
+
+1499119855 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\conversationpanel.h
+	"Panel.h"
+	"WrappedText.h"
+	<functional>
+	<list>
+	<map>
+	<string>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mapdetailpanel.h
+	"MapPanel.h"
+	"Point.h"
+	<map>
+
+1523651017 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.h
+	"Panel.h"
+	"Color.h"
+	"DistanceMap.h"
+	"Point.h"
+	<map>
+	<string>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shift.h
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\spriteshader.h
+	<cstdint>
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\datafile.cpp
+	"DataFile.h"
+	"Files.h"
+
+1499119855 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\datanode.cpp
+	"DataNode.h"
+	"Files.h"
+	<algorithm>
+	<cctype>
+	<cmath>
+
+1499119856 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\datawriter.cpp
+	"DataWriter.h"
+	"DataNode.h"
+	"Files.h"
+
+1499119856 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\date.cpp
+	"Date.h"
+
+1499119856 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\depreciation.cpp
+	"Depreciation.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"GameData.h"
+	"Outfit.h"
+	"Ship.h"
+	<algorithm>
+	<cmath>
+
+1499119856 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\dialog.cpp
+	"Dialog.h"
+	"Color.h"
+	"Command.h"
+	"Conversation.h"
+	"FillShader.h"
+	"Font.h"
+	"FontSet.h"
+	"GameData.h"
+	"MapDetailPanel.h"
+	"PlayerInfo.h"
+	"Point.h"
+	"shift.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"UI.h"
+	<cmath>
+	<functional>
+
+1511809978 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\distancemap.cpp
+	"DistanceMap.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"Ship.h"
+	"System.h"
+
+1499119856 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\drawlist.cpp
+	"DrawList.h"
+	"Body.h"
+	"Preferences.h"
+	"Screen.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	<cmath>
+
+1499119856 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\effect.cpp
+	"Effect.h"
+	"Audio.h"
+	"DataNode.h"
+	"Random.h"
+
+1499119857 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\effect.h
+	"Angle.h"
+	"Body.h"
+	"Point.h"
+	<string>
+
+1511818785 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\engine.cpp
+	"Engine.h"
+	"Audio.h"
+	"Effect.h"
+	"FillShader.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"FrameTimer.h"
+	"GameData.h"
+	"Government.h"
+	"Interface.h"
+	"MapPanel.h"
+	"Mask.h"
+	"Messages.h"
+	"OutlineShader.h"
+	"Person.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"Politics.h"
+	"PointerShader.h"
+	"Preferences.h"
+	"Random.h"
+	"RingShader.h"
+	"Screen.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"StarField.h"
+	"System.h"
+	<algorithm>
+	<cmath>
+
+1499119857 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\engine.h
+	"AI.h"
+	"AsteroidField.h"
+	"CollisionSet.h"
+	"DrawList.h"
+	"EscortDisplay.h"
+	"Flotsam.h"
+	"Information.h"
+	"PlanetLabel.h"
+	"Point.h"
+	"Projectile.h"
+	"Radar.h"
+	"Rectangle.h"
+	"Ship.h"
+	"ShipEvent.h"
+	<condition_variable>
+	<list>
+	<map>
+	<memory>
+	<thread>
+	<vector>
+
+1499119857 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\escortdisplay.h
+	"Point.h"
+	<cstdint>
+	<list>
+	<string>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\planetlabel.h
+	"Color.h"
+	"Point.h"
+	<string>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\radar.h
+	"Color.h"
+	"Point.h"
+	<vector>
+
+1499119857 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\frametimer.h
+	<chrono>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\outlineshader.h
+	"Point.h"
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\person.h
+	"LocationFilter.h"
+	"Personality.h"
+	"Phrase.h"
+	<memory>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\phrase.h
+	<string>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\politics.h
+	<map>
+	<set>
+	<string>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\pointershader.h
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ringshader.h
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\starfield.h
+	"Shader.h"
+	"gl_header.h"
+	<vector>
+
+1499119857 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\escortdisplay.cpp
+	"EscortDisplay.h"
+	"Color.h"
+	"Font.h"
+	"FontSet.h"
+	"GameData.h"
+	"LineShader.h"
+	"Point.h"
+	"OutlineShader.h"
+	"Screen.h"
+	"Ship.h"
+	"Sprite.h"
+	"System.h"
+	<algorithm>
+	<set>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\lineshader.h
+
+1499119857 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\file.cpp
+	"File.h"
+	"Files.h"
+
+1499119857 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\file.h
+	<cstdio>
+	<string>
+
+1499119857 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\files.cpp
+	"Files.h"
+	"File.h"
+	<SDL2/SDL.h>
+	<windows.h>
+	<sys/stat.h>
+	<dirent.h>
+	<unistd.h>
+	<cstdlib>
+	<fstream>
+	<iostream>
+	<mutex>
+	<stdexcept>
+
+1499119857 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\fillshader.cpp
+	"FillShader.h"
+	"Color.h"
+	"Point.h"
+	"Screen.h"
+	"Shader.h"
+	<stdexcept>
+
+1511815336 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\fleet.cpp
+	"Fleet.h"
+	"DataNode.h"
+	"Files.h"
+	"GameData.h"
+	"Government.h"
+	"Phrase.h"
+	"pi.h"
+	"Planet.h"
+	"Random.h"
+	"Ship.h"
+	"StellarObject.h"
+	"System.h"
+	<algorithm>
+	<cmath>
+
+1499119857 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\flotsam.cpp
+	"Flotsam.h"
+	"Angle.h"
+	"Effect.h"
+	"GameData.h"
+	"Outfit.h"
+	"Random.h"
+	"Ship.h"
+	"SpriteSet.h"
+
+1511767737 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\fogshader.cpp
+	"FogShader.h"
+	"GameData.h"
+	"PlayerInfo.h"
+	"Point.h"
+	"Screen.h"
+	"Shader.h"
+	"System.h"
+	"gl_header.h"
+	<cmath>
+	<vector>
+
+1499119857 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\fogshader.h
+
+1499119857 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\font.cpp
+	"Font.h"
+	"Color.h"
+	"ImageBuffer.h"
+	"Point.h"
+	"Screen.h"
+	<cmath>
+	<cstdlib>
+	<cstring>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\imagebuffer.h
+	<string>
+
+1499119857 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\fontset.cpp
+	"FontSet.h"
+	"Font.h"
+	<map>
+
+1499119857 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\format.cpp
+	"Format.h"
+	<algorithm>
+	<cctype>
+	<cmath>
+	<sstream>
+
+1499119857 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\frametimer.cpp
+	"FrameTimer.h"
+	<thread>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\galaxy.cpp
+	"Galaxy.h"
+	"DataNode.h"
+	"SpriteSet.h"
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\galaxy.h
+	"Point.h"
+
+1523844127 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\gamedata.cpp
+	"GameData.h"
+	"Audio.h"
+	"Color.h"
+	"Command.h"
+	"Conversation.h"
+	"DataFile.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"Effect.h"
+	"Files.h"
+	"FillShader.h"
+	"Fleet.h"
+	"FogShader.h"
+	"FontSet.h"
+	"Galaxy.h"
+	"GameEvent.h"
+	"Government.h"
+	"Interface.h"
+	"LineShader.h"
+	"Minable.h"
+	"Mission.h"
+	"Music.h"
+	"Outfit.h"
+	"OutlineShader.h"
+	"Person.h"
+	"Phrase.h"
+	"Planet.h"
+	"PointerShader.h"
+	"Politics.h"
+	"RingShader.h"
+	"Sale.h"
+	"Set.h"
+	"Ship.h"
+	"Sprite.h"
+	"SpriteQueue.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"StarField.h"
+	"StartConditions.h"
+	"System.h"
+	<algorithm>
+	<iostream>
+	<map>
+	<utility>
+	<vector>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\spritequeue.h
+	<condition_variable>
+	<map>
+	<mutex>
+	<queue>
+	<string>
+	<thread>
+	<vector>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\startconditions.h
+	"Account.h"
+	"ConditionSet.h"
+	"Date.h"
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\gameevent.cpp
+	"GameEvent.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"GameData.h"
+	"Government.h"
+	"PlayerInfo.h"
+	"System.h"
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\government.cpp
+	"Government.h"
+	"Conversation.h"
+	"DataNode.h"
+	"Fleet.h"
+	"GameData.h"
+	"Phrase.h"
+	"Politics.h"
+	"ShipEvent.h"
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\hailpanel.cpp
+	"HailPanel.h"
+	"DrawList.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"GameData.h"
+	"Government.h"
+	"Information.h"
+	"Interface.h"
+	"Messages.h"
+	"Phrase.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"Politics.h"
+	"Ship.h"
+	"Sprite.h"
+	"System.h"
+	"UI.h"
+	"WrappedText.h"
+	<algorithm>
+	<cmath>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\hailpanel.h
+	"Panel.h"
+	"Angle.h"
+	"Point.h"
+	<cstdint>
+	<memory>
+	<string>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\hardpoint.cpp
+	"Hardpoint.h"
+	"Armament.h"
+	"Audio.h"
+	"Effect.h"
+	"Outfit.h"
+	"pi.h"
+	"Projectile.h"
+	"Personality.h"
+	"Random.h"
+	"Ship.h"
+	<cmath>
+	<map>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\hiringpanel.cpp
+	"HiringPanel.h"
+	"FillShader.h"
+	"GameData.h"
+	"Information.h"
+	"Interface.h"
+	"PlayerInfo.h"
+	"Ship.h"
+	"UI.h"
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\hiringpanel.h
+	"Panel.h"
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\imagebuffer.cpp
+	"ImageBuffer.h"
+	"File.h"
+	<png.h>
+	<jpeglib.h>
+	<cstdio>
+	<vector>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\information.cpp
+	"Information.h"
+	"Sprite.h"
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\interface.cpp
+	"Interface.h"
+	"DataNode.h"
+	"Font.h"
+	"FontSet.h"
+	"GameData.h"
+	"Information.h"
+	"LineShader.h"
+	"OutlineShader.h"
+	"Panel.h"
+	"Rectangle.h"
+	"RingShader.h"
+	"Screen.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"UI.h"
+	<algorithm>
+	<cmath>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\iteminfodisplay.cpp
+	"ItemInfoDisplay.h"
+	"Color.h"
+	"FillShader.h"
+	"FontSet.h"
+	"GameData.h"
+	"Screen.h"
+	"Table.h"
+	<algorithm>
+	<cmath>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\lineshader.cpp
+	"LineShader.h"
+	"Color.h"
+	"Point.h"
+	"Screen.h"
+	"Shader.h"
+	<stdexcept>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\loadpanel.cpp
+	"LoadPanel.h"
+	"Color.h"
+	"Command.h"
+	"ConversationPanel.h"
+	"DataFile.h"
+	"Dialog.h"
+	"Files.h"
+	"FillShader.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"GameData.h"
+	"Information.h"
+	"Interface.h"
+	"MainPanel.h"
+	"Messages.h"
+	"PlayerInfo.h"
+	"Preferences.h"
+	"Rectangle.h"
+	"ShipyardPanel.h"
+	"StarField.h"
+	"UI.h"
+	<algorithm>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\loadpanel.h
+	"Panel.h"
+	"Point.h"
+	"SavedGame.h"
+	<ctime>
+	<map>
+	<string>
+	<utility>
+	<vector>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\savedgame.h
+	<string>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mainpanel.h
+	"Panel.h"
+	"Command.h"
+	"Engine.h"
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shipyardpanel.h
+	"ShopPanel.h"
+	"Sale.h"
+	<string>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shoppanel.h
+	"Panel.h"
+	"ClickZone.h"
+	"OutfitInfoDisplay.h"
+	"Point.h"
+	"ShipInfoDisplay.h"
+	<map>
+	<set>
+	<string>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\outfitinfodisplay.h
+	"ItemInfoDisplay.h"
+	<vector>
+	<string>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\locationfilter.cpp
+	"LocationFilter.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"DistanceMap.h"
+	"GameData.h"
+	"Government.h"
+	"Planet.h"
+	"Ship.h"
+	"System.h"
+	<mutex>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\logbookpanel.cpp
+	"LogbookPanel.h"
+	"Color.h"
+	"FillShader.h"
+	"Font.h"
+	"FontSet.h"
+	"GameData.h"
+	"Preferences.h"
+	"Screen.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"UI.h"
+	"WrappedText.h"
+	<set>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\logbookpanel.h
+	"Panel.h"
+	"PlayerInfo.h"
+	<map>
+	<string>
+	<vector>
+
+1523748690 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\main.cpp
+	"Audio.h"
+	"Command.h"
+	"Conversation.h"
+	"ConversationPanel.h"
+	"DataFile.h"
+	"DataNode.h"
+	"Dialog.h"
+	"Files.h"
+	"Font.h"
+	"FrameTimer.h"
+	"GameData.h"
+	"ImageBuffer.h"
+	"MenuPanel.h"
+	"Panel.h"
+	"PlayerInfo.h"
+	"Preferences.h"
+	"Screen.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"UI.h"
+	"gl_header.h"
+	<SDL2/SDL.h>
+	<cstring>
+	<iostream>
+	<map>
+	<fstream>
+	"LogFile.h"
+	<sstream>
+	<stdexcept>
+	<string>
+	<windows.h>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\menupanel.h
+	"Panel.h"
+	<string>
+	<vector>
+
+1519207338 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\logfile.h
+
+1518389445 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mainpanel.cpp
+	"MainPanel.h"
+	"BoardingPanel.h"
+	"Command.h"
+	"Dialog.h"
+	"Font.h"
+	"FontSet.h"
+	"FrameTimer.h"
+	"GameData.h"
+	"Government.h"
+	"HailPanel.h"
+	"LineShader.h"
+	"MapDetailPanel.h"
+	"Messages.h"
+	"Planet.h"
+	"PlanetPanel.h"
+	"PlayerInfo.h"
+	"PlayerInfoPanel.h"
+	"Preferences.h"
+	"Random.h"
+	"Screen.h"
+	"StellarObject.h"
+	"System.h"
+	"UI.h"
+	<sstream>
+	<string>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\planetpanel.h
+	"Panel.h"
+	"WrappedText.h"
+	<functional>
+	<memory>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfopanel.h
+	"Panel.h"
+	"ClickZone.h"
+	<set>
+	<vector>
+
+1523048551 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mapdetailpanel.cpp
+	"MapDetailPanel.h"
+	"Color.h"
+	"Command.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"GameData.h"
+	"Government.h"
+	"MapOutfitterPanel.h"
+	"MapShipyardPanel.h"
+	"pi.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"PointerShader.h"
+	"Politics.h"
+	"RingShader.h"
+	"Screen.h"
+	"Ship.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"System.h"
+	"Trade.h"
+	"UI.h"
+	"WrappedText.h"
+	<algorithm>
+	<cmath>
+	<set>
+	<utility>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mapoutfitterpanel.h
+	"MapSalesPanel.h"
+	"OutfitInfoDisplay.h"
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mapsalespanel.h
+	"MapPanel.h"
+	"ClickZone.h"
+	<set>
+	<string>
+	<vector>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mapshipyardpanel.h
+	"MapSalesPanel.h"
+	"ShipInfoDisplay.h"
+	<vector>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mapoutfitterpanel.cpp
+	"MapOutfitterPanel.h"
+	"Format.h"
+	"GameData.h"
+	"Outfit.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"Point.h"
+	"Screen.h"
+	"Sprite.h"
+	"StellarObject.h"
+	"System.h"
+	<algorithm>
+	<cmath>
+	<limits>
+	<set>
+
+1511946656 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mapsalespanel.cpp
+	"MapSalesPanel.h"
+	"Command.h"
+	"Dialog.h"
+	"FillShader.h"
+	"Font.h"
+	"FontSet.h"
+	"GameData.h"
+	"Government.h"
+	"ItemInfoDisplay.h"
+	"Outfit.h"
+	"PlayerInfo.h"
+	"Point.h"
+	"PointerShader.h"
+	"Preferences.h"
+	"RingShader.h"
+	"Screen.h"
+	"Ship.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"StellarObject.h"
+	"System.h"
+	"UI.h"
+	<algorithm>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mapshipyardpanel.cpp
+	"MapShipyardPanel.h"
+	"Format.h"
+	"GameData.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"Point.h"
+	"Screen.h"
+	"Ship.h"
+	"Sprite.h"
+	"StellarObject.h"
+	"System.h"
+	<algorithm>
+	<limits>
+	<set>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mask.cpp
+	"Mask.h"
+	"ImageBuffer.h"
+	<algorithm>
+	<cmath>
+	<limits>
+
+1511746386 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\menupanel.cpp
+	"MenuPanel.h"
+	"Command.h"
+	"ConversationPanel.h"
+	"Files.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"GameData.h"
+	"Interface.h"
+	"Information.h"
+	"LoadPanel.h"
+	"MainPanel.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"Point.h"
+	"PointerShader.h"
+	"PreferencesPanel.h"
+	"ShipyardPanel.h"
+	"Sprite.h"
+	"SpriteShader.h"
+	"StarField.h"
+	"System.h"
+	"UI.h"
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\preferencespanel.h
+	"Panel.h"
+	"ClickZone.h"
+	"Command.h"
+	<string>
+	<vector>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\messages.cpp
+	"Messages.h"
+	<mutex>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\minable.cpp
+	"Minable.h"
+	"DataNode.h"
+	"Effect.h"
+	"Flotsam.h"
+	"GameData.h"
+	"Mask.h"
+	"Outfit.h"
+	"pi.h"
+	"Projectile.h"
+	"Random.h"
+	"SpriteSet.h"
+	<cmath>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mission.cpp
+	"Mission.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"Dialog.h"
+	"DistanceMap.h"
+	"Format.h"
+	"GameData.h"
+	"Government.h"
+	"Messages.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"Random.h"
+	"Ship.h"
+	"ShipEvent.h"
+	"System.h"
+	"UI.h"
+	<cmath>
+	<sstream>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\missionaction.cpp
+	"MissionAction.h"
+	"ConversationPanel.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"Dialog.h"
+	"Format.h"
+	"GameData.h"
+	"Messages.h"
+	"Outfit.h"
+	"PlayerInfo.h"
+	"Ship.h"
+	"UI.h"
+	<vector>
+
+1523048551 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\missionpanel.cpp
+	"MissionPanel.h"
+	"Command.h"
+	"Dialog.h"
+	"FillShader.h"
+	"Font.h"
+	"FontSet.h"
+	"GameData.h"
+	"Information.h"
+	"Interface.h"
+	"LineShader.h"
+	"Mission.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"PointerShader.h"
+	"Preferences.h"
+	"RingShader.h"
+	"Screen.h"
+	"Ship.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"System.h"
+	"UI.h"
+	<sstream>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\missionpanel.h
+	"MapPanel.h"
+	"WrappedText.h"
+	<list>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mortgage.cpp
+	"Mortgage.h"
+	"DataNode.h"
+	"DataWriter.h"
+	<algorithm>
+	<cmath>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\music.cpp
+	"Music.h"
+	"Files.h"
+	<mad.h>
+	<cstring>
+	<map>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\npc.cpp
+	"NPC.h"
+	"ConversationPanel.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"Dialog.h"
+	"Format.h"
+	"GameData.h"
+	"Government.h"
+	"Messages.h"
+	"PlayerInfo.h"
+	"Random.h"
+	"Ship.h"
+	"ShipEvent.h"
+	"System.h"
+	"UI.h"
+	<vector>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\outfit.cpp
+	"Outfit.h"
+	"Audio.h"
+	"DataNode.h"
+	"Effect.h"
+	"GameData.h"
+	"SpriteSet.h"
+	<cmath>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\outfitinfodisplay.cpp
+	"OutfitInfoDisplay.h"
+	"Color.h"
+	"Depreciation.h"
+	"Format.h"
+	"Outfit.h"
+	"PlayerInfo.h"
+	<algorithm>
+	<map>
+	<set>
+	<sstream>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\outfitterpanel.cpp
+	"OutfitterPanel.h"
+	"Color.h"
+	"ConversationPanel.h"
+	"Dialog.h"
+	"DistanceMap.h"
+	"FillShader.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"GameData.h"
+	"Outfit.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"Point.h"
+	"Screen.h"
+	"Ship.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"UI.h"
+	<limits>
+
+1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\outfitterpanel.h
+	"ShopPanel.h"
+	"Sale.h"
+	<map>
+	<string>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\outlineshader.cpp
+	"OutlineShader.h"
+	"Color.h"
+	"Point.h"
+	"Screen.h"
+	"Shader.h"
+	"Sprite.h"
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\panel.cpp
+	"Panel.h"
+	"Color.h"
+	"Command.h"
+	"Dialog.h"
+	"FillShader.h"
+	"GameData.h"
+	"Preferences.h"
+	"Screen.h"
+	"UI.h"
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\person.cpp
+	"Person.h"
+	"DataNode.h"
+	"GameData.h"
+	"Government.h"
+	"Ship.h"
+	<iostream>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\personality.cpp
+	"Personality.h"
+	"Angle.h"
+	"DataNode.h"
+	"DataWriter.h"
+	<map>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\phrase.cpp
+	"Phrase.h"
+	"DataNode.h"
+	"GameData.h"
+	"Random.h"
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\planet.cpp
+	"Planet.h"
+	"DataNode.h"
+	"Format.h"
+	"GameData.h"
+	"Government.h"
+	"PlayerInfo.h"
+	"Politics.h"
+	"Random.h"
+	"Ship.h"
+	"ShipEvent.h"
+	"SpriteSet.h"
+	"System.h"
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\planetlabel.cpp
+	"PlanetLabel.h"
+	"Angle.h"
+	"Font.h"
+	"FontSet.h"
+	"Government.h"
+	"LineShader.h"
+	"pi.h"
+	"Planet.h"
+	"PointerShader.h"
+	"RingShader.h"
+	"StellarObject.h"
+	"System.h"
+	<cmath>
+	<iostream>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\planetpanel.cpp
+	"PlanetPanel.h"
+	"Information.h"
+	"BankPanel.h"
+	"Command.h"
+	"Dialog.h"
+	"GameData.h"
+	"FontSet.h"
+	"HiringPanel.h"
+	"Interface.h"
+	"MapDetailPanel.h"
+	"MissionPanel.h"
+	"OutfitterPanel.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"PlayerInfoPanel.h"
+	"Ship.h"
+	"ShipyardPanel.h"
+	"SpaceportPanel.h"
+	"System.h"
+	"TradingPanel.h"
+	"UI.h"
+	<sstream>
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\spaceportpanel.h
+	"Panel.h"
+	"WrappedText.h"
+
+1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\tradingpanel.h
+	"Panel.h"
+
+1523838006 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
+	"MapPanel.h"
+	"Angle.h"
+	"Dialog.h"
+	"FogShader.h"
+	"Font.h"
+	"FontSet.h"
+	"Fleet.h"
+	"Galaxy.h"
+	"GameData.h"
+	"Government.h"
+	"Information.h"
+	"Interface.h"
+	"LineShader.h"
+	"MapDetailPanel.h"
+	"MapOutfitterPanel.h"
+	"MapShipyardPanel.h"
+	"Mission.h"
+	"MissionPanel.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"PointerShader.h"
+	"Politics.h"
+	"Preferences.h"
+	"RingShader.h"
+	"Screen.h"
+	"Ship.h"
+	"SpriteShader.h"
+	"SpriteSet.h"
+	"StellarObject.h"
+	"System.h"
+	"Trade.h"
+	"UI.h"
+	<thread>
+	<algorithm>
+	<cctype>
+	<cmath>
+	<limits>
+	<fstream>
+	"RTSPlayer.h"
+
+1523142062 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\rtsplayer.h
+	"Planet.h"
+	<list>
+	<map>
+	<memory>
+	<set>
+	<string>
+	<utility>
+	<vector>
+
+1523837187 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfo.cpp
+	"PlayerInfo.h"
+	"Audio.h"
+	"ConversationPanel.h"
+	"DataFile.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"Dialog.h"
+	"Files.h"
+	"Format.h"
+	"GameData.h"
+	"Government.h"
+	"Messages.h"
+	"Mission.h"
+	"Outfit.h"
+	"Person.h"
+	"Planet.h"
+	"Politics.h"
+	"Random.h"
+	"SavedGame.h"
+	"Ship.h"
+	"ShipEvent.h"
+	"StartConditions.h"
+	"StellarObject.h"
+	"System.h"
+	"UI.h"
+	<algorithm>
+	<ctime>
+	<sstream>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfopanel.cpp
+	"PlayerInfoPanel.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"GameData.h"
+	"Information.h"
+	"Interface.h"
+	"LogbookPanel.h"
+	"MissionPanel.h"
+	"PlayerInfo.h"
+	"Preferences.h"
+	"Rectangle.h"
+	"Ship.h"
+	"ShipInfoPanel.h"
+	"System.h"
+	"Table.h"
+	"UI.h"
+	<algorithm>
+	<cmath>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\point.cpp
+	"Point.h"
+	<algorithm>
+	<cmath>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\pointershader.cpp
+	"PointerShader.h"
+	"Color.h"
+	"Point.h"
+	"Screen.h"
+	"Shader.h"
+	<stdexcept>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\politics.cpp
+	"Politics.h"
+	"Format.h"
+	"GameData.h"
+	"Government.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"Random.h"
+	"Ship.h"
+	"ShipEvent.h"
+	"System.h"
+	<algorithm>
+	<cmath>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\preferences.cpp
+	"Preferences.h"
+	"Audio.h"
+	"DataFile.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"Files.h"
+	"Screen.h"
+	<algorithm>
+	<map>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\preferencespanel.cpp
+	"PreferencesPanel.h"
+	"Audio.h"
+	"Color.h"
+	"Dialog.h"
+	"Files.h"
+	"FontSet.h"
+	"GameData.h"
+	"Information.h"
+	"Interface.h"
+	"Preferences.h"
+	"Screen.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"StarField.h"
+	"Table.h"
+	"UI.h"
+	"WrappedText.h"
+	"gl_header.h"
+	<SDL2/SDL.h>
+
+1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\projectile.cpp
+	"Projectile.h"
+	"Effect.h"
+	"Mask.h"
+	"Outfit.h"
+	"pi.h"
+	"Random.h"
+	"Ship.h"
+	"Sprite.h"
+	<algorithm>
+	<cmath>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\radar.cpp
+	"Radar.h"
+	"PointerShader.h"
+	"RingShader.h"
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\random.cpp
+	"Random.h"
+	<random>
+	<mutex>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\rectangle.cpp
+	"Rectangle.h"
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ringshader.cpp
+	"RingShader.h"
+	"Color.h"
+	"pi.h"
+	"Point.h"
+	"Screen.h"
+	"Shader.h"
+	<stdexcept>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\savedgame.cpp
+	"SavedGame.h"
+	"DataFile.h"
+	"DataNode.h"
+	"Date.h"
+	"Format.h"
+	"SpriteSet.h"
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\screen.cpp
+	"Screen.h"
+	<algorithm>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shader.cpp
+	"Shader.h"
+	<cctype>
+	<cstring>
+	<iostream>
+	<stdexcept>
+	<vector>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.cpp
+	"Ship.h"
+	"Audio.h"
+	"DataNode.h"
+	"DataWriter.h"
+	"Effect.h"
+	"GameData.h"
+	"Government.h"
+	"Mask.h"
+	"Messages.h"
+	"Phrase.h"
+	"Planet.h"
+	"Projectile.h"
+	"Random.h"
+	"ShipEvent.h"
+	"System.h"
+	<algorithm>
+	<cmath>
+	<iostream>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shipevent.cpp
+	"ShipEvent.h"
+	"Ship.h"
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shipinfodisplay.cpp
+	"ShipInfoDisplay.h"
+	"Color.h"
+	"Depreciation.h"
+	"FillShader.h"
+	"Format.h"
+	"GameData.h"
+	"Outfit.h"
+	"Ship.h"
+	"Table.h"
+	<algorithm>
+	<map>
+	<sstream>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shipinfopanel.cpp
+	"ShipInfoPanel.h"
+	"Dialog.h"
+	"FillShader.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"GameData.h"
+	"Information.h"
+	"Interface.h"
+	"LineShader.h"
+	"LogbookPanel.h"
+	"Messages.h"
+	"MissionPanel.h"
+	"PlayerInfo.h"
+	"PlayerInfoPanel.h"
+	"Rectangle.h"
+	"Ship.h"
+	"Sprite.h"
+	"SpriteShader.h"
+	"Table.h"
+	"UI.h"
+	<algorithm>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shipyardpanel.cpp
+	"ShipyardPanel.h"
+	"Color.h"
+	"Dialog.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"GameData.h"
+	"Phrase.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"Point.h"
+	"Screen.h"
+	"Ship.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"System.h"
+	"UI.h"
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shoppanel.cpp
+	"ShopPanel.h"
+	"Color.h"
+	"FillShader.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"GameData.h"
+	"Government.h"
+	"OutlineShader.h"
+	"PlayerInfo.h"
+	"Point.h"
+	"PointerShader.h"
+	"Preferences.h"
+	"Screen.h"
+	"Ship.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	"SpriteShader.h"
+	"UI.h"
+	<SDL2/SDL.h>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\sound.cpp
+	"Sound.h"
+	"Files.h"
+	"File.h"
+	<AL/al.h>
+	<OpenAL/al.h>
+	<cstdio>
+	<vector>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\spaceportpanel.cpp
+	"SpaceportPanel.h"
+	"Color.h"
+	"FontSet.h"
+	"GameData.h"
+	"Planet.h"
+	"PlayerInfo.h"
+	"Point.h"
+	"UI.h"
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\sprite.cpp
+	"Sprite.h"
+	"ImageBuffer.h"
+	"Preferences.h"
+	"Screen.h"
+	"gl_header.h"
+	<SDL2/SDL.h>
+	<algorithm>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\spritequeue.cpp
+	"SpriteQueue.h"
+	"ImageBuffer.h"
+	"Mask.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	<algorithm>
+	<functional>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\spriteset.cpp
+	"SpriteSet.h"
+	"Sprite.h"
+	<map>
+
+1522912585 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\spriteshader.cpp
+	"SpriteShader.h"
+	"Point.h"
+	"Screen.h"
+	"Shader.h"
+	"Sprite.h"
+	<vector>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\starfield.cpp
+	"StarField.h"
+	"Angle.h"
+	"Body.h"
+	"DrawList.h"
+	"pi.h"
+	"Point.h"
+	"Preferences.h"
+	"Random.h"
+	"Screen.h"
+	"Sprite.h"
+	"SpriteSet.h"
+	<cmath>
+	<numeric>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\startconditions.cpp
+	"StartConditions.h"
+	"DataNode.h"
+	"GameData.h"
+	"Planet.h"
+	"System.h"
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\stellarobject.cpp
+	"StellarObject.h"
+	"Color.h"
+	"GameData.h"
+	"Planet.h"
+	"Politics.h"
+	<algorithm>
+
+1523837524 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\system.cpp
+	"System.h"
+	"Angle.h"
+	"DataNode.h"
+	"Date.h"
+	"Fleet.h"
+	"GameData.h"
+	"Government.h"
+	"Minable.h"
+	"Planet.h"
+	"Random.h"
+	"SpriteSet.h"
+	<cmath>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\table.cpp
+	"Table.h"
+	"FillShader.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"Rectangle.h"
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\trade.cpp
+	"Trade.h"
+	"DataNode.h"
+	<algorithm>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\tradingpanel.cpp
+	"TradingPanel.h"
+	"Color.h"
+	"Command.h"
+	"FillShader.h"
+	"Font.h"
+	"FontSet.h"
+	"Format.h"
+	"GameData.h"
+	"Information.h"
+	"Interface.h"
+	"MapDetailPanel.h"
+	"Messages.h"
+	"Outfit.h"
+	"PlayerInfo.h"
+	"System.h"
+	"UI.h"
+	<algorithm>
+	<string>
+
+1521148055 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ui.cpp
+	"UI.h"
+	"Command.h"
+	"Panel.h"
+	"Screen.h"
+	<SDL2/SDL.h>
+	<algorithm>
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\weapon.cpp
+	"Weapon.h"
+	"Audio.h"
+	"DataNode.h"
+	"Effect.h"
+	"GameData.h"
+	"Outfit.h"
+	"SpriteSet.h"
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\winapp.rc
+
+1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\wrappedtext.cpp
+	"WrappedText.h"
+	"Font.h"
+	"Point.h"
+	<cstring>
+
+1394940881 c:\dev32\include\sdl2\sdl.h
+	"SDL_main.h"
+	"SDL_stdinc.h"
+	"SDL_assert.h"
+	"SDL_atomic.h"
+	"SDL_audio.h"
+	"SDL_clipboard.h"
+	"SDL_cpuinfo.h"
+	"SDL_endian.h"
+	"SDL_error.h"
+	"SDL_events.h"
+	"SDL_filesystem.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_haptic.h"
+	"SDL_hints.h"
+	"SDL_loadso.h"
+	"SDL_log.h"
+	"SDL_messagebox.h"
+	"SDL_mutex.h"
+	"SDL_power.h"
+	"SDL_render.h"
+	"SDL_rwops.h"
+	"SDL_system.h"
+	"SDL_thread.h"
+	"SDL_timer.h"
+	"SDL_version.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1487844382 c:\dev32\include\sdl2\sdl_main.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_stdinc.h
+	"SDL_config.h"
+	<sys/types.h>
+	<stdio.h>
+	<stdlib.h>
+	<stddef.h>
+	<stdarg.h>
+	<stdlib.h>
+	<malloc.h>
+	<stddef.h>
+	<stdarg.h>
+	<memory.h>
+	<string.h>
+	<strings.h>
+	<inttypes.h>
+	<stdint.h>
+	<ctype.h>
+	<math.h>
+	<float.h>
+	<iconv.h>
+	"begin_code.h"
+	<alloca.h>
+	<malloc.h>
+	<malloc.h>
+	<malloc.h>
+	<stdlib.h>
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_config.h
+	"SDL_platform.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_platform.h
+	"AvailabilityMacros.h"
+	"TargetConditionals.h"
+	<winapifamily.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\begin_code.h
+
+1394940881 c:\dev32\include\sdl2\close_code.h
+
+1394940881 c:\dev32\include\sdl2\sdl_assert.h
+	"SDL_config.h"
+	"begin_code.h"
+	<signal.h>
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_atomic.h
+	"SDL_stdinc.h"
+	"SDL_platform.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_audio.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_endian.h"
+	"SDL_mutex.h"
+	"SDL_thread.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_error.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_endian.h
+	"SDL_stdinc.h"
+	<endian.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_mutex.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_thread.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_atomic.h"
+	"SDL_mutex.h"
+	"begin_code.h"
+	<process.h>
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_rwops.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_clipboard.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_cpuinfo.h
+	"SDL_stdinc.h"
+	<intrin.h>
+	<intrin.h>
+	<altivec.h>
+	<mmintrin.h>
+	<mm3dnow.h>
+	<xmmintrin.h>
+	<emmintrin.h>
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_events.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_keyboard.h"
+	"SDL_mouse.h"
+	"SDL_joystick.h"
+	"SDL_gamecontroller.h"
+	"SDL_quit.h"
+	"SDL_gesture.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_video.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_surface.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_pixels.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_rect.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_pixels.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_surface.h
+	"SDL_stdinc.h"
+	"SDL_pixels.h"
+	"SDL_rect.h"
+	"SDL_blendmode.h"
+	"SDL_rwops.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_blendmode.h
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_keyboard.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_keycode.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_keycode.h
+	"SDL_stdinc.h"
+	"SDL_scancode.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_scancode.h
+	"SDL_stdinc.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_mouse.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_joystick.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_gamecontroller.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_rwops.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_quit.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_gesture.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"SDL_touch.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_touch.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_filesystem.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_haptic.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"SDL_joystick.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_hints.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_loadso.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_log.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_messagebox.h
+	"SDL_stdinc.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_power.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_render.h
+	"SDL_stdinc.h"
+	"SDL_rect.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_system.h
+	"SDL_stdinc.h"
+	"SDL_keyboard.h"
+	"SDL_render.h"
+	"SDL_video.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_timer.h
+	"SDL_stdinc.h"
+	"SDL_error.h"
+	"begin_code.h"
+	"close_code.h"
+
+1394940881 c:\dev32\include\sdl2\sdl_version.h
+	"SDL_stdinc.h"
+	"begin_code.h"
+	"close_code.h"
+
+1418336519 c:\dev32\include\al\al.h
+
+1418336519 c:\dev32\include\al\alc.h
+
+1419288552 c:\dev32\include\gl\glew.h
+	<stddef.h>
+	<inttypes.h>
+	<stdint.h>
+	<inttypes.h>
+	<Availability.h>
+	<OpenGL/glu.h>
+	<GL/glu.h>
+
+1386136886 c:\dev32\include\png.h
+	"pnglibconf.h"
+	<setjmp.h>
+	<time.h>
+	"pngconf.h"
+
+1386136886 c:\dev32\include\pnglibconf.h
+
+1386136886 c:\dev32\include\pngconf.h
+	<limits.h>
+	<strings.h>
+	<string.h>
+	<stdio.h>
+	<dos.h>
+
+1358556150 c:\dev32\include\jpeglib.h
+	"jconfig.h"
+	"jmorecfg.h"
+	"jpegint.h"
+	"jerror.h"
+
+1397940488 c:\dev32\include\jconfig.h
+
+1357498782 c:\dev32\include\jmorecfg.h
+
+1308640396 c:\dev32\include\jerror.h
+
+1425865881 c:\dev32\include\mad.h
 

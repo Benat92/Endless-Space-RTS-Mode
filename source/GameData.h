@@ -63,10 +63,10 @@ public:
 	// done with all landscapes to speed up the program's startup.
 	static void Preload(const Sprite *sprite);
 	static void FinishLoading();
-	
+
 	// Get the list of resource sources (i.e. plugin folders).
 	static const std::vector<std::string> &Sources();
-	
+
 	// Revert any changes that have been made to the universe.
 	static void Revert();
 	static void SetDate(const Date &date);
@@ -80,14 +80,14 @@ public:
 	// Update the neighbor lists of all the systems. This must be done any time
 	// that a change creates or moves a system.
 	static void UpdateNeighbors();
-	
+
 	static const Set<Color> &Colors();
 	static const Set<Conversation> &Conversations();
 	static const Set<Effect> &Effects();
 	static const Set<GameEvent> &Events();
 	static const Set<Fleet> &Fleets();
 	static const Set<Galaxy> &Galaxies();
-	static const Set<Government> &Governments();
+	static Set<Government> &Governments(); //RTS no longer const
 	static const Set<Interface> &Interfaces();
 	static const Set<Minable> &Minables();
 	static const Set<Mission> &Missions();
@@ -96,39 +96,41 @@ public:
 	static const Set<Phrase> &Phrases();
 	static const Set<Planet> &Planets();
 	static const Set<Ship> &Ships();
-	static const Set<System> &Systems();
-	
+	static Set<System> &Systems(); //RTS changed from const
+
+	static Government const *PlayerOneGovernment(); //Static functions can be called without an object needing to be declared.
 	static const Government *PlayerGovernment();
+
 	static Politics &GetPolitics();
 	static const StartConditions &Start();
-	
+
 	static const std::vector<Trade::Commodity> &Commodities();
 	static const std::vector<Trade::Commodity> &SpecialCommodities();
-	
+
 	// Custom messages to be shown when trying to land on certain stellar objects.
 	static bool HasLandingMessage(const Sprite *sprite);
 	static const std::string &LandingMessage(const Sprite *sprite);
-	
+
 	// Strings for combat rating levels.
 	static const std::vector<std::string> &CombatRatings();
-	
+
 	static const StarField &Background();
 	static void SetHaze(const Sprite *sprite);
-	
+
 	static const std::string &Tooltip(const std::string &label);
 	static std::string HelpMessage(const std::string &name);
 	static const std::map<std::string, std::string> &HelpTemplates();
-	
+
 	static const std::map<std::string, std::string> &PluginAboutText();
-	
-	
+
+
 private:
 	static void LoadSources();
 	static void LoadFile(const std::string &path, bool debugMode);
 	static void LoadImages(std::map<std::string, std::string> &images);
 	static void LoadImage(const std::string &path, std::map<std::string, std::string> &images, size_t start);
 	static std::string Name(const std::string &path);
-	
+
 	static void PrintShipTable();
 	static void PrintWeaponTable();
 };

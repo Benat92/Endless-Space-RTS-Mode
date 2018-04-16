@@ -130,6 +130,8 @@ protected:
 
 private:
 
+void RTSDrawTravelPlan(const Ship *selectedShip);
+
 	void DrawTravelPlan();
 	void DrawWormholes();
 	void DrawLinks();

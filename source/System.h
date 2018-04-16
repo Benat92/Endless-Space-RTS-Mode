@@ -88,8 +88,12 @@ public:
 	// Get this system's name and position (in the star map).
 	const std::string &Name() const;
 	const Point &Position() const;
+
+	//Set government of system
+	void  SetGovernment(const Government *gov);
 	// Get this system's government.
 	const Government *GetGovernment() const;
+
 	// Get the name of the ambient audio to play in this system.
 	const std::string &MusicName() const;
 
@@ -172,7 +176,7 @@ private:
 	// Name and position (within the star map) of this system.
 	std::string name;
 	Point position;
-	const Government *government = nullptr;
+	const Government *government; //RTS Changed from const
 	std::string music;
 
 	// Hyperspace links to other systems.
