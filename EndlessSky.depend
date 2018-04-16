@@ -7220,7 +7220,7 @@
 	<set>
 	<vector>
 
-1523829493 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\set.h
+1523844284 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\set.h
 	<map>
 	<string>
 
@@ -7257,7 +7257,7 @@
 	<string>
 	<vector>
 
-1523837187 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\gamedata.h
+1523907718 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\gamedata.h
 	"Set.h"
 	"Trade.h"
 	<map>
@@ -8058,7 +8058,7 @@
 1499119858 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\galaxy.h
 	"Point.h"
 
-1523844127 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\gamedata.cpp
+1523908870 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\gamedata.cpp
 	"GameData.h"
 	"Audio.h"
 	"Color.h"
@@ -8346,7 +8346,7 @@
 	<string>
 	<vector>
 
-1523748690 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\main.cpp
+1523865516 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\main.cpp
 	"Audio.h"
 	"Command.h"
 	"Conversation.h"
@@ -8839,7 +8839,7 @@
 1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\tradingpanel.h
 	"Panel.h"
 
-1523838006 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
+1523912513 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
 	"MapPanel.h"
 	"Angle.h"
 	"Dialog.h"

@@ -98,7 +98,17 @@ public:
 	static const Set<Ship> &Ships();
 	static Set<System> &Systems(); //RTS changed from const
 
+
 	static Government const *PlayerOneGovernment(); //Static functions can be called without an object needing to be declared.
+	static Government const *PlayerTwoGovernment(); //Static functions can be called without an object needing to be declared.
+	static Government const *PlayerThreeGovernment(); //Static functions can be called without an object needing to be declared.
+	static Government const *PlayerFourGovernment(); //Static functions can be called without an object needing to be declared.
+	static Government const *PlayerFiveGovernment(); //Static functions can be called without an object needing to be declared.
+	static Government const *PlayerSixGovernment(); //Static functions can be called without an object needing to be declared.
+	static Government const *PlayerSevenGovernment(); //Static functions can be called without an object needing to be declared.
+	static Government const *PlayerEightGovernment(); //Static functions can be called without an object needing to be declared.
+
+
 	static const Government *PlayerGovernment();
 
 	static Politics &GetPolitics();

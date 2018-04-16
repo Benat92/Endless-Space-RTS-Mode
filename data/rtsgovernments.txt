@@ -14,28 +14,28 @@ government "Player1"
 
 government "Player2"
 	swizzle 0
-	color .91 .42 .09
+	color .40 .01 .91
 
 government "Player3"
 	swizzle 0
-	color .91 .42 .09
+	color .91 .42 .91
 
 government "Player4"
 	swizzle 0
-	color .91 .42 .09
+	color .20 .91 .20
 
 government "Player5"
 	swizzle 0
-	color .91 .42 .09
+	color .60 .12 .60
 
 government "Player6"
 	swizzle 0
-	color .91 .42 .09
+	color .99 .89 .89
 
 government "Player7"
 	swizzle 0
-	color .91 .42 .09
+	color .89 .01 .01
 
 government "Player8"
 	swizzle 0
-	color .91 .42 .09
+	color .22 .22 .91

@@ -624,6 +624,40 @@ Government const *GameData::PlayerOneGovernment() //Chnagd fron const
 	return playerOneGovernment;
 }
 
+Government const *GameData::PlayerTwoGovernment() //Chnagd fron const
+{
+	return playerTwoGovernment;
+}
+
+Government const *GameData::PlayerThreeGovernment() //Chnagd fron const
+{
+	return playerThreeGovernment;
+}
+
+Government const *GameData::PlayerFourGovernment() //Chnagd fron const
+{
+	return playerFourGovernment;
+}
+
+Government const *GameData::PlayerFiveGovernment() //Chnagd fron const
+{
+	return playerFiveGovernment;
+}
+
+Government const *GameData::PlayerSixGovernment() //Chnagd fron const
+{
+	return playerSixGovernment;
+}
+
+Government const *GameData::PlayerSevenGovernment() //Chnagd fron const
+{
+	return playerSevenGovernment;
+}
+Government const *GameData::PlayerEightGovernment() //Chnagd fron const
+{
+	return playerEightGovernment;
+}
+
 Politics &GameData::GetPolitics()
 {
 	return politics;

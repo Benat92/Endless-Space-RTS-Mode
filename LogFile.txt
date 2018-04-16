@@ -1,4 +1,44 @@
-LOG FILE: OPENED Succesfully!
+LOG FILE: OPENED Successfully!
 No, Joysticks connected! 
+MapPanel initialized!
 
-Player selected system: Rajak
+
+Government of Sirius is Republic
+Player 1's government changed to Player1
+Government of Sirius set to Player1
+
+Government of Pollux is Republic
+Player 2's government changed to Player2
+Government of Pollux set to Player2
+
+Government of Caph is Syndicate
+Player 3's government changed to Player3
+Government of Caph set to Player3
+
+Government of Fingol is Republic
+Player 4's government changed to Player4
+Government of Fingol set to Player4
+
+Government of Capella is Republic
+Player 5's government changed to Player5
+Government of Capella set to Player5
+
+Government of Diphda is Syndicate
+Player 6's government changed to Player6
+Government of Diphda set to Player6
+
+Government of Kugel is Syndicate
+Player 7's government changed to Player7
+Government of Kugel set to Player7
+
+Government of  Nihal is 
+Player 8's government changed to Player8
+Government of  Nihal set to Player8
+
+RTS players initialized!
+
+
+
+Player selected system: Kugel
+SelectedShip's name is Tackin
+SelectedShip's government is Escort
