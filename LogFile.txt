@@ -34,11 +34,71 @@ Government of Kugel set to Player7
 Government of  Nihal is 
 Player 8's government changed to Player8
 Government of  Nihal set to Player8
+SpawnSystem value: 0x8f8aff0
+
+Ship added: 
+Name: MotherShip: Player1
+Government: Player1
+MotherShip: Player1
+System: Sirius
+Flagship test! MotherShip: Player1 for Player1
+SpawnSystem value: 0x7a903e0
+
+Ship added: 
+Name: MotherShip: Player2
+Government: Player2
+MotherShip: Player2
+System: Pollux
+Flagship test! MotherShip: Player2 for Player2
+SpawnSystem value: 0x76beac0
+
+Ship added: 
+Name: MotherShip: Player3
+Government: Player3
+MotherShip: Player3
+System: Caph
+Flagship test! MotherShip: Player3 for Player3
+SpawnSystem value: 0x8f8aae0
+
+Ship added: 
+Name: MotherShip: Player4
+Government: Player4
+MotherShip: Player4
+System: Fingol
+Flagship test! MotherShip: Player4 for Player4
+SpawnSystem value: 0x84c8390
+
+Ship added: 
+Name: MotherShip: Player5
+Government: Player5
+MotherShip: Player5
+System: Capella
+Flagship test! MotherShip: Player5 for Player5
+SpawnSystem value: 0x76bf9f0
+
+Ship added: 
+Name: MotherShip: Player6
+Government: Player6
+MotherShip: Player6
+System: Diphda
+Flagship test! MotherShip: Player6 for Player6
+SpawnSystem value: 0x8def260
+
+Ship added: 
+Name: MotherShip: Player7
+Government: Player7
+MotherShip: Player7
+System: Kugel
+Flagship test! MotherShip: Player7 for Player7
+SpawnSystem value: 0xa940c90
+
+Ship added: 
+Name: MotherShip: Player8
+Government: Player8
+MotherShip: Player8
+System: 
+Flagship test! MotherShip: Player8 for Player8
 
 RTS players initialized!
 
 
-
-Player selected system: Kugel
-SelectedShip's name is Tackin
-SelectedShip's government is Escort

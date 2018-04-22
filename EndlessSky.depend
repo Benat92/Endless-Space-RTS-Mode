@@ -7224,7 +7224,7 @@
 	<map>
 	<string>
 
-1523837362 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfo.h
+1524428379 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfo.h
 	"Account.h"
 	"CargoHold.h"
 	"Date.h"
@@ -7368,7 +7368,7 @@
 1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shipevent.h
 	<memory>
 
-1523837809 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\system.h
+1524429354 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\system.h
 	"Point.h"
 	"Set.h"
 	"StellarObject.h"
@@ -8839,7 +8839,7 @@
 1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\tradingpanel.h
 	"Panel.h"
 
-1523912513 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
+1524431063 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
 	"MapPanel.h"
 	"Angle.h"
 	"Dialog.h"
@@ -8890,7 +8890,7 @@
 	<utility>
 	<vector>
 
-1523837187 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfo.cpp
+1524431160 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfo.cpp
 	"PlayerInfo.h"
 	"Audio.h"
 	"ConversationPanel.h"
@@ -8919,6 +8919,7 @@
 	<algorithm>
 	<ctime>
 	<sstream>
+	<fstream>
 
 1499119858 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfopanel.cpp
 	"PlayerInfoPanel.h"
@@ -9055,7 +9056,7 @@
 	<stdexcept>
 	<vector>
 
-1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.cpp
+1524436287 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.cpp
 	"Ship.h"
 	"Audio.h"
 	"DataNode.h"
@@ -9074,6 +9075,7 @@
 	<algorithm>
 	<cmath>
 	<iostream>
+	<fstream>
 
 1499119859 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\shipevent.cpp
 	"ShipEvent.h"

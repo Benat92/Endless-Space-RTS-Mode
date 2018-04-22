@@ -83,6 +83,8 @@ extern const int JOYSTICK_DEAD_ZONE; //RTS controller
 
 PlayerInfo PlayerInfoRTS[9];
 void RTSInitializePlayers();
+void InitializeFlagships(PlayerInfo &Player);
+
 Ship *selectedShip = nullptr;
 
 
@@ -164,56 +166,75 @@ void RTSInitializePlayers()
     LogFile << "Player 1's government changed to " << PlayerInfoRTS[1].GetGovernment()->GetName() << endl;
    GameData::Systems().Get(STARTINGLOCATION1)->SetGovernment(GameData::PlayerOneGovernment());
     LogFile << "Government of "<< STARTINGLOCATION1 << " set to " << GameData::Systems().Get(STARTINGLOCATION1)->GetGovernment()->GetName() << endl;
-
+    PlayerInfoRTS[1].SetSystem(GameData::Systems().Get(STARTINGLOCATION1));
 
     LogFile <<endl << "Government of " << STARTINGLOCATION2 << " is " << GameData::Systems().Get(STARTINGLOCATION2)->GetGovernment()->GetName() << endl;
     PlayerInfoRTS[2].SetGovernment(GameData::PlayerTwoGovernment());
     LogFile << "Player 2's government changed to " << PlayerInfoRTS[2].GetGovernment()->GetName() << endl;
    GameData::Systems().Get(STARTINGLOCATION2)->SetGovernment(GameData::PlayerTwoGovernment());
     LogFile << "Government of " << STARTINGLOCATION2 << " set to " << GameData::Systems().Get(STARTINGLOCATION2)->GetGovernment()->GetName() << endl;
-
+PlayerInfoRTS[2].SetSystem(GameData::Systems().Get(STARTINGLOCATION2));
 
     LogFile <<endl << "Government of "<< STARTINGLOCATION3 << " is " << GameData::Systems().Get(STARTINGLOCATION3)->GetGovernment()->GetName() << endl;
     PlayerInfoRTS[3].SetGovernment(GameData::PlayerThreeGovernment());
     LogFile << "Player 3's government changed to " << PlayerInfoRTS[3].GetGovernment()->GetName() << endl;
    GameData::Systems().Get(STARTINGLOCATION3)->SetGovernment(GameData::PlayerThreeGovernment());
     LogFile << "Government of " << STARTINGLOCATION3 << " set to " << GameData::Systems().Get(STARTINGLOCATION3)->GetGovernment()->GetName() << endl;
+PlayerInfoRTS[3].SetSystem(GameData::Systems().Get(STARTINGLOCATION3));
 
     LogFile <<endl << "Government of " << STARTINGLOCATION4 << " is " << GameData::Systems().Get(STARTINGLOCATION4)->GetGovernment()->GetName() << endl;
     PlayerInfoRTS[4].SetGovernment(GameData::PlayerFourGovernment());
     LogFile << "Player 4's government changed to " << PlayerInfoRTS[4].GetGovernment()->GetName() << endl;
    GameData::Systems().Get(STARTINGLOCATION4)->SetGovernment(GameData::PlayerFourGovernment());
     LogFile << "Government of "<< STARTINGLOCATION4 << " set to " << GameData::Systems().Get(STARTINGLOCATION4)->GetGovernment()->GetName() << endl;
+PlayerInfoRTS[4].SetSystem(GameData::Systems().Get(STARTINGLOCATION4));
 
     LogFile <<endl << "Government of " << STARTINGLOCATION5 << " is " << GameData::Systems().Get(STARTINGLOCATION5)->GetGovernment()->GetName() << endl;
     PlayerInfoRTS[5].SetGovernment(GameData::PlayerFiveGovernment());
     LogFile << "Player 5's government changed to " << PlayerInfoRTS[5].GetGovernment()->GetName() << endl;
    GameData::Systems().Get(STARTINGLOCATION5)->SetGovernment(GameData::PlayerFiveGovernment());
     LogFile << "Government of " << STARTINGLOCATION5 << " set to " << GameData::Systems().Get(STARTINGLOCATION5)->GetGovernment()->GetName() << endl;
+PlayerInfoRTS[5].SetSystem(GameData::Systems().Get(STARTINGLOCATION5));
 
     LogFile <<endl << "Government of " << STARTINGLOCATION6 << " is " << GameData::Systems().Get(STARTINGLOCATION6)->GetGovernment()->GetName() << endl;
     PlayerInfoRTS[6].SetGovernment(GameData::PlayerSixGovernment());
     LogFile << "Player 6's government changed to " << PlayerInfoRTS[6].GetGovernment()->GetName() << endl;
    GameData::Systems().Get(STARTINGLOCATION6)->SetGovernment(GameData::PlayerSixGovernment());
     LogFile << "Government of " << STARTINGLOCATION6 << " set to " << GameData::Systems().Get(STARTINGLOCATION6)->GetGovernment()->GetName() << endl;
+PlayerInfoRTS[6].SetSystem(GameData::Systems().Get(STARTINGLOCATION6));
 
     LogFile <<endl << "Government of " << STARTINGLOCATION7 << " is " << GameData::Systems().Get(STARTINGLOCATION7)->GetGovernment()->GetName() << endl;
     PlayerInfoRTS[7].SetGovernment(GameData::PlayerSevenGovernment());
     LogFile << "Player 7's government changed to " << PlayerInfoRTS[7].GetGovernment()->GetName() << endl;
    GameData::Systems().Get(STARTINGLOCATION7)->SetGovernment(GameData::PlayerSevenGovernment());
     LogFile << "Government of " << STARTINGLOCATION7 << " set to " << GameData::Systems().Get(STARTINGLOCATION7)->GetGovernment()->GetName() << endl;
+PlayerInfoRTS[7].SetSystem(GameData::Systems().Get(STARTINGLOCATION7));
 
         LogFile <<endl << "Government of " << STARTINGLOCATION8 << " is " << GameData::Systems().Get(STARTINGLOCATION8)->GetGovernment()->GetName() << endl;
     PlayerInfoRTS[8].SetGovernment(GameData::PlayerEightGovernment());
     LogFile << "Player 8's government changed to " << PlayerInfoRTS[8].GetGovernment()->GetName() << endl;
    GameData::Systems().Get(STARTINGLOCATION8)->SetGovernment(GameData::PlayerEightGovernment());
     LogFile << "Government of " << STARTINGLOCATION8 << " set to " << GameData::Systems().Get(STARTINGLOCATION8)->GetGovernment()->GetName() << endl;
+PlayerInfoRTS[8].SetSystem(GameData::Systems().Get(STARTINGLOCATION8));
 
-// To do: Iniliaze Flagships
 
+for(int n=1; n < 9; n++)
+{
+    InitializeFlagships(PlayerInfoRTS[n]);
+}
 LogFile <<endl << "RTS players initialized!\n\n\n";
     return;
 }
+
+void InitializeFlagships(PlayerInfo &Player)
+{
+
+Player.RTSAddShip(Player, Player.GetSystem(), GameData::Ships().Get("Mothership"), "MotherShip " + Player.GetGovernment()->GetName());
+LogFile << "MotherShip: " + Player.GetGovernment()->GetName() << endl << "System: " << Player.GetSystem()->Name() << endl;
+//LogFile <<"Flagship test! " << Player.Flagship()->Name() << " for " << Player.Flagship()->GetGovernment()->GetName() << endl;
+return;
+}
+
 
 void MapPanel::Draw()
 {

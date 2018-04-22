@@ -37,11 +37,15 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 #include "System.h"
 #include "UI.h"
 
+
 #include <algorithm>
 #include <ctime>
 #include <sstream>
+#include <fstream> // LogFile
+extern std::ofstream LogFile;
 
 using namespace std;
+
 
 
 
@@ -640,6 +644,7 @@ void PlayerInfo::SetSystem(const System *system)
 // Get the player's current star system.
 const System *PlayerInfo::GetSystem() const
 {
+
 	return system;
 }
 
@@ -785,7 +790,19 @@ void PlayerInfo::AddShip(const shared_ptr<Ship> &ship)
 	ship->SetIsYours();
 }
 
+// Add a captured ship to your fleet.
+void PlayerInfo::RTSAddShip(PlayerInfo &Player, const System* SpawnSystem, const Ship *model, const string &name)
+{
+	ships.push_back(shared_ptr<Ship>(new Ship(*model)));
+    ships.back()->SetName(name);
+    ships.back()->SetSystem(SpawnSystem);
+	ships.back()->SetIsSpecial();
+	ships.back()->SetIsYours();
+	ships.back()->SetGovernment(Player.GetGovernment());
 
+	LogFile << "SpawnSystem value: " << SpawnSystem << endl;
+	LogFile << "\nShip added: " << model->Name() << endl << "Name: " << name << endl << "Government: " << GetGovernment()->GetName() << endl;
+}
 
 // Buy a ship of the given model, and give it the given name.
 void PlayerInfo::BuyShip(const Ship *model, const string &name)

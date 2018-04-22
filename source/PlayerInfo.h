@@ -140,6 +140,8 @@ public:
 	const std::vector<std::shared_ptr<Ship>> &Ships() const;
 	// Add a captured ship to your fleet.
 	void AddShip(const std::shared_ptr<Ship> &ship);
+
+	void RTSAddShip(PlayerInfo &Player, const System *SpawnSystem, const Ship *model, const std::string &name);
 	// Buy or sell a ship.
 	void BuyShip(const Ship *model, const std::string &name);
 	void SellShip(const Ship *selected);
