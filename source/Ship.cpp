@@ -2470,6 +2470,7 @@ const StellarObject *Ship::GetTargetStellar() const
 
 const System *Ship::GetTargetSystem() const
 {
+
 	return (targetSystem == currentSystem) ? nullptr : targetSystem;
 }
 

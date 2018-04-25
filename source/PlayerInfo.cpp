@@ -755,7 +755,31 @@ Ship *PlayerInfo::Flagship()
 }
 
 
+shared_ptr <Ship> &PlayerInfo::ReturnSelectedShip()
+{
+CurrentShip = ships.at(selectedShip);
+	return CurrentShip;
+}
+void PlayerInfo::LastSelectedShip()
+{
+    if (selectedShip == 0)
+        //Jump to end
+        selectedShip = ships.size()-1;
+        else
+	selectedShip--;
+	return;
+}
 
+void PlayerInfo::NextSelectedShip()
+{
+    if(selectedShip == ships.size()-1)
+        {selectedShip =0; //Jump to begining
+        return;
+        }
+        else
+	selectedShip++;
+	return;
+}
 const shared_ptr<Ship> &PlayerInfo::FlagshipPtr()
 {
 	if(!flagship)
@@ -782,12 +806,14 @@ const vector<shared_ptr<Ship>> &PlayerInfo::Ships() const
 
 
 
+
 // Add a captured ship to your fleet.
 void PlayerInfo::AddShip(const shared_ptr<Ship> &ship)
 {
 	ships.push_back(ship);
 	ship->SetIsSpecial();
 	ship->SetIsYours();
+
 }
 
 // Add a captured ship to your fleet.
@@ -800,7 +826,7 @@ void PlayerInfo::RTSAddShip(PlayerInfo &Player, const System* SpawnSystem, const
 	ships.back()->SetIsYours();
 	ships.back()->SetGovernment(Player.GetGovernment());
 
-	LogFile << "SpawnSystem value: " << SpawnSystem << endl;
+	LogFile << "SpawnSystem: " << SpawnSystem->Name() << endl;
 	LogFile << "\nShip added: " << model->Name() << endl << "Name: " << name << endl << "Government: " << GetGovernment()->GetName() << endl;
 }
 

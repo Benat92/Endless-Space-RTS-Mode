@@ -22,6 +22,8 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 #include <map>
 #include <string>
 
+ #include <memory> //RTS addition
+
 class Angle;
 class Government;
 class Mission;
@@ -53,8 +55,10 @@ public:
 	explicit MapPanel(PlayerInfo &player, int commodity = SHOW_REPUTATION, const System *special = nullptr);
 
 	virtual void Draw() override;
+  void InitializeTravelPlans(PlayerInfo &Player); //RTS code Formly static
+static void RTSInitializePlayers(); //RTS code
+void RTSSelect(PlayerInfo &Player, const System *system, Ship *selectedShip); //RTS Select formly protected
 
-    //int GameControllerRefresh(void* data); //RTS code
 
 	void DrawButtons(const std::string &condition);
 	static void DrawMiniMap(const PlayerInfo &player, double alpha, const System *const jump[2], int step);
@@ -81,8 +85,7 @@ protected:
 
 	virtual double SystemValue(const System *system) const;
 
-	void RTSSelect(const System *system, Ship *selectedShip);
-
+	 //void RTSSelect(PlayerInfo &Player, const System *system, Ship *selectedShip);
 	void Select(const System *system);
 	void Find(const std::string &name);
 
@@ -102,7 +105,7 @@ protected:
 
 
 
-	DistanceMap distance;
+ DistanceMap distance;
 
 	const System *playerSystem;
 	const System *selectedSystem;
@@ -130,7 +133,9 @@ protected:
 
 private:
 
-void RTSDrawTravelPlan(const Ship *selectedShip);
+
+void RTSDrawPlayerTravelPlan(PlayerInfo &Player);
+void RTSDrawTravelPlan(std::shared_ptr <Ship> selectedShip);
 
 	void DrawTravelPlan();
 	void DrawWormholes();

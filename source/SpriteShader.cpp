@@ -190,7 +190,7 @@ void SpriteShader::Add(uint32_t tex0, uint32_t tex1, const float position[2], co
 	}
     else
 		if(swizzle == 1)
-            fade = .35;
+            fade = .10f;
         else
 		fade = 0.f;
 

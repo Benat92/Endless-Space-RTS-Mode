@@ -69,7 +69,7 @@ extern std::ofstream LogFile;
 
 //typedef std::string
 const std::string STARTINGLOCATION1 = "Sirius", STARTINGLOCATION2 = "Pollux", STARTINGLOCATION3 ="Caph", STARTINGLOCATION4 = "Fingol", STARTINGLOCATION5 ="Capella", STARTINGLOCATION6 ="Diphda",
-STARTINGLOCATION7 = "Kugel", STARTINGLOCATION8 =" Nihal";
+STARTINGLOCATION7 = "Kugel", STARTINGLOCATION8 = "Nihal";
 /*enum STARTINGLOCATIONS { STARTINGLOCATION1 Sirius, STARTINGLOCATION2 Pollux, STARTINGLOCATION3 Caph, STARTINGLOCATION4 Fingol, STARTINGLOCATION5 Capella, STARTINGLOCATION6 Diphda,
 STARTINGLOCATION7 Kugel, STARTINGLOCATION8 Nihal};*/
 
@@ -84,15 +84,17 @@ extern const int JOYSTICK_DEAD_ZONE; //RTS controller
 PlayerInfo PlayerInfoRTS[9];
 void RTSInitializePlayers();
 void InitializeFlagships(PlayerInfo &Player);
+void InitializeComships(PlayerInfo &Player);
 
-Ship *selectedShip = nullptr;
+
+shared_ptr<Ship> selectedShip = nullptr;
 
 
 void RTSPLayerMenu (int playNum);
 int firstRun =0;
 
-const double MapPanel::OUTER = 6.;
-const double MapPanel::INNER = 3.5;
+const double MapPanel::OUTER = 8.; //6
+const double MapPanel::INNER = 0; //2.5
 
 
 
@@ -113,7 +115,7 @@ MapPanel::MapPanel(PlayerInfo &player, int commodity, const System *special)
 
 
     int n =0;
-  selectedShip = player.selectedShip;
+  selectedShip = player.ReturnSelectedShip();
 
 	// Recalculate the fog each time the map is opened, just in case the player
 	// bought a map since the last time they viewed the map.
@@ -157,9 +159,15 @@ LogFile << "\nNumber of Joysticks!" << SDL_NumJoysticks() << "\n";
       }
       LogFile << "MapPanel initialized!\n\n\n";
     RTSInitializePlayers();
+    for(int n = 1; n < 9; n++)
+    {
+        LogFile << endl << "n = " << n << endl;
+        InitializeTravelPlans(PlayerInfoRTS[n]);
+    }
+    LogFile << "Flight plans initialized!" << endl;
 }
 
-void RTSInitializePlayers()
+void MapPanel::RTSInitializePlayers()
 {
     LogFile << "Government of " << STARTINGLOCATION1 << " is " << GameData::Systems().Get(STARTINGLOCATION1)->GetGovernment()->GetName() << endl;
     PlayerInfoRTS[1].SetGovernment(GameData::PlayerOneGovernment());
@@ -221,8 +229,22 @@ PlayerInfoRTS[8].SetSystem(GameData::Systems().Get(STARTINGLOCATION8));
 for(int n=1; n < 9; n++)
 {
     InitializeFlagships(PlayerInfoRTS[n]);
+    InitializeComships(PlayerInfoRTS[n]);
+
 }
 LogFile <<endl << "RTS players initialized!\n\n\n";
+    return;
+}
+void MapPanel::InitializeTravelPlans(PlayerInfo &Player)
+{
+    LogFile << "InilizeTravelPlans" << endl;
+    Ship *tempShipPointer = Player.ReturnSelectedShip().get();
+
+    System *toSystem = GameData::Systems().Get(STARTINGLOCATION4);
+    tempShipPointer->SetTargetSystem(toSystem); //Set Target system
+
+    RTSSelect(Player, toSystem , tempShipPointer);
+    LogFile << "RTSSelect Complete!" << endl;
     return;
 }
 
@@ -235,6 +257,15 @@ LogFile << "MotherShip: " + Player.GetGovernment()->GetName() << endl << "System
 return;
 }
 
+void InitializeComships(PlayerInfo &Player)
+{
+
+for(int n =1; n <11; n++)
+{Player.RTSAddShip(Player, Player.Flagship()->GetSystem(), GameData::Ships().Get("Command Ship"), "Command Ship " + to_string(n));
+LogFile << "Command Ship # " << to_string(n) << Player.GetGovernment()->GetName() << endl << "System: " << Player.GetSystem()->Name() << endl;
+}
+return;
+}
 
 void MapPanel::Draw()
 {
@@ -261,6 +292,11 @@ void MapPanel::Draw()
 }
 
 	DrawTravelPlan();
+
+	for(int16_t n=1; n < SDL_NumJoysticks(); n++) //Draw the TravelPlan for each of the player's selectedShip
+    {
+	RTSDrawPlayerTravelPlan(PlayerInfoRTS[n]);
+    }
 
 	// Draw the "visible range" circle around your current location.
 	if(rtsEnabled == 1)
@@ -829,8 +865,8 @@ bool MapPanel::ControllerButtonDown (Uint8 button, int playNum)
                 LogFile << "Controller " << playNum << " sent event from button A.\n";
                //Accept
                LogFile << "Player.Flagship is @ " << player.Flagship() << endl;
-                RTSSelect(GameData::Systems().Get("Castor"), player.Flagship());
-                RTSDrawTravelPlan(player.Flagship());
+                RTSSelect(PlayerInfoRTS[playNum], GameData::Systems().Get("Castor"), player.Flagship());
+//                RTSDrawTravelPlan(player.Flagship());
                 return true;
 
 
@@ -839,18 +875,23 @@ bool MapPanel::ControllerButtonDown (Uint8 button, int playNum)
             {
                 LogFile << "Controller " << playNum << " sent event from X button.\n";
               //Cancel last player action!
+
+              return true;
             }
 
             case SDL_CONTROLLER_BUTTON_RIGHTSHOULDER:
             {
                //SelectedComShip increment.
     LogFile << "Controller " << playNum << " sent event from right-shoulder button.\n";
-
+        PlayerInfoRTS[playNum].NextSelectedShip();
+        LogFile << "SelectedShip:[" << playNum << "]: " << PlayerInfoRTS[playNum].ReturnSelectedShip()->Name() << endl << endl;
+        return true;
             }
             case SDL_CONTROLLER_BUTTON_LEFTSHOULDER:
             {
                 LogFile << "Controller " << playNum << " sent event from left-shoulder button.\n";
-
+            PlayerInfoRTS[playNum].LastSelectedShip();
+                    LogFile <<"SelectedShip:[" << playNum << "]: " << PlayerInfoRTS[playNum].ReturnSelectedShip()->Name() << endl << endl;
                     return true;
             }
 
@@ -991,8 +1032,9 @@ double MapPanel::SystemValue(const System *system) const
 }
 
 
-void MapPanel::RTSSelect(const System *system, Ship *selectedShip)
+void MapPanel::RTSSelect(PlayerInfo &Player, const System *system, Ship *selectedShip)
 {
+
 		if(!system)
 		return;
     LogFile << "Received selectedShip address @ " << selectedShip << endl;
@@ -1005,11 +1047,16 @@ void MapPanel::RTSSelect(const System *system, Ship *selectedShip)
     if(!selectedShip || (!plan.empty() && system == plan.front()))
     return;
 
+
  LogFile << "SelectedShip's name is " << selectedShip->Name() << "\n";
+ LogFile << "SelectedShip's current system is: " << selectedShip->GetSystem()->Name() << endl;
     LogFile << "SelectedShip's government is " << selectedShip->GetGovernment()->GetName() << "\n";
 	//NEW RTS CODE
 	bool isJumping = selectedShip->IsEnteringHyperspace();
 	const System *source = isJumping ? selectedShip->GetTargetSystem() : selectedShip->GetSystem();
+
+    plan.push_back(source);
+    DistanceMap localDistance(Player, plan.front()); //Chnaged from plan.front() to system
 
 	bool shift = (SDL_GetModState() & KMOD_SHIFT) && !plan.empty();
 	if(system == source && !shift)
@@ -1031,7 +1078,7 @@ void MapPanel::RTSSelect(const System *system, Ship *selectedShip)
 	else if(shift)
 	{
 	    LogFile << "Shift detected!\n";
-		DistanceMap localDistance(player, plan.front());
+
 		if(localDistance.Days(system) <= 0)
 			return;
 
@@ -1043,7 +1090,7 @@ void MapPanel::RTSSelect(const System *system, Ship *selectedShip)
 			system = localDistance.Route(system);
 		}
 	}
-	else if(distance.Days(system) > 0)
+	else if(localDistance.Days(system) > 0)
 	{
 		plan.clear();
 		if(!isJumping)
@@ -1053,16 +1100,21 @@ void MapPanel::RTSSelect(const System *system, Ship *selectedShip)
 
 		while(system != source)
 		{
+
 			plan.push_back(system);
 			LogFile << system->Name() << ": Added" << endl;
-			system = distance.Route(system);
+			system = localDistance.Route(system);
+
 		}
+		LogFile << "Loop ended!" << endl;
 		if(isJumping)
 			plan.push_back(source);
 	}
 
 	if(selectedShip->HasTravelPlan() == 0)
         LogFile << "Selected Ship has no travel plan!\n\n";
+
+        LogFile << "Local distance is" << localDistance.Days(system) << endl;
 }
 
 
@@ -1080,7 +1132,7 @@ void MapPanel::Select(const System *system)
 		return;*/ //None Rts code
 
     //New rts code
-    selectedShip = player.Flagship();
+    selectedShip = player.ReturnSelectedShip();
     vector<const System *> &plan = selectedShip->TravelPlan();
     if(!selectedShip || (!plan.empty() && system == plan.front()))
     return;
@@ -1214,7 +1266,13 @@ int MapPanel::Search(const string &str, const string &sub)
 	return (it == str.end() ? -1 : it - str.begin());
 }
 
-void MapPanel::RTSDrawTravelPlan(const Ship *selectedShip)
+void MapPanel::RTSDrawPlayerTravelPlan(PlayerInfo &Player)
+{
+    RTSDrawTravelPlan(Player.ReturnSelectedShip());
+    return;
+}
+
+void MapPanel::RTSDrawTravelPlan(std::shared_ptr <Ship> selectedShip)
 {
     LogFile << "RTSDrawTravelPlan";
 	/*if(!playerSystem)
@@ -1338,7 +1396,7 @@ void MapPanel::DrawTravelPlan()
 
 	const System *previous = playerSystem;
 
-	selectedShip = player.Flagship();
+	selectedShip = player.ReturnSelectedShip();
 
 	//RTS code changed "Player.TravelPlan() to "selectedShip->TravelPlan". 2 times below.
 	for(int i = selectedShip->TravelPlan().size() - 1; i >= 0; --i)
@@ -1484,6 +1542,8 @@ void MapPanel::DrawLinks()
 
 void MapPanel::DrawSystems()
 {
+    const Sprite *smallPlanet = SpriteSet::Get("planet/lightPlanet");
+
 	if(commodity == SHOW_GOVERNMENT)
 		closeGovernments.clear();
 
@@ -1506,8 +1566,10 @@ void MapPanel::DrawSystems()
 				color = GovernmentColor(gov);
 
 
-
 		RingShader::Draw(pos, OUTER, INNER, color);
+
+SpriteShader::Draw(smallPlanet, pos, .06f);
+
 	}
 }
 

@@ -17,6 +17,9 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 #include "Ship.h"
 #include "System.h"
 
+#include <fstream>
+//#include "LogFile.h"
+extern std::ofstream LogFile;
 using namespace std;
 
 
@@ -35,23 +38,23 @@ DistanceMap::DistanceMap(const System *center, int maxCount, int maxDistance)
 // If a player is given, the map will only use hyperspace paths known to the
 // player; that is, one end of the path has been visited. Also, if the
 // player's flagship has a jump drive, the jumps will be make use of it.
-DistanceMap::DistanceMap(PlayerInfo &player, const System *center)
+DistanceMap::DistanceMap(PlayerInfo &player, const System *center) //Changed from player.flagship based to player.ReturnSelectedShip() based
 	: player(&player)
 {
-	if(!player.Flagship())
+	if(!player.Flagship()) //Check to see if player has flagship
 		return;
-
+Ship *selectedShip = player.ReturnSelectedShip().get();
 	if(!center)
 	{
-		if(player.Flagship()->IsEnteringHyperspace())
-			center = player.Flagship()->GetTargetSystem();
+		if(selectedShip->IsEnteringHyperspace()) //Changed from player.flagship to selectedShip
+			center = selectedShip->GetTargetSystem();
 		else
-			center = player.Flagship()->GetSystem();
+			center = selectedShip->GetSystem();
 	}
 	if(!center)
 		return;
 
-	Init(center, player.Flagship());
+	Init(center, selectedShip);
 }
 
 
@@ -62,6 +65,7 @@ DistanceMap::DistanceMap(PlayerInfo &player, const System *center)
 DistanceMap::DistanceMap(const Ship &ship, const System *destination)
 	: source(ship.GetSystem())
 {
+    LogFile << "Ship is in system: " << source->Name() << endl;
 	if(!source || !destination)
 		return;
 

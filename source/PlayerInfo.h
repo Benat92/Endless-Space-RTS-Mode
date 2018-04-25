@@ -55,7 +55,10 @@ class UI;
 // and what their current travel plan is, if any.
 class PlayerInfo {
 public:
-    Ship *selectedShip = nullptr; //RTS mode selected ship
+
+  std::shared_ptr<Ship> &ReturnSelectedShip();
+   void LastSelectedShip();
+   void NextSelectedShip();
 
     uint16_t GetNumSendFigs(){return numSendFigs;};
     void SetNumSendFigs(uint16_t &numSendFigs){return;};
@@ -274,6 +277,8 @@ private:
 	void SelectShip(const std::shared_ptr<Ship> &ship, bool *first);
 
 
+	int selectedShip = 0; //RTS mode selected ship
+
 private:
 
     //RTS Variables
@@ -281,7 +286,7 @@ private:
     uint16_t numSendComShips = 0;
     bool motherShipSend = false;
     const Government *playerGovernment;//RTS non-const.
-
+	std::shared_ptr<Ship> CurrentShip;
 
 	std::string firstName;
 	std::string lastName;
