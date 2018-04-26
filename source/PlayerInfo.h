@@ -118,7 +118,8 @@ public:
      const Government *GetGovernment() {return playerGovernment;}; //RTS Non-const
 
 	void SetSystem(const System *system);
-	const System *GetSystem() const;
+
+	 const System *GetSystem() const;
 	// Set what planet the player is on.
 	void SetPlanet(const Planet *planet);
 	const Planet *GetPlanet() const;
@@ -285,7 +286,7 @@ private:
     uint16_t numSendFigs = 0;
     uint16_t numSendComShips = 0;
     bool motherShipSend = false;
-    const Government *playerGovernment;//RTS non-const.
+    const Government *playerGovernment;
 	std::shared_ptr<Ship> CurrentShip;
 
 	std::string firstName;

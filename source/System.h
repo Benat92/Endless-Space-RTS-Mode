@@ -62,6 +62,7 @@ public:
 	public:
 		FleetProbability(const Fleet *fleet, int period);
 
+
 		const Fleet *Get() const;
 		int Period() const;
 
@@ -148,6 +149,10 @@ public:
     uint16_t GetNumFigs() const {return numFigs;} ;
     uint16_t GetNumComShips() const {return numComShips;} ;
     bool MotherShipPresent() const {return motherShipPresent;};
+
+    void AddFig() {numFigs++;};
+    void AddFigs(int numAddFigs) { numFigs += numAddFigs; return;}
+    void AddComShip() {numComShips++;};
 
 private:
 	void LoadObject(const DataNode &node, Set<Planet> &planets, int parent = -1);
