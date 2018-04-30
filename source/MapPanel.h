@@ -143,6 +143,9 @@ void RTSDrawTravelPlan(std::shared_ptr <Ship> selectedShip);
 	void DrawSystems();
 	void DrawNames();
 	void DrawMissions();
+
+	void DrawSelectedShips(); //RTS addition
+
 	void DrawPointer(const System *system, Angle &angle, const Color &color, bool bigger = false);
 	static void DrawPointer(Point position, Angle &angle, const Color &color, bool drawBack = true, bool bigger = false);
 

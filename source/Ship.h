@@ -104,8 +104,8 @@ public:
 
 	//Ship variables for RTS mode
 
-    void RTSAddFigs(int numAddFigs) {rtsFigs += numAddFigs;};
-    void RTSMinusFigs(int numMinusFigs) {rtsFigs -= numMinusFigs;
+    void AddFigs(int numAddFigs) {rtsFigs += numAddFigs;};
+    void MinusFigs(int numMinusFigs) {rtsFigs -= numMinusFigs;
     if (numMinusFigs < 0)
         rtsFigs =0;}
 

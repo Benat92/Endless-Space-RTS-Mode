@@ -7126,7 +7126,7 @@
 	<limits>
 	<set>
 
-1511767255 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ai.h
+1524970460 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ai.h
 	"Command.h"
 	"Point.h"
 	<cstdint>
@@ -7319,7 +7319,7 @@
 	<map>
 	<memory>
 
-1524734109 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\fleet.h
+1524738080 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\fleet.h
 	"Personality.h"
 	<list>
 	<memory>
@@ -7337,7 +7337,7 @@
 1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\random.h
 	<cstdint>
 
-1524736166 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.h
+1524779596 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.h
 	"Body.h"
 	"Angle.h"
 	"Armament.h"
@@ -7740,7 +7740,7 @@
 	"Point.h"
 	<map>
 
-1524515871 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.h
+1524953398 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.h
 	"Panel.h"
 	"Color.h"
 	"DistanceMap.h"
@@ -7833,7 +7833,7 @@
 	"Point.h"
 	<string>
 
-1524733985 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\engine.cpp
+1524738132 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\engine.cpp
 	"Engine.h"
 	"Audio.h"
 	"Effect.h"
@@ -7983,7 +7983,7 @@
 	"Shader.h"
 	<stdexcept>
 
-1524734158 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\fleet.cpp
+1524738101 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\fleet.cpp
 	"Fleet.h"
 	"DataNode.h"
 	"Files.h"
@@ -8592,7 +8592,7 @@
 	"SpriteSet.h"
 	<cmath>
 
-1524734423 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mission.cpp
+1524738168 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mission.cpp
 	"Mission.h"
 	"DataNode.h"
 	"DataWriter.h"
@@ -8841,8 +8841,9 @@
 1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\tradingpanel.h
 	"Panel.h"
 
-1524736553 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
+1524972019 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
 	"MapPanel.h"
+	"AI.h"
 	"Angle.h"
 	"Dialog.h"
 	"FogShader.h"
@@ -8870,6 +8871,7 @@
 	"Ship.h"
 	"SpriteShader.h"
 	"SpriteSet.h"
+	"DrawList.h"
 	<set>
 	"StellarObject.h"
 	"System.h"
@@ -8880,6 +8882,7 @@
 	<cctype>
 	<cmath>
 	<limits>
+	<math.h>
 	<ctime>
 	<fstream>
 	"RTSPlayer.h"
@@ -9060,7 +9063,7 @@
 	<stdexcept>
 	<vector>
 
-1524735967 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.cpp
+1524738073 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.cpp
 	"Ship.h"
 	"Audio.h"
 	"DataNode.h"
