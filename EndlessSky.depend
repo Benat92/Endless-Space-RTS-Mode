@@ -7337,7 +7337,7 @@
 1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\random.h
 	<cstdint>
 
-1524779596 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.h
+1525199835 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\ship.h
 	"Body.h"
 	"Angle.h"
 	"Armament.h"
@@ -7740,7 +7740,7 @@
 	"Point.h"
 	<map>
 
-1524953398 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.h
+1525198990 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.h
 	"Panel.h"
 	"Color.h"
 	"DistanceMap.h"
@@ -7811,7 +7811,7 @@
 	"System.h"
 	<fstream>
 
-1499119856 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\drawlist.cpp
+1524972191 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\drawlist.cpp
 	"DrawList.h"
 	"Body.h"
 	"Preferences.h"
@@ -8841,7 +8841,7 @@
 1499119859 c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\tradingpanel.h
 	"Panel.h"
 
-1524972019 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
+1525121394 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\mappanel.cpp
 	"MapPanel.h"
 	"AI.h"
 	"Angle.h"
@@ -8897,7 +8897,7 @@
 	<utility>
 	<vector>
 
-1524733936 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfo.cpp
+1525121753 source:c:\users\user\desktop\important files\important files\github repositories\endless sky reference\endless-space-rts-mode\source\playerinfo.cpp
 	"PlayerInfo.h"
 	"Audio.h"
 	"ConversationPanel.h"

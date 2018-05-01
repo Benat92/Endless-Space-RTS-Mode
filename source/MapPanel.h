@@ -144,6 +144,10 @@ void RTSDrawTravelPlan(std::shared_ptr <Ship> selectedShip);
 	void DrawNames();
 	void DrawMissions();
 
+
+	void ArriveAtStar(Ship *selectedShip, System *arriveSystem);
+	void FindDistanceToStar(Ship *selectedShip);
+    void CalculatePositionOfShips(PlayerInfo &Player);
 	void DrawSelectedShips(); //RTS addition
 
 	void DrawPointer(const System *system, Angle &angle, const Color &color, bool bigger = false);

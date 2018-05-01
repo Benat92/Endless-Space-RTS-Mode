@@ -109,7 +109,11 @@ public:
     if (numMinusFigs < 0)
         rtsFigs =0;}
 
-
+        float GetDistanceFromStar() {return distanceFromStar;};
+        void AddDistanceFromStar(float addDistance) {distanceFromStar += addDistance; return;}
+        void ResetDistanceFromStar () {distanceFromStar =0; return;};
+        float GetDistanceToStar() {return distanceToStar;};
+        void SetDistanceToStar( float distanceToNextStar){distanceToStar = distanceToNextStar; return;}
 	// Load data for a type of ship:
 	void Load(const DataNode &node);
 	// When loading a ship, some of the outfits it lists may not have been
@@ -401,6 +405,8 @@ void PopTravel()
 }
 
 private:
+
+
 	// Add or remove a ship from this ship's list of escorts.
 	void AddEscort(Ship &ship);
 	void RemoveEscort(const Ship &ship);
@@ -428,7 +434,8 @@ private:
 	int swizzle;
 	const Government *government;
 	*/
-
+    float distanceFromStar =0; //RTS: Distance from fromStar
+    float distanceToStar =0; //RTS: Total distance to next star
 	// Characteristics of the chassis:
 	const Ship *base = nullptr;
 	std::string modelName;

@@ -100,7 +100,7 @@ shared_ptr<Ship> selectedShip = nullptr;
 void RTSPLayerMenu (int playNum);
 int firstRun =0;
 
-const double MapPanel::OUTER = 8.; //6
+const double MapPanel::OUTER = 8.7.; //6
 const double MapPanel::INNER = 0; //2.5
 
 
@@ -407,6 +407,7 @@ GameData::Systems().begin();
     LogFile << "Unclaimed Systems: " << unClaimedSystems << endl << endl;
     return;
 }
+
 void MapPanel::Draw()
 {
    static int frames =5350;
@@ -443,7 +444,7 @@ void MapPanel::Draw()
 
 	DrawTravelPlan();
 
-	for(int16_t n=1; n < SDL_NumJoysticks(); n++) //Draw the TravelPlan for each of the player's selectedShip
+	for(int16_t n=1; n < 9; n++) //Draw the TravelPlan for each of the player's selectedShip
     {
 	RTSDrawPlayerTravelPlan(PlayerInfoRTS[n]);
     }
@@ -470,6 +471,8 @@ void MapPanel::Draw()
 	DrawNames();
 	DrawMissions();
 
+	for(int n=1; n <9; n++)
+        CalculatePositionOfShips(PlayerInfoRTS[n]);
     DrawSelectedShips();         //RTS addition
 
 	if(!distance.HasRoute(selectedSystem))
@@ -1800,39 +1803,103 @@ void MapPanel::DrawMissions()
 		PointerShader::Draw(pos, a.Unit(), 11.5, 21.5, -6., white);
 	}*/
 }
+void MapPanel::ArriveAtStar(Ship *selectedShip, System *arriveSystem)
+{
+    selectedShip->SetSystem(arriveSystem);
+
+    selectedShip->PopTravel();
+    selectedShip->ResetDistanceFromStar();
+
+    if(selectedShip->TravelPlan().empty() == true)
+       {
+          if(arriveSystem->GetGovernment() == selectedShip->GetGovernment())
+           {
+               //LandShips (System *)
+               return;
+           }
+           else
+           {
+               //Battle (System *, selectedShip)
+               //LandShips
+           }
+
+
+       }
+    else
+    {
+    FindDistanceToStar(selectedShip);
+    }
+}
+
+void MapPanel::FindDistanceToStar(Ship *selectedShip)
+{
+        float distance = sqrt(pow(selectedShip->TravelPlan().back()->Position().X() - selectedShip->GetSystem()->Position().X(),2) + pow(selectedShip->TravelPlan().back()->Position().Y()-selectedShip->GetSystem()->Position().Y(), 2));
+        selectedShip->SetDistanceToStar(distance);
+        return;
+}
+
+void MapPanel::CalculatePositionOfShips(PlayerInfo &Player)
+{
+    Point toStar;
+    Point shipPosition;
+    Angle shipAngle = 0;
+
+
+    LogFile << "CalculatePosition Of Ships for: " << Player.GetGovernment()->GetName() << endl;
+    for(shared_ptr<Ship> selectedShip : Player.Ships())
+        {
+
+            if(selectedShip->TravelPlan().empty() == true)
+                {toStar = selectedShip->GetSystem()->Position();
+                LogFile << "No travel plan!" << endl;
+                 shipAngle = 0;
+                 selectedShip->SetDistanceToStar(0); //If no Ship has no TravelPlan, reset distance to nextStar
+                selectedShip->Place(Zoom() * (selectedShip->GetSystem()->Position()+center), shipAngle.Unit(),  shipAngle );
+                }
+            else
+                {
+                toStar = selectedShip->TravelPlan().back()->Position();
+                Point fromStar(selectedShip->GetSystem()->Position());
+                selectedShip->AddDistanceFromStar(.1);
+                LogFile << "Pointing from " << selectedShip->GetSystem()->Name() << " X: " << selectedShip->GetSystem()->Position().X() << " Y: " << selectedShip->GetSystem()->Position().Y() << " to " << selectedShip->TravelPlan().back()->Name() << " X: " <<
+                selectedShip->TravelPlan().back()->Position().X() << " Y: " << selectedShip->TravelPlan().back()->Position().Y() << endl;
+
+                double degrees = (atan2(-1*(fromStar.Y() - toStar.Y()),(toStar.X() - fromStar.X())));
+                shipAngle = 180/M_PI*degrees+90;
+
+                LogFile << "Angle found to be " << shipAngle.Degrees() << " DistanceFromStar: " << selectedShip->GetDistanceFromStar() << endl;
+                shipPosition.Set((selectedShip->GetDistanceFromStar()*cos(degrees)), selectedShip->GetDistanceFromStar()*sin(degrees));
+                LogFile << "Ship position changed by: X: " << shipPosition.X() << " Y: " << shipPosition.Y() << endl;
+                selectedShip->Place(Zoom() * (selectedShip->GetSystem()->Position()+shipPosition+center), shipAngle.Unit(),  shipAngle );
+
+                if(selectedShip->GetDistanceToStar() == 0) //If ship just recieved a TravelPlan calculate distance to first star
+                    FindDistanceToStar(selectedShip.get());
+
+                if(selectedShip->GetDistanceToStar() < selectedShip->GetDistanceFromStar() )
+                    ArriveAtStar(selectedShip.get(), GameData::Systems().Get(selectedShip->TravelPlan().back()->Name()));
+                }
+
+        }
+        LogFile << endl;
+
+}
 
 void MapPanel::DrawSelectedShips()
 {
     DrawList draw;
-    Point toStar;
+    shared_ptr<Ship> selectedShip;
+
     LogFile << "DrawSelectedShips()" << endl;
-    Ship * selectedShip = nullptr;
 
     for(int n=1; n < 9; n++)
-    {
-    LogFile << "Drawing Flagship " << n << endl;
-    selectedShip = PlayerInfoRTS[n].Flagship();
-    if(selectedShip->TravelPlan().empty() == true)
-        {toStar = selectedShip->GetSystem()->Position();
-        LogFile << "No travel plan!" << endl;
+        {
+        LogFile << "Drawing ReturnSelectedShip(): " << n << endl;
+        selectedShip = PlayerInfoRTS[n].ReturnSelectedShip();
+        RingShader::Draw(selectedShip->Position(), 34., 29., selectedShip->GetGovernment()->GetColor());
+
+        draw.Add(*selectedShip, -50);
+
         }
-    else
-       {
-        toStar = selectedShip->TravelPlan().back()->Position();
-         LogFile << "Pointing from " << selectedShip->GetSystem()->Name() << "X: " << selectedShip->GetSystem()->Position().X() << "Y: " << selectedShip->GetSystem()->Position().Y() << " to " << selectedShip->TravelPlan().back()->Name() << "X: " <<
-         selectedShip->TravelPlan().back()->Position().X() << "Y: " << selectedShip->TravelPlan().back()->Position().Y() << endl;
-       }
-
-    Point fromStar(selectedShip->GetSystem()->Position());
-   Angle shipAngle = 180/M_PI *(atan2(-1*(fromStar.Y() - toStar.Y()),(toStar.X() - fromStar.X())))+90;
-
-   LogFile << "Angle found to be " << 180/M_PI *(atan2(-1*(fromStar.Y() - toStar.Y()),(toStar.X() - fromStar.X())))+90 << endl;
-
-    selectedShip->Place(Zoom() * (selectedShip->GetSystem()->Position()+center), shipAngle.Unit(),  shipAngle );
-
-   draw.Add(*selectedShip, -50);
-
-    }
     draw.Draw();
     LogFile << endl;
 }

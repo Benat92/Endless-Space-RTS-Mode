@@ -2,29 +2,14 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Win32" />
-	<File name="source\Engine.h" open="1" top="0" tabpos="29" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\Point.h" open="1" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="3162" topLine="107" />
+			<Cursor1 position="2185" topLine="59" />
 		</Cursor>
 	</File>
-	<File name="source\DrawList.cpp" open="1" top="0" tabpos="35" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="source\MapPanel.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="4032" topLine="148" />
-		</Cursor>
-	</File>
-	<File name="source\Fleet.cpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="9632" topLine="303" />
-		</Cursor>
-	</File>
-	<File name="source\Angle.h" open="1" top="0" tabpos="25" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="915" topLine="13" />
-		</Cursor>
-	</File>
-	<File name="source\MainPanel.cpp" open="1" top="0" tabpos="28" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3693" topLine="140" />
+			<Cursor1 position="4453" topLine="122" />
 		</Cursor>
 	</File>
 	<File name="source\SpriteShader.cpp" open="0" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -32,237 +17,9 @@
 			<Cursor1 position="5591" topLine="169" />
 		</Cursor>
 	</File>
-	<File name="source\PlanetLabel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3557" topLine="108" />
-		</Cursor>
-	</File>
-	<File name="source\GameData.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3213" topLine="82" />
-		</Cursor>
-	</File>
-	<File name="source\DistanceMap.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1581" topLine="28" />
-		</Cursor>
-	</File>
-	<File name="source\Body.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2826" topLine="85" />
-		</Cursor>
-	</File>
-	<File name="source\PlayerInfo.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="20236" topLine="761" />
-		</Cursor>
-	</File>
-	<File name="source\DrawList.h" open="1" top="0" tabpos="34" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1282" topLine="25" />
-		</Cursor>
-	</File>
-	<File name="source\MissionAction.cpp" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="8201" topLine="305" />
-		</Cursor>
-	</File>
-	<File name="source\EscortDisplay.h" open="1" top="0" tabpos="30" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1102" topLine="24" />
-		</Cursor>
-	</File>
-	<File name="source\AsteroidField.h" open="1" top="0" tabpos="24" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2089" topLine="40" />
-		</Cursor>
-	</File>
-	<File name="source\PlanetPanel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2548" topLine="96" />
-		</Cursor>
-	</File>
-	<File name="source\Ship.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4147" topLine="156" />
-		</Cursor>
-	</File>
-	<File name="source\System.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1113" topLine="184" />
-		</Cursor>
-	</File>
-	<File name="source\AI.h" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2696" topLine="59" />
-		</Cursor>
-	</File>
-	<File name="source\Government.cpp" open="0" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="6503" topLine="238" />
-		</Cursor>
-	</File>
-	<File name="source\SpriteSet.cpp" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="728" topLine="2" />
-		</Cursor>
-	</File>
-	<File name="source\Government.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1373" topLine="35" />
-		</Cursor>
-	</File>
-	<File name="source\Ship.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="35923" topLine="1224" />
-		</Cursor>
-	</File>
-	<File name="source\Files.h" open="0" top="0" tabpos="24" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2572" topLine="34" />
-		</Cursor>
-	</File>
-	<File name="source\GameData.cpp" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3417" topLine="112" />
-		</Cursor>
-	</File>
-	<File name="source\Angle.cpp" open="1" top="0" tabpos="27" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3268" topLine="132" />
-		</Cursor>
-	</File>
-	<File name="source\MapPanel.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="19645" topLine="331" />
-		</Cursor>
-		<Folding>
-			<Collapse line="177" />
-			<Collapse line="491" />
-			<Collapse line="761" />
-			<Collapse line="869" />
-			<Collapse line="911" />
-			<Collapse line="939" />
-			<Collapse line="1061" />
-			<Collapse line="1614" />
-			<Collapse line="1661" />
-			<Collapse line="1730" />
-			<Collapse line="1754" />
-		</Folding>
-	</File>
 	<File name="source\Fleet.h" open="1" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1602" topLine="33" />
-		</Cursor>
-	</File>
-	<File name="source\Body.cpp" open="1" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3178" topLine="132" />
-		</Cursor>
-	</File>
-	<File name="source\DataNode.cpp" open="0" top="0" tabpos="25" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4606" topLine="195" />
-		</Cursor>
-	</File>
-	<File name="source\main.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1409" topLine="118" />
-		</Cursor>
-	</File>
-	<File name="source\GameEvent.cpp" open="0" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2502" topLine="26" />
-		</Cursor>
-	</File>
-	<File name="source\Mission.cpp" open="1" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="14045" topLine="577" />
-		</Cursor>
-	</File>
-	<File name="source\CargoHold.h" open="0" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1335" topLine="22" />
-		</Cursor>
-	</File>
-	<File name="source\Set.h" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1026" topLine="9" />
-		</Cursor>
-	</File>
-	<File name="source\DistanceMap.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1498" topLine="33" />
-		</Cursor>
-	</File>
-	<File name="source\SpriteSet.h" open="0" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1039" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="source\Engine.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="50512" topLine="1597" />
-		</Cursor>
-	</File>
-	<File name="source\PlayerInfo.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="10672" topLine="284" />
-		</Cursor>
-	</File>
-	<File name="source\Projectile.cpp" open="1" top="0" tabpos="33" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3614" topLine="110" />
-		</Cursor>
-	</File>
-	<File name="source\Files.cpp" open="0" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="11923" topLine="515" />
-		</Cursor>
-	</File>
-	<File name="source\AI.cpp" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="74301" topLine="2198" />
-		</Cursor>
-	</File>
-	<File name="source\NPC.h" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1632" topLine="38" />
-		</Cursor>
-	</File>
-	<File name="source\Point.h" open="1" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2185" topLine="59" />
-		</Cursor>
-	</File>
-	<File name="source\MapDetailPanel.cpp" open="1" top="0" tabpos="36" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1847" topLine="47" />
-		</Cursor>
-	</File>
-	<File name="source\MapPanel.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="4391" topLine="125" />
-		</Cursor>
-	</File>
-	<File name="source\PlayerInfoPanel.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="24" />
-		</Cursor>
-	</File>
-	<File name="source\Point.cpp" open="1" top="0" tabpos="32" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="3221" topLine="224" />
-		</Cursor>
-	</File>
-	<File name="source\EscortDisplay.cpp" open="1" top="0" tabpos="31" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1272" topLine="110" />
-		</Cursor>
-	</File>
-	<File name="source\System.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="1935" topLine="80" />
 		</Cursor>
 	</File>
 	<File name="source\SpriteShader.h" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
@@ -270,9 +27,242 @@
 			<Cursor1 position="1117" topLine="0" />
 		</Cursor>
 	</File>
+	<File name="source\NPC.h" open="0" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1632" topLine="38" />
+		</Cursor>
+	</File>
+	<File name="source\System.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1113" topLine="166" />
+		</Cursor>
+	</File>
+	<File name="source\Ship.cpp" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="14669" topLine="530" />
+		</Cursor>
+	</File>
+	<File name="source\MainPanel.cpp" open="1" top="0" tabpos="28" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3693" topLine="140" />
+		</Cursor>
+	</File>
+	<File name="source\System.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1935" topLine="80" />
+		</Cursor>
+	</File>
+	<File name="source\Files.cpp" open="0" top="0" tabpos="26" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="11923" topLine="515" />
+		</Cursor>
+	</File>
+	<File name="source\PlayerInfo.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="21188" topLine="815" />
+		</Cursor>
+	</File>
+	<File name="source\GameData.h" open="1" top="0" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3213" topLine="82" />
+		</Cursor>
+	</File>
+	<File name="source\Files.h" open="0" top="0" tabpos="24" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2572" topLine="34" />
+		</Cursor>
+	</File>
+	<File name="source\Angle.cpp" open="1" top="0" tabpos="27" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3332" topLine="93" />
+		</Cursor>
+	</File>
+	<File name="source\GameData.cpp" open="1" top="0" tabpos="16" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3417" topLine="112" />
+		</Cursor>
+	</File>
+	<File name="source\Body.cpp" open="1" top="0" tabpos="23" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3178" topLine="138" />
+		</Cursor>
+	</File>
+	<File name="source\MissionAction.cpp" open="1" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="8201" topLine="305" />
+		</Cursor>
+	</File>
+	<File name="source\EscortDisplay.cpp" open="1" top="0" tabpos="31" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1272" topLine="110" />
+		</Cursor>
+	</File>
+	<File name="source\AI.cpp" open="1" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="74301" topLine="2198" />
+		</Cursor>
+	</File>
+	<File name="source\AsteroidField.h" open="1" top="0" tabpos="24" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2089" topLine="40" />
+		</Cursor>
+	</File>
 	<File name="source\CargoHold.cpp" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="1108" topLine="49" />
+		</Cursor>
+	</File>
+	<File name="source\PlayerInfo.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4953" topLine="143" />
+		</Cursor>
+	</File>
+	<File name="source\Point.cpp" open="1" top="0" tabpos="32" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3221" topLine="224" />
+		</Cursor>
+	</File>
+	<File name="source\AI.h" open="1" top="0" tabpos="21" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2696" topLine="59" />
+		</Cursor>
+	</File>
+	<File name="source\Angle.h" open="1" top="0" tabpos="25" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="915" topLine="12" />
+		</Cursor>
+	</File>
+	<File name="source\PlanetPanel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2548" topLine="96" />
+		</Cursor>
+	</File>
+	<File name="source\DistanceMap.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1581" topLine="28" />
+		</Cursor>
+	</File>
+	<File name="source\PlayerInfoPanel.cpp" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="24" />
+		</Cursor>
+	</File>
+	<File name="source\Engine.h" open="1" top="0" tabpos="29" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3162" topLine="107" />
+		</Cursor>
+	</File>
+	<File name="source\Government.cpp" open="0" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="6503" topLine="238" />
+		</Cursor>
+	</File>
+	<File name="source\DrawList.h" open="1" top="0" tabpos="34" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1282" topLine="25" />
+		</Cursor>
+	</File>
+	<File name="source\Government.h" open="1" top="0" tabpos="13" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1373" topLine="35" />
+		</Cursor>
+	</File>
+	<File name="source\Ship.h" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="16150" topLine="421" />
+		</Cursor>
+	</File>
+	<File name="source\Projectile.cpp" open="1" top="0" tabpos="33" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3614" topLine="110" />
+		</Cursor>
+	</File>
+	<File name="source\SpriteSet.h" open="0" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1039" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="source\DataNode.cpp" open="0" top="0" tabpos="25" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4606" topLine="195" />
+		</Cursor>
+	</File>
+	<File name="source\MapDetailPanel.cpp" open="1" top="0" tabpos="36" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1847" topLine="47" />
+		</Cursor>
+	</File>
+	<File name="source\EscortDisplay.h" open="1" top="0" tabpos="30" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1102" topLine="24" />
+		</Cursor>
+	</File>
+	<File name="source\Set.h" open="1" top="0" tabpos="22" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1026" topLine="9" />
+		</Cursor>
+	</File>
+	<File name="source\Mission.cpp" open="1" top="0" tabpos="20" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="14045" topLine="577" />
+		</Cursor>
+	</File>
+	<File name="source\DrawList.cpp" open="1" top="0" tabpos="35" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4032" topLine="148" />
+		</Cursor>
+	</File>
+	<File name="source\SpriteSet.cpp" open="0" top="0" tabpos="19" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="728" topLine="2" />
+		</Cursor>
+	</File>
+	<File name="source\Fleet.cpp" open="1" top="0" tabpos="15" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="9632" topLine="303" />
+		</Cursor>
+	</File>
+	<File name="source\Engine.cpp" open="1" top="0" tabpos="14" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="50512" topLine="1597" />
+		</Cursor>
+	</File>
+	<File name="source\GameEvent.cpp" open="0" top="0" tabpos="17" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2502" topLine="26" />
+		</Cursor>
+	</File>
+	<File name="source\CargoHold.h" open="0" top="0" tabpos="18" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1335" topLine="22" />
+		</Cursor>
+	</File>
+	<File name="source\PlanetLabel.cpp" open="0" top="0" tabpos="0" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="3557" topLine="108" />
+		</Cursor>
+	</File>
+	<File name="source\DistanceMap.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1498" topLine="33" />
+		</Cursor>
+	</File>
+	<File name="source\Body.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2109" topLine="51" />
+		</Cursor>
+	</File>
+	<File name="source\MapPanel.cpp" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="64443" topLine="1745" />
+		</Cursor>
+		<Folding>
+			<Collapse line="177" />
+		</Folding>
+	</File>
+	<File name="source\main.cpp" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="1409" topLine="118" />
 		</Cursor>
 	</File>
 </CodeBlocks_layout_file>
