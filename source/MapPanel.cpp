@@ -1831,6 +1831,29 @@ void MapPanel::ArriveAtStar(Ship *selectedShip, System *arriveSystem)
     }
 }
 
+void RTSBattle(System *disputedSystem, Ship *selectedShip)
+{
+    const int ATTACKINGFORCECOMSHIP = 13, ATTACKINGFORCEMOTHERSHIP = 23, NUMFIGSREQUIRED = 5;
+    bool allowCapitalShipsToFightAtSystem =0, allowCapitalShipsToFightInShip =0;
+    int attackingForce, defendingForce;
+    LogFile << "Battle at: " << disputedSystem << endl << "Between " << disputedSystem->GetGovernment()->GetName() << " and " << selectedShip->GetGovernment()->GetName() <<endl;
+
+   int supportedCapitalShips = disputedSystem->GetNumFigs()/NUMFIGSREQUIRED;
+      if( supportedCapitalShips >= disputedSystem->GetNumComShips()+disputedSystem->MotherShipPresent())
+        defendingForce = disputedSystem->GetNumFigs()+disputedSystem->GetNumComShips()*ATTACKINGFORCECOMSHIP + disputedSystem->MotherShipPresent()*ATTACKINGFORCEMOTHERSHIP;
+    else
+        defendingForce = disputedSystem->GetNumFigs();
+
+    supportedCapitalShips = selectedShip->GetNumFigs()/NUMFIGSREQUIRED;
+        if( supportedCapitalShips >= selectedShip->GetNumComShips()+selectedShip->MotherShipPresent())
+           attackingForce = selectedShip->GetNumFigs()+selectedShip->GetNumComShips()*ATTACKINGFORCECOMSHIP+selectedShip->MotherShipPresent()*ATTACKINGFORCEMOTHERSHIP;
+        else
+            attackingForce = selectedShip->GetNumFigs();
+
+   LogFile << "Defending force: " << defendingForce << endl << "Attacking Force: " << attackingForce << endl;
+   LogFile
+
+}
 void MapPanel::FindDistanceToStar(Ship *selectedShip)
 {
         float distance = sqrt(pow(selectedShip->TravelPlan().back()->Position().X() - selectedShip->GetSystem()->Position().X(),2) + pow(selectedShip->TravelPlan().back()->Position().Y()-selectedShip->GetSystem()->Position().Y(), 2));

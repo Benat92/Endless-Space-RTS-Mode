@@ -84,7 +84,9 @@ public:
 
 private:
       //Ship variables for RTS mode
-	int16_t rtsFigs;
+	int16_t numFigs =0;
+	int16_t numComShips-0;
+	bool motherShipPresent =0;
 public:
 	/* Functions provided by the Body base class:
 	bool HasSprite() const;
@@ -103,11 +105,13 @@ public:
 	*/
 
 	//Ship variables for RTS mode
-
-    void AddFigs(int numAddFigs) {rtsFigs += numAddFigs;};
-    void MinusFigs(int numMinusFigs) {rtsFigs -= numMinusFigs;
+	int GetNumComShips(){return numComShips;};
+	bool MotherShipPresent() {return motherShipPresent;};
+    int GetNumFigs() {return numFigs};
+    void AddFigs(int numAddFigs) {numFigs += numAddFigs;};
+    void MinusFigs(int numMinusFigs) {numFigs -= numMinusFigs;
     if (numMinusFigs < 0)
-        rtsFigs =0;}
+        numFigs =0;}
 
         float GetDistanceFromStar() {return distanceFromStar;};
         void AddDistanceFromStar(float addDistance) {distanceFromStar += addDistance; return;}
@@ -436,6 +440,7 @@ private:
 	*/
     float distanceFromStar =0; //RTS: Distance from fromStar
     float distanceToStar =0; //RTS: Total distance to next star
+
 	// Characteristics of the chassis:
 	const Ship *base = nullptr;
 	std::string modelName;
