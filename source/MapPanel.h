@@ -146,6 +146,10 @@ void RTSDrawTravelPlan(std::shared_ptr <Ship> selectedShip);
 
 
 	void ArriveAtStar(Ship *selectedShip, System *arriveSystem);
+
+	void RTSBattle(System *disputedSystem, Ship *selectedShip);
+void LandShips(Ship * landingShip, System * landingSystem);
+
 	void FindDistanceToStar(Ship *selectedShip);
     void CalculatePositionOfShips(PlayerInfo &Player);
 	void DrawSelectedShips(); //RTS addition

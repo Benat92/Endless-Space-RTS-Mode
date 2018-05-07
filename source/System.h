@@ -148,7 +148,11 @@ public:
 	 //RTS mode functions
     uint16_t GetNumFigs() const {return numFigs;} ;
     uint16_t GetNumComShips() const {return numComShips;} ;
+    void SetMotherShipPresent() {motherShipPresent = true;};
     bool MotherShipPresent() const {return motherShipPresent;};
+
+    void MinusFigs(uint32_t minusFigsByNum) {numFigs -= minusFigsByNum;};
+    void MinusComShips(uint32_t minusComShipsByNum) {numComShips -= minusComShipsByNum;};
 
     void AddFig() {numFigs++;};
     void AddFigs(int numAddFigs) { numFigs += numAddFigs; return;}

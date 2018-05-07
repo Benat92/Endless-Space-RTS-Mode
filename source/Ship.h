@@ -84,9 +84,9 @@ public:
 
 private:
       //Ship variables for RTS mode
-	int16_t numFigs =0;
-	int16_t numComShips-0;
-	bool motherShipPresent =0;
+	int16_t numFigs = 0;
+	int16_t numComShips = 0;
+	bool motherShipPresent = false;
 public:
 	/* Functions provided by the Body base class:
 	bool HasSprite() const;
@@ -104,14 +104,19 @@ public:
 	const Government *GetGovernment() const;
 	*/
 
+
 	//Ship variables for RTS mode
 	int GetNumComShips(){return numComShips;};
 	bool MotherShipPresent() {return motherShipPresent;};
-    int GetNumFigs() {return numFigs};
+    int GetNumFigs() {return numFigs;};
     void AddFigs(int numAddFigs) {numFigs += numAddFigs;};
     void MinusFigs(int numMinusFigs) {numFigs -= numMinusFigs;
     if (numMinusFigs < 0)
         numFigs =0;}
+
+        void MinusComShips(int numMinusComShips) {numComShips -= numMinusComShips;
+        if (numComShips < 0)
+            numComShips =0;}
 
         float GetDistanceFromStar() {return distanceFromStar;};
         void AddDistanceFromStar(float addDistance) {distanceFromStar += addDistance; return;}
@@ -153,9 +158,9 @@ public:
 	void SetIsYours(bool yours = true);
 	bool IsYours() const;
 	// A parked ship stays on a planet and requires no daily salary payments.
-	void SetIsParked(bool parked);
+	void SetIsParked(bool parked = true);
 
-	void SetIsNotParked(bool parked) {isParked = parked;}; //RTS addition
+	void SetIsNotParked() {isParked = false;}; //RTS addition
 	bool IsParked() const;
 
 	// Access the ship's personality, which affects how the AI behaves.

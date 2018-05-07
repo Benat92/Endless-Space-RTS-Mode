@@ -21,6 +21,8 @@ PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 
 #include <cmath>
 
+#include <fstream> // LogFile
+extern std::ofstream LogFile;
 using namespace std;
 
 
@@ -167,7 +169,15 @@ void DrawList::Push(const Body &body, Point pos, Point blur, double cloak, doubl
     {
        width = body.Width()/3;
        height = body.Height()/3;
+
     }
+    else if(cloak == -25)
+    {
+        width = body.Width()/2;
+        height = body.Height()/2;
+        LogFile <<"Cloak: " << cloak << endl;
+    }
+
 
 
 	Point unit = body.Facing().Unit();

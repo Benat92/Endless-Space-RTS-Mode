@@ -807,6 +807,7 @@ const vector<shared_ptr<Ship>> &PlayerInfo::Ships() const
 
 
 
+
 // Add a captured ship to your fleet.
 void PlayerInfo::AddShip(const shared_ptr<Ship> &ship)
 {
@@ -825,6 +826,7 @@ void PlayerInfo::RTSAddShip(PlayerInfo &Player, const System* SpawnSystem, const
 	ships.back()->SetIsSpecial();
 	ships.back()->SetIsYours();
 	ships.back()->SetGovernment(Player.GetGovernment());
+
 
 	LogFile << "SpawnSystem: " << SpawnSystem->Name() << endl;
 	LogFile << "\nShip added: " << model->Name() << endl << "Name: " << name << endl << "Government: " << GetGovernment()->GetName() << endl;
@@ -889,6 +891,7 @@ void PlayerInfo::DisownShip(const Ship *selected)
 			flagship.reset();
 			return;
 		}
+		LogFile << "Attempted to delete ship! Not Found" << selected->Name() << endl;
 }
 
 

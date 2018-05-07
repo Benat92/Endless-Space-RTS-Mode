@@ -74,10 +74,12 @@ extern std::ofstream LogFile;
 //#include "GameControllerInput.cpp"
 
 //typedef std::string
+
 const std::string STARTINGLOCATION1 = "Sirius", STARTINGLOCATION2 = "Pollux", STARTINGLOCATION3 ="Caph", STARTINGLOCATION4 = "Fingol", STARTINGLOCATION5 ="Capella", STARTINGLOCATION6 ="Diphda",
 STARTINGLOCATION7 = "Kugel", STARTINGLOCATION8 = "Nihal";
 const std::string PLAYER1GOVERNMENT = "Player1", PLAYER2GOVERNMENT = "Player2", PLAYER3GOVERNMENT = "Player3", PLAYER4GOVERNMENT = "Player4", PLAYER5GOVERNMENT = "Player5", PLAYER6GOVERNMENT = "Player6";
 const std::string PLAYER7GOVERNMENT = "Player7", PLAYER8GOVERNMENT = "Player8";
+
 
 using namespace std;
 
@@ -88,19 +90,23 @@ extern SDL_GameController *GameController[];
 extern const int JOYSTICK_DEAD_ZONE; //RTS controller
 
 PlayerInfo PlayerInfoRTS[9];
-void RTSInitializePlayers();
+
 void InitializeFlagships(PlayerInfo &Player);
 void InitializeComships(PlayerInfo &Player);
 void AwardShips();
 
-
 shared_ptr<Ship> selectedShip = nullptr;
+
+bool operator==(const Ship& lhs, const Ship& rhs);
+
+
+
 
 
 void RTSPLayerMenu (int playNum);
 int firstRun =0;
 
-const double MapPanel::OUTER = 8.7.; //6
+const double MapPanel::OUTER = 8.7; //6
 const double MapPanel::INNER = 0; //2.5
 
 
@@ -122,7 +128,7 @@ MapPanel::MapPanel(PlayerInfo &player, int commodity, const System *special)
 
 
     int n =0;
-  selectedShip = player.ReturnSelectedShip();
+
 
 	// Recalculate the fog each time the map is opened, just in case the player
 	// bought a map since the last time they viewed the map.
@@ -254,6 +260,7 @@ void MapPanel::InitializeTravelPlans(PlayerInfo &Player)
  Angle shipAngle = Angle(tempShipPointer->TravelPlan().front()->Position());
     tempShipPointer->Place(Player.Flagship()->GetSystem()->Position(), shipAngle.Unit() * tempShipPointer->MaxVelocity(),shipAngle );
 
+    tempShipPointer->SetIsNotParked(); //Ship launched
 
     LogFile << "RTSSelect Complete!" << endl << endl;
     return;
@@ -262,7 +269,7 @@ void MapPanel::InitializeTravelPlans(PlayerInfo &Player)
 void InitializeFlagships(PlayerInfo &Player)
 {
 
-Player.RTSAddShip(Player, Player.GetSystem(), GameData::Ships().Get("Mothership"), "MotherShip " + Player.GetGovernment()->GetName());
+Player.RTSAddShip(Player, Player.GetSystem(), GameData::Ships().Get("Mothership"), "MotherShip");
 LogFile << "MotherShip: " + Player.GetGovernment()->GetName() << endl << "System: " << Player.GetSystem()->Name() << endl << endl;
 //LogFile <<"Flagship test! " << Player.Flagship()->Name() << " for " << Player.Flagship()->GetGovernment()->GetName() << endl;
 return;
@@ -272,7 +279,7 @@ void InitializeComships(PlayerInfo &Player)
 {
 
 for(int n =1; n <11; n++)
-{Player.RTSAddShip(Player, Player.Flagship()->GetSystem(), GameData::Ships().Get("Command Ship"), "Command Ship " + to_string(n));
+{Player.RTSAddShip(Player, Player.Flagship()->GetSystem(), GameData::Ships().Get("Command Ship"), "CommandShip");
 LogFile << "Command Ship # " << to_string(n) << Player.GetGovernment()->GetName() << endl << "System: " << Player.GetSystem()->Name() << endl << endl;
 }
 return;
@@ -330,26 +337,38 @@ GameData::Systems().begin();
          else
             {unClaimedSystems++;continue;} //System not owned by human player. Do nothing
     }
-    if(PlayerInfoRTS[1].Flagship()->IsParked() == true)
-     {GameData::Systems().Get(PlayerInfoRTS[1].Flagship()->GetSystem()->Name())->AddFigs(numStarsPlayer1);
-     LogFile << "Ships for " << PlayerInfoRTS << " spawned "<< numStarsPlayer1 << " into system MotherShip is parked." << endl;
-     }
-     else
-       {
-        PlayerInfoRTS[1].Flagship()->AddFigs(numStarsPlayer1);
-        LogFile << "Ships for " << PlayerInfoRTS[1].GetGovernment()->GetName() << " spawned " << numStarsPlayer1 << " into moving motherShip. " << endl;
-       }
 
-           if(PlayerInfoRTS[2].Flagship()->IsParked() == true)
-     {GameData::Systems().Get(PlayerInfoRTS[2].Flagship()->GetSystem()->Name())->AddFigs(numStarsPlayer2);
-     LogFile << "Ships for " << PlayerInfoRTS[2].GetGovernment()->GetName() << " spawned " << numStarsPlayer2 << " into system MotherShip is parked." << endl;
+    if(PlayerInfoRTS[1].IsDead() == false)
+     {
+
+        if(PlayerInfoRTS[1].Flagship()->IsParked() == true)
+            {GameData::Systems().Get(PlayerInfoRTS[1].Flagship()->GetSystem()->Name())->AddFigs(numStarsPlayer1);
+            LogFile << "Ships for " << PlayerInfoRTS << " spawned "<< numStarsPlayer1 << " into system MotherShip is parked." << endl;
+            }
+        else
+            {
+            PlayerInfoRTS[1].Flagship()->AddFigs(numStarsPlayer1);
+            LogFile << "Ships for " << PlayerInfoRTS[1].GetGovernment()->GetName() << " spawned " << numStarsPlayer1 << " into moving motherShip. " << endl;
+            }
      }
-     else
-        {PlayerInfoRTS[2].Flagship()->AddFigs(numStarsPlayer2);
-        LogFile << "Ships for " << PlayerInfoRTS[2].GetGovernment()->GetName() << " spawned "<< numStarsPlayer2 <<" into moving motherShip. " << endl;
+
+    if(PlayerInfoRTS[2].IsDead() == false)
+    {
+
+
+        if(PlayerInfoRTS[2].Flagship()->IsParked() == true)
+            {GameData::Systems().Get(PlayerInfoRTS[2].Flagship()->GetSystem()->Name())->AddFigs(numStarsPlayer2);
+            LogFile << "Ships for " << PlayerInfoRTS[2].GetGovernment()->GetName() << " spawned " << numStarsPlayer2 << " into system MotherShip is parked." << endl;
         }
+        else
+            {PlayerInfoRTS[2].Flagship()->AddFigs(numStarsPlayer2);
+            LogFile << "Ships for " << PlayerInfoRTS[2].GetGovernment()->GetName() << " spawned "<< numStarsPlayer2 <<" into moving motherShip. " << endl;
+            }
+    }
 
-            if(PlayerInfoRTS[3].Flagship()->IsParked() == true)
+        if(PlayerInfoRTS[3].IsDead() == false)
+    {
+    if(PlayerInfoRTS[3].Flagship()->IsParked() == true)
      {GameData::Systems().Get(PlayerInfoRTS[3].Flagship()->GetSystem()->Name())->AddFigs(numStarsPlayer3);
      LogFile << "Ships for " << PlayerInfoRTS[3].GetGovernment()->GetName() << " spawned "<< numStarsPlayer3 << " into system MotherShip is parked." << endl;
      }
@@ -357,15 +376,22 @@ GameData::Systems().begin();
         {PlayerInfoRTS[3].Flagship()->AddFigs(numStarsPlayer3);
         LogFile << "Ships for " << PlayerInfoRTS[3].GetGovernment()->GetName() << " spawned " << numStarsPlayer3 << " into moving motherShip. " << endl;
         }
+    }
 
+        if(PlayerInfoRTS[4].IsDead() == false)
+    {
             if(PlayerInfoRTS[4].Flagship()->IsParked() == true)
-     {GameData::Systems().Get(PlayerInfoRTS[4].Flagship()->GetSystem()->Name())->AddFigs(numStarsPlayer4);
-     LogFile << "Ships for " << PlayerInfoRTS[4].GetGovernment()->GetName() << " spawned " << numStarsPlayer4 << " into system MotherShip is parked." << endl;
-     }
-     else
-        {PlayerInfoRTS[4].Flagship()->AddFigs(numStarsPlayer4);
+                {GameData::Systems().Get(PlayerInfoRTS[4].Flagship()->GetSystem()->Name())->AddFigs(numStarsPlayer4);
+                LogFile << "Ships for " << PlayerInfoRTS[4].GetGovernment()->GetName() << " spawned " << numStarsPlayer4 << " into system MotherShip is parked." << endl;
+                }
+            else
+                {PlayerInfoRTS[4].Flagship()->AddFigs(numStarsPlayer4);
                 LogFile << "Ships for " << PlayerInfoRTS[4].GetGovernment()->GetName() << " spawned " << numStarsPlayer4 << " into moving motherShip. " << endl;
-        }
+                }
+    }
+
+        if(PlayerInfoRTS[5].IsDead() == false)
+    {
 
             if(PlayerInfoRTS[5].Flagship()->IsParked() == true)
      {GameData::Systems().Get(PlayerInfoRTS[5].Flagship()->GetSystem()->Name())->AddFigs(numStarsPlayer5);
@@ -375,7 +401,10 @@ GameData::Systems().begin();
         {PlayerInfoRTS[5].Flagship()->AddFigs(numStarsPlayer5);
         LogFile << "Ships for " << PlayerInfoRTS[5].GetGovernment()->GetName() << " spawned " << numStarsPlayer5 << " into moving motherShip. " << endl;
         }
+    }
 
+        if(PlayerInfoRTS[6].IsDead() == false)
+    {
             if(PlayerInfoRTS[6].Flagship()->IsParked() == true)
      {GameData::Systems().Get(PlayerInfoRTS[6].Flagship()->GetSystem()->Name())->AddFigs(numStarsPlayer6);
      LogFile << "Ships for " << PlayerInfoRTS[6].GetGovernment()->GetName() << " spawned " << numStarsPlayer6 << " into system MotherShip is parked." << endl;
@@ -385,7 +414,10 @@ GameData::Systems().begin();
        PlayerInfoRTS[6].Flagship()->AddFigs(numStarsPlayer6);
         LogFile << "Ships for " << PlayerInfoRTS[6].GetGovernment()->GetName() << " spawned " << numStarsPlayer6 << " into moving motherShip. " << endl;
        }
+    }
 
+    if(PlayerInfoRTS[7].IsDead() == false)
+    {
             if(PlayerInfoRTS[7].Flagship()->IsParked() == true)
      {GameData::Systems().Get(PlayerInfoRTS[7].Flagship()->GetSystem()->Name())->AddFigs(numStarsPlayer7);
      LogFile << "Ships for " << PlayerInfoRTS[7].GetGovernment()->GetName() << " spawned " << numStarsPlayer7 << " into system MotherShip is parked." << endl;
@@ -394,7 +426,10 @@ GameData::Systems().begin();
         {PlayerInfoRTS[7].Flagship()->AddFigs(numStarsPlayer7);
         LogFile << "Ships for " << PlayerInfoRTS[7].GetGovernment()->GetName() << " spawned " << numStarsPlayer7 << " into moving motherShip. " << endl;
         }
+    }
 
+        if(PlayerInfoRTS[8].IsDead() == false)
+    {
             if(PlayerInfoRTS[8].Flagship()->IsParked() == true)
      {GameData::Systems().Get(PlayerInfoRTS[8].Flagship()->GetSystem()->Name())->AddFigs(numStarsPlayer8);
      LogFile << "Ships for " << PlayerInfoRTS[8].GetGovernment()->GetName() << " spawned " << numStarsPlayer8 << " into system MotherShip is parked." << endl;
@@ -402,7 +437,8 @@ GameData::Systems().begin();
      else
         {PlayerInfoRTS[8].Flagship()->AddFigs(numStarsPlayer8);
         LogFile << "Ships for " << PlayerInfoRTS[8].GetGovernment()->GetName() << " spawned " << numStarsPlayer8 << " into moving motherShip. " << endl;
-        };
+        }
+    }
 
     LogFile << "Unclaimed Systems: " << unClaimedSystems << endl << endl;
     return;
@@ -446,6 +482,8 @@ void MapPanel::Draw()
 
 	for(int16_t n=1; n < 9; n++) //Draw the TravelPlan for each of the player's selectedShip
     {
+        if(PlayerInfoRTS[n].IsDead() == true)
+            continue;
 	RTSDrawPlayerTravelPlan(PlayerInfoRTS[n]);
     }
 
@@ -472,7 +510,10 @@ void MapPanel::Draw()
 	DrawMissions();
 
 	for(int n=1; n <9; n++)
-        CalculatePositionOfShips(PlayerInfoRTS[n]);
+        {
+
+            CalculatePositionOfShips(PlayerInfoRTS[n]);
+        }
     DrawSelectedShips();         //RTS addition
 
 	if(!distance.HasRoute(selectedSystem))
@@ -516,7 +557,10 @@ void MapPanel::DrawButtons(const string &condition)
     Color bright = *GameData::Colors().Get("bright");
     Color dim = *GameData::Colors().Get("dim");
     uint16_t dimImage = 0;
+    if(PlayerInfoRTS[1].IsDead() == false)
+    {
 
+Ship *selectedShip = PlayerInfoRTS[1].Flagship();
 
 	if(rtsEnabled)
     {
@@ -530,8 +574,6 @@ void MapPanel::DrawButtons(const string &condition)
 
         SpriteShader::Draw(maxSprite, uiPoint, 1);
         }
-
-
 
     uiPoint.X() +=54;
 
@@ -726,7 +768,7 @@ void MapPanel::DrawButtons(const string &condition)
      uiPoint.X()-=114;
      uiPoint.Y() += 20;
 
-selectedShip = PlayerInfoRTS[1].ReturnSelectedShip();
+
 
 
      font.Draw(to_string(selectedShip->GetSystem()->GetNumFigs()), uiPoint, bright);
@@ -756,6 +798,7 @@ selectedShip = PlayerInfoRTS[1].ReturnSelectedShip();
 	const Interface *interface = GameData::Interfaces().Get("map buttons");
 
 	interface->Draw(info, this);
+    }
     }
 }
 
@@ -941,6 +984,8 @@ bool MapPanel::ControllerJoystickMotion (SDL_ControllerAxisEvent joystickMotion,
 
 bool MapPanel::ControllerButtonDown (Uint8 button, int playNum)
 {
+if(PlayerInfoRTS[playNum].IsDead() == true)
+    return true; //ignore all input from the dead.
 
        switch(button)
        {
@@ -1277,7 +1322,7 @@ void MapPanel::Select(const System *system)
 {
 		if(!system)
 		return;
-
+shared_ptr<Ship> selectedShip = nullptr;
 		LogFile << "\nPlayer selected system: " << system->Name() << "\n";
 
 	selectedSystem = system;
@@ -1423,13 +1468,14 @@ int MapPanel::Search(const string &str, const string &sub)
 
 void MapPanel::RTSDrawPlayerTravelPlan(PlayerInfo &Player)
 {
+   // LogFile << "RTSDrawPlayerTravelPlan" << endl;
     RTSDrawTravelPlan(Player.ReturnSelectedShip());
     return;
 }
 
 void MapPanel::RTSDrawTravelPlan(std::shared_ptr <Ship> selectedShip)
 {
-    LogFile << "RTSDrawTravelPlan" << endl;
+   // LogFile << "RTSDrawTravelPlan" << endl;
 	/*if(!playerSystem)
 		return;*/
 
@@ -1469,7 +1515,7 @@ void MapPanel::RTSDrawTravelPlan(std::shared_ptr <Ship> selectedShip)
 	for(int i = selectedShip->TravelPlan().size() - 1; i >= 0; --i)
 	{
 		const System *next = selectedShip->TravelPlan()[i];
-    LogFile << "Draw flight path to " << next->Name() << "\n";
+ //  LogFile << "Draw flight path to " << next->Name() << "\n";
 		/*bool isHyper = previous->Links().count(next);
 		bool isJump = !isHyper && previous->Neighbors().count(next);
 		bool isWormhole = false;
@@ -1512,11 +1558,12 @@ void MapPanel::RTSDrawTravelPlan(std::shared_ptr <Ship> selectedShip)
 
 		previous = next;
 	}
-	LogFile << "\n";
+	//LogFile << "\n";
 }
 
 void MapPanel::DrawTravelPlan()
 {
+   Ship * selectedShip = nullptr;
 	if(!playerSystem)
 		return;
 
@@ -1551,7 +1598,7 @@ void MapPanel::DrawTravelPlan()
 
 	const System *previous = playerSystem;
 
-	selectedShip = player.ReturnSelectedShip();
+	selectedShip = player.ReturnSelectedShip().get();
 
 	//RTS code changed "Player.TravelPlan() to "selectedShip->TravelPlan". 2 times below.
 	for(int i = selectedShip->TravelPlan().size() - 1; i >= 0; --i)
@@ -1803,8 +1850,28 @@ void MapPanel::DrawMissions()
 		PointerShader::Draw(pos, a.Unit(), 11.5, 21.5, -6., white);
 	}*/
 }
+
+PlayerInfo *ReturnPlayerInfoFromGovernment(string nameSearchingGovName)
+{
+    for(int n=1; n < 9; n++)
+        {
+            if(PlayerInfoRTS[n].GetGovernment()->GetName() == nameSearchingGovName)
+            {
+
+                LogFile << PlayerInfoRTS[n].GetGovernment()->GetName() << " found!" << endl;
+                return &PlayerInfoRTS[n];
+            }
+
+        }
+    LogFile << "PlayerInfo not found! Returning nullptr!" << endl;
+    return nullptr;
+}
+
 void MapPanel::ArriveAtStar(Ship *selectedShip, System *arriveSystem)
 {
+    if(!selectedShip)
+        return;
+
     selectedShip->SetSystem(arriveSystem);
 
     selectedShip->PopTravel();
@@ -1812,15 +1879,20 @@ void MapPanel::ArriveAtStar(Ship *selectedShip, System *arriveSystem)
 
     if(selectedShip->TravelPlan().empty() == true)
        {
+           selectedShip->SetIsParked(); //Ship landed
+
           if(arriveSystem->GetGovernment() == selectedShip->GetGovernment())
            {
                //LandShips (System *)
+               LandShips(selectedShip, arriveSystem);
+               LogFile << "Ships for " <<arriveSystem->GetGovernment()->GetName() <<" landed on " << arriveSystem->Name() << " safely." << endl;
                return;
            }
            else
            {
-               //Battle (System *, selectedShip)
-               //LandShips
+               RTSBattle(arriveSystem, selectedShip);
+               LogFile << "Battle ended successfully!" << endl;
+               return;
            }
 
 
@@ -1831,12 +1903,39 @@ void MapPanel::ArriveAtStar(Ship *selectedShip, System *arriveSystem)
     }
 }
 
-void RTSBattle(System *disputedSystem, Ship *selectedShip)
+void MapPanel::LandShips(Ship * landingShip, System * landingSystem)
 {
+    landingSystem->AddFigs(landingShip->GetNumFigs());
+    LogFile << "Landing system now has " <<landingSystem->GetNumFigs() << endl;
+    for(int n=1; n == landingShip->GetNumComShips(); n++ )
+        landingSystem->AddComShip();
+
+    if(landingShip->MotherShipPresent() == 1)
+        {landingSystem->SetMotherShipPresent();
+        LogFile << "MotherShip is now present on " << landingSystem->MotherShipPresent();
+        }
+            landingShip->SetIsParked();
+
+return;
+}
+
+
+
+ bool operator==( Ship& lhs, Ship& rhs)
+{
+  if(lhs.Name() == rhs.Name() && lhs.GetGovernment() == rhs.GetGovernment() && lhs.GetSystem() == rhs.GetSystem() && lhs.GetNumFigs() == rhs.GetNumFigs())
+    return true;
+  return false;
+}
+
+void MapPanel::RTSBattle(System *disputedSystem, Ship *selectedShip)
+{
+
+    PlayerInfo *Player;
     const int ATTACKINGFORCECOMSHIP = 13, ATTACKINGFORCEMOTHERSHIP = 23, NUMFIGSREQUIRED = 5;
     bool allowCapitalShipsToFightAtSystem =0, allowCapitalShipsToFightInShip =0;
     int attackingForce, defendingForce;
-    LogFile << "Battle at: " << disputedSystem << endl << "Between " << disputedSystem->GetGovernment()->GetName() << " and " << selectedShip->GetGovernment()->GetName() <<endl;
+    LogFile << "Battle at: " << disputedSystem->Name() << endl << "Between " << disputedSystem->GetGovernment()->GetName() << " and " << selectedShip->GetGovernment()->GetName() <<endl;
 
    int supportedCapitalShips = disputedSystem->GetNumFigs()/NUMFIGSREQUIRED;
       if( supportedCapitalShips >= disputedSystem->GetNumComShips()+disputedSystem->MotherShipPresent())
@@ -1851,7 +1950,45 @@ void RTSBattle(System *disputedSystem, Ship *selectedShip)
             attackingForce = selectedShip->GetNumFigs();
 
    LogFile << "Defending force: " << defendingForce << endl << "Attacking Force: " << attackingForce << endl;
-   LogFile
+
+
+   if(attackingForce <= defendingForce)
+   {
+       selectedShip->MinusFigs(selectedShip->GetNumFigs());
+       selectedShip->MinusComShips(selectedShip->GetNumComShips());
+
+       Player = ReturnPlayerInfoFromGovernment(selectedShip->GetGovernment()->GetName());
+
+       if(Player->Flagship() == selectedShip)
+            {
+                Player->Die(true);
+               LogFile << Player->GetGovernment()->GetName() << " Destroyed!" << endl;
+            }
+
+       //entire attack fleet destroyed!
+       //Defenders weakened
+       LogFile << "Attackers destroyed! " << "Defenders now have " << disputedSystem->GetNumFigs() << " figs left." << endl;
+   }
+
+   else
+   {
+       //entire defence fleet destroyed!
+       //Attacker fleet weakened.
+       Player = ReturnPlayerInfoFromGovernment(disputedSystem->GetGovernment()->GetName());
+       disputedSystem->MinusFigs(disputedSystem->GetNumFigs());
+       disputedSystem->MinusComShips(disputedSystem->GetNumComShips());
+       if(disputedSystem == Player->Flagship()->GetSystem())
+         {Player->Die(true);
+         LogFile << Player->GetGovernment()->GetName();
+         }
+
+       disputedSystem->SetGovernment(selectedShip->GetGovernment());
+
+       LogFile << "Defenders Destroyed! " << " Attackers now have " << selectedShip->GetNumFigs() << " figs left." << endl;
+       LandShips(selectedShip, disputedSystem);
+   }
+
+   LogFile << endl;
 
 }
 void MapPanel::FindDistanceToStar(Ship *selectedShip)
@@ -1863,18 +2000,22 @@ void MapPanel::FindDistanceToStar(Ship *selectedShip)
 
 void MapPanel::CalculatePositionOfShips(PlayerInfo &Player)
 {
+if(Player.IsDead() == true)
+    return;
     Point toStar;
     Point shipPosition;
     Angle shipAngle = 0;
 
 
-    LogFile << "CalculatePosition Of Ships for: " << Player.GetGovernment()->GetName() << endl;
+    //LogFile << "CalculatePosition Of Ships for: " << Player.GetGovernment()->GetName() << endl;
     for(shared_ptr<Ship> selectedShip : Player.Ships())
         {
+            if(!selectedShip)
+                continue;
 
             if(selectedShip->TravelPlan().empty() == true)
                 {toStar = selectedShip->GetSystem()->Position();
-                LogFile << "No travel plan!" << endl;
+              // LogFile << "No travel plan!" << endl;
                  shipAngle = 0;
                  selectedShip->SetDistanceToStar(0); //If no Ship has no TravelPlan, reset distance to nextStar
                 selectedShip->Place(Zoom() * (selectedShip->GetSystem()->Position()+center), shipAngle.Unit(),  shipAngle );
@@ -1884,15 +2025,15 @@ void MapPanel::CalculatePositionOfShips(PlayerInfo &Player)
                 toStar = selectedShip->TravelPlan().back()->Position();
                 Point fromStar(selectedShip->GetSystem()->Position());
                 selectedShip->AddDistanceFromStar(.1);
-                LogFile << "Pointing from " << selectedShip->GetSystem()->Name() << " X: " << selectedShip->GetSystem()->Position().X() << " Y: " << selectedShip->GetSystem()->Position().Y() << " to " << selectedShip->TravelPlan().back()->Name() << " X: " <<
-                selectedShip->TravelPlan().back()->Position().X() << " Y: " << selectedShip->TravelPlan().back()->Position().Y() << endl;
+             //  LogFile << "Pointing from " << selectedShip->GetSystem()->Name() << " X: " << selectedShip->GetSystem()->Position().X() << " Y: " << selectedShip->GetSystem()->Position().Y() << " to " << selectedShip->TravelPlan().back()->Name() << " X: " <<
+//                selectedShip->TravelPlan().back()->Position().X() << " Y: " << selectedShip->TravelPlan().back()->Position().Y() << endl; */
 
                 double degrees = (atan2(-1*(fromStar.Y() - toStar.Y()),(toStar.X() - fromStar.X())));
                 shipAngle = 180/M_PI*degrees+90;
 
-                LogFile << "Angle found to be " << shipAngle.Degrees() << " DistanceFromStar: " << selectedShip->GetDistanceFromStar() << endl;
+              //  LogFile << "Angle found to be " << shipAngle.Degrees() << " DistanceFromStar: " << selectedShip->GetDistanceFromStar() << endl;
                 shipPosition.Set((selectedShip->GetDistanceFromStar()*cos(degrees)), selectedShip->GetDistanceFromStar()*sin(degrees));
-                LogFile << "Ship position changed by: X: " << shipPosition.X() << " Y: " << shipPosition.Y() << endl;
+              //  LogFile << "Ship position changed by: X: " << shipPosition.X() << " Y: " << shipPosition.Y() << endl;
                 selectedShip->Place(Zoom() * (selectedShip->GetSystem()->Position()+shipPosition+center), shipAngle.Unit(),  shipAngle );
 
                 if(selectedShip->GetDistanceToStar() == 0) //If ship just recieved a TravelPlan calculate distance to first star
@@ -1903,7 +2044,7 @@ void MapPanel::CalculatePositionOfShips(PlayerInfo &Player)
                 }
 
         }
-        LogFile << endl;
+    //   LogFile << endl;
 
 }
 
@@ -1911,20 +2052,27 @@ void MapPanel::DrawSelectedShips()
 {
     DrawList draw;
     shared_ptr<Ship> selectedShip;
+Ship * deleteShip;
 
-    LogFile << "DrawSelectedShips()" << endl;
+
+  //  LogFile << "DrawSelectedShips()" << endl;
 
     for(int n=1; n < 9; n++)
         {
-        LogFile << "Drawing ReturnSelectedShip(): " << n << endl;
+            if(PlayerInfoRTS[n].IsDead() == true)
+            continue;
+     //   LogFile << "Drawing ReturnSelectedShip(): " << n << endl;
         selectedShip = PlayerInfoRTS[n].ReturnSelectedShip();
         RingShader::Draw(selectedShip->Position(), 34., 29., selectedShip->GetGovernment()->GetColor());
+        if(selectedShip->Name() == "MotherShip" )
+            {draw.Add(*selectedShip, -50);
 
-        draw.Add(*selectedShip, -50);
-
+            }
+        else //if(selectedShip->Mass() < 500)
+             draw.Add(*selectedShip, -25);
         }
     draw.Draw();
-    LogFile << endl;
+ //   LogFile << endl;
 }
 
 void MapPanel::DrawPointer(const System *system, Angle &angle, const Color &color, bool bigger)

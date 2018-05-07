@@ -632,7 +632,7 @@ bool Ship::IsYours() const
 
 void Ship::SetIsParked(bool parked)
 {
-	isParked = parked;
+	isParked = true;
 }
 
 
